@@ -1,0 +1,10 @@
+public Class Cliente{
+    private String cpf, endereco, nome;
+
+    public void cadastrarCliente(String cpf, String senha, String nome){
+
+    }
+    public void removerCliente(Cliente cliente){
+
+    } 
+}

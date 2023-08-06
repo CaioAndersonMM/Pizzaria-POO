@@ -1,0 +1,15 @@
+public Class Funcionario{
+    private String cpf, senha;
+    private boolean isAdmin;
+
+    public void criarUsuario(String cpf, String senha){
+
+    }
+    public void removerUsuario(Usuario usuario){
+
+    }
+    public boolean verificarLogin(){
+        //...
+        return true;
+    }
+}
