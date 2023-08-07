@@ -1,5 +1,42 @@
-public Class Cliente{
+Class Cliente{
     private String cpf, endereco, nome;
+
+    
+    public void setCPF(String cpf){
+        if (cpf != null && cpf.length() == 11) {
+            this.cpf = cpf;
+        } else {
+            //
+        }
+    }
+    
+    public String getCPF() {
+        return cpf;
+    }
+
+    public void setEndereco(String endereco){
+        if (endereco != null && endereco.length() < 5) {
+            this.endereco = endereco;
+        } else {
+            //
+        }
+    }
+    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setNome(String nome){
+        if (nome != null && endereco.length() < 3) {
+            this.nome = nome;
+        } else {
+            //
+        }
+    }
+    
+    public String getNome() {
+        return nome;
+    }
 
     public void cadastrarCliente(String cpf, String senha, String nome){
 
