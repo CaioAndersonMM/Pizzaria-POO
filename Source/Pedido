@@ -1,0 +1,115 @@
+import java.time.LocalDate;
+class Pedido{
+    Cliente cliente;
+    Pizza [] pizza;
+    float valor;
+    LocalDate data;
+    boolean status;
+
+    public Pedido(){}
+    public Pedido(Cliente cliente, Pizza[] pizza, float valor, LocalDate data, boolean status){
+        this.cliente = cliente;
+        this.pizza = pizza;
+        this.valor = valor;
+        this.data = data;
+        this.status = status;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        if (cliente != null) {
+            this.cliente = cliente;
+        } else {
+            //throw new IllegalArgumentException("Deve ter um cliente");
+        }
+    }
+
+    public Pizza[] getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(Pizza[] pizzas) {
+        if (pizzas != null) {
+            //this.pizzas = pizzas;
+            //Deve adicionar a nova pizza no array
+        } else {
+            //throw new IllegalArgumentException("Deve haver pizza!");
+        }
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        if (valor > 0) {
+            this.valor = valor;
+        } else {
+            //throw new IllegalArgumentException("O valor do pedido está inválido");
+        }
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        if(data != null)
+            this.data = data;
+    }
+
+    public boolean verificarStatus() {
+        return status;
+    }
+
+    //get - verificar status
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void adicionarCliente(Cliente cliente){
+        setCliente(cliente);
+    }
+    public void alterarCliente(Cliente novoCliente){
+        setCliente(novoCliente);
+    }
+
+    public void alterarStatus(boolean novoStatus){
+        setStatus(novoStatus);
+    }
+
+    public void adicionarPizza(Pizza novaPizza) {
+        setPizzas(novaPizza);
+        System.out.printl("Pizza Adicionada no Pedido");
+    }
+
+    public void alterarPizza(Pizza pizza) {
+        //setPizzas(pizza); -> deve ter uma implementação diferente
+    }
+    public void removerPedido(Pedido pedido) {
+        System.out.printl("Pedido Removido");
+    }
+
+    public float calcularValor(){
+
+    }
+
+    public void buscarPizza(Pizza pizza){
+
+    }
+
+    public void buscarCliente(Cliente cliente){
+        
+    }
+
+    public void buscarStatus(boolean status){
+        
+    }
+}

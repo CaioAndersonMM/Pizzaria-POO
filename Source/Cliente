@@ -1,7 +1,15 @@
 Class Cliente{
     private String cpf, endereco, nome;
 
-    
+    public Cliente(){}
+     //construtor
+     public Cliente(String cpf, String endereco, String nome) {
+        this.cpf = cpf;
+        //setCPF(cpf);
+        this.endereco = endereco;
+        this.nome = nome;
+    }
+
     public void setCPF(String cpf){
         if (cpf != null && cpf.length() == 11) {
             this.cpf = cpf;
@@ -15,7 +23,7 @@ Class Cliente{
     }
 
     public void setEndereco(String endereco){
-        if (endereco != null && endereco.length() < 5) {
+        if (endereco != null && endereco.length() > 5) {
             this.endereco = endereco;
         } else {
             //
@@ -27,7 +35,7 @@ Class Cliente{
     }
 
     public void setNome(String nome){
-        if (nome != null && endereco.length() < 3) {
+        if (nome != null && endereco.length() > 3) {
             this.nome = nome;
         } else {
             //
@@ -38,10 +46,19 @@ Class Cliente{
         return nome;
     }
 
+    public void alterarCPF(String novocpf){
+        setCPF(novocpf);
+    }
+    public void alterarEndereco(String novoendereco){
+        setEndereco(novoendereco);
+    }
+    public void alterarNome(String novonome){
+        setNome(novonome);
+    }
     public void cadastrarCliente(String cpf, String senha, String nome){
-
+        System.out.printl("Cliente Cadastrado");
     }
     public void removerCliente(Cliente cliente){
-
+        System.out.printl("Cliente (X) removido!");
     } 
 }

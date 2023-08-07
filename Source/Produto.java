@@ -16,8 +16,8 @@ public class Produto {
     public int getQuatidadeProduto() {
         return quatidadeProduto;
     }
+
     public Float getValor() {
         return valor;
     }
 }
-
