@@ -2,13 +2,13 @@ import java.util.Map;
 import java.util.Objects;
 
 public class TipoPizza {
-    private final String nomeSabor;
-    private final Map<Produto, Integer> adicionais;
-    private final float valores;
+    private String nomeSabor;
+    private Map<Produto, Integer> ingredientes;
+    private float valores;
 
-    public TipoPizza(String nomeSabor, Map<Produto, Integer> adicionais, float valores) {
+    public TipoPizza(String nomeSabor, Map<Produto, Integer> ingredientes, float valores) {
         this.nomeSabor = nomeSabor;
-        this.adicionais = adicionais;
+        this.ingredientes = ingredientes;
         this.valores = valores;
     }
 
@@ -16,8 +16,8 @@ public class TipoPizza {
         return valores;
     }
 
-    public Map<Produto, Integer> getAdicionais() {
-        return adicionais;
+    public Map<Produto, Integer> getIngredientes() {
+        return ingredientes;
     }
 
     public String getNomeSabor() {
