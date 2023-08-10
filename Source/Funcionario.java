@@ -6,9 +6,9 @@ Class Funcionario{
     public Funcionario(){}
     //construtor
     public Funcionario(String cpf, String senha, boolean isAdmin) {
-        this.cpf = cpf;
-        this.senha = senha;
-        this.isAdmin = isAdmin;
+        setCPF(cpf);
+        setSenha(senha);
+        setAdmin(isAdmin);
     }
 
     public void setCPF(String cpf){
