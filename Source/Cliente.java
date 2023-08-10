@@ -4,10 +4,9 @@ Class Cliente{
     public Cliente(){}
      //construtor
      public Cliente(String cpf, String endereco, String nome) {
-        this.cpf = cpf;
-        //setCPF(cpf);
-        this.endereco = endereco;
-        this.nome = nome;
+        setCPF(cpf);
+        setEndereco(endereco);
+        setNome(nome);
     }
 
     public void setCPF(String cpf){
