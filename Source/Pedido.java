@@ -8,11 +8,11 @@ class Pedido{
 
     public Pedido(){}
     public Pedido(Cliente cliente, Pizza[] pizza, float valor, LocalDate data, boolean status){
-        this.cliente = cliente;
-        this.pizza = pizza;
-        this.valor = valor;
-        this.data = data;
-        this.status = status;
+        setCliente(cliente);
+        setPizza(pizza);
+        setValor(valor);
+        setData(data);
+        setStatus(status);
     }
 
     public Cliente getCliente() {
