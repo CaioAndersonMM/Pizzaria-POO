@@ -7,10 +7,10 @@ class Pizza{
     public Pizza(){ }
     //construtor
     public Pizza(TipoPizza tipo, Map<Produto, Integer> adicionais, float valor, char tamanho) {
-        this.tipo = tipo;
-        this.adicionais = adicionais;
-        this.valor = valor;
-        this.tamanho = tamanho;
+        setTipo(tipo);
+        setAdicionais(adicionais);
+        setValor(valor);
+        setTamanho(tamanho);
     }
 
     public TipoPizza getTipo() {
