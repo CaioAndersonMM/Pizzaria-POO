@@ -10,6 +10,5 @@ public class UsuarioBo {
         UsuarioDao usuDao = new UsuarioDao();
         // usu.setEndereco(end);
         usuDao.inserir(usu);
-
     }
 }
