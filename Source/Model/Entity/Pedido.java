@@ -1,15 +1,20 @@
+package Model.Entity;
+
 import java.time.LocalDate;
-class Pedido{
+
+public class Pedido {
     Cliente cliente;
-    Pizza [] pizza;
+    Pizza[] pizzas;
     float valor;
     LocalDate data;
     boolean status;
 
-    public Pedido(){}
-    public Pedido(Cliente cliente, Pizza[] pizza, float valor, LocalDate data, boolean status){
+    public Pedido() {
+    }
+
+    public Pedido(Cliente cliente, Pizza[] pizza, float valor, LocalDate data, boolean status) {
         setCliente(cliente);
-        setPizza(pizza);
+        setPizzas(pizza);
         setValor(valor);
         setData(data);
         setStatus(status);
@@ -23,20 +28,20 @@ class Pedido{
         if (cliente != null) {
             this.cliente = cliente;
         } else {
-            //throw new IllegalArgumentException("Deve ter um cliente");
+            // throw new IllegalArgumentException("Deve ter um cliente");
         }
     }
 
     public Pizza[] getPizzas() {
-        return pizzas;
+        return this.pizzas;
     }
 
     public void setPizzas(Pizza[] pizzas) {
         if (pizzas != null) {
-            //this.pizzas = pizzas;
-            //Deve adicionar a nova pizza no array
+            // this.pizzas = pizzas;
+            // Deve adicionar a nova pizza no array
         } else {
-            //throw new IllegalArgumentException("Deve haver pizza!");
+            // throw new IllegalArgumentException("Deve haver pizza!");
         }
     }
 
@@ -48,7 +53,7 @@ class Pedido{
         if (valor > 0) {
             this.valor = valor;
         } else {
-            //throw new IllegalArgumentException("O valor do pedido está inválido");
+            // throw new IllegalArgumentException("O valor do pedido está inválido");
         }
     }
 
@@ -57,7 +62,7 @@ class Pedido{
     }
 
     public void setData(LocalDate data) {
-        if(data != null)
+        if (data != null)
             this.data = data;
     }
 
@@ -65,7 +70,7 @@ class Pedido{
         return status;
     }
 
-    //get - verificar status
+    // get - verificar status
     public boolean isStatus() {
         return status;
     }
@@ -74,42 +79,44 @@ class Pedido{
         this.status = status;
     }
 
-    public void adicionarCliente(Cliente cliente){
+    public void adicionarCliente(Cliente cliente) {
         setCliente(cliente);
     }
-    public void alterarCliente(Cliente novoCliente){
+
+    public void alterarCliente(Cliente novoCliente) {
         setCliente(novoCliente);
     }
 
-    public void alterarStatus(boolean novoStatus){
+    public void alterarStatus(boolean novoStatus) {
         setStatus(novoStatus);
     }
 
-    public void adicionarPizza(Pizza novaPizza) {
+    public void adicionarPizza(Pizza[] novaPizza) {
         setPizzas(novaPizza);
-        System.out.printl("Pizza Adicionada no Pedido");
+        System.out.println("Pizza Adicionada no Pedido");
     }
 
     public void alterarPizza(Pizza pizza) {
-        //setPizzas(pizza); -> deve ter uma implementação diferente
+        // setPizzas(pizza); -> deve ter uma implementação diferente
     }
+
     public void removerPedido(Pedido pedido) {
-        System.out.printl("Pedido Removido");
+        System.out.println("Pedido Removido");
     }
 
-    public float calcularValor(){
+    public float calcularValor() {
+        return valor; // alterar
+    }
+
+    public void buscarPizza(Pizza pizza) {
 
     }
 
-    public void buscarPizza(Pizza pizza){
+    public void buscarCliente(Cliente cliente) {
 
     }
 
-    public void buscarCliente(Cliente cliente){
-        
-    }
+    public void buscarStatus(boolean status) {
 
-    public void buscarStatus(boolean status){
-        
     }
 }

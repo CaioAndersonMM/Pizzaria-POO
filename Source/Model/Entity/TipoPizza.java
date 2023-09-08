@@ -1,3 +1,5 @@
+package Model.Entity;
+
 import java.util.Map;
 
 public class TipoPizza {
@@ -14,6 +16,7 @@ public class TipoPizza {
     public float[] getValores() {
         return valores;
     }
+
     public void setValores(float[] valores) {
         // Verificar se foram informados três valores
         if (valores == null || valores.length != 3) {
@@ -35,9 +38,11 @@ public class TipoPizza {
     public Map<Produto, Integer> getIngredientes() {
         return Map.copyOf(this.ingredientes);
     }
+
     public void setIngredientes(Map<Produto, Integer> ingredientes) {
         this.ingredientes = Map.copyOf(ingredientes);
     }
+
     public void addIngrediente(Produto ingrediente, Integer quantidade) {
         // Verificar se os valores informados são válidos
         if (ingrediente == null) {
@@ -50,6 +55,7 @@ public class TipoPizza {
         // Adicionar ingrediente
         this.ingredientes.put(ingrediente, quantidade);
     }
+
     public void removeIngrediente(Produto ingrediente) {
         this.ingredientes.remove(ingrediente);
     }
@@ -57,6 +63,7 @@ public class TipoPizza {
     public String getNomeSabor() {
         return nomeSabor;
     }
+
     public void setNomeSabor(String nomeSabor) {
         if (nomeSabor == null || nomeSabor.isEmpty()) {
             throw new IllegalArgumentException("O nome do sabor não pode ser nulo ou vazio.");

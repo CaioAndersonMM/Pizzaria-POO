@@ -1,11 +1,17 @@
-class Pizza{
+package Model.Entity;
+
+import java.util.Map;
+
+public class Pizza {
     private TipoPizza tipo;
     private Map<Produto, Integer> adicionais;
     private float valor;
     private char tamanho;
 
-    public Pizza(){ }
-    //construtor
+    public Pizza() {
+    }
+
+    // construtor
     public Pizza(TipoPizza tipo, Map<Produto, Integer> adicionais, float valor, char tamanho) {
         setTipo(tipo);
         setAdicionais(adicionais);
@@ -17,9 +23,9 @@ class Pizza{
         return tipo;
     }
 
-    public void setTipo(TipoPizza tipo) {
-        if (novoTipo != null) {
-            this.tipo = novoTipo;
+    public void setTipo(TipoPizza novotipo) {
+        if (novotipo != null) {
+            this.tipo = novotipo;
         } else {
             //
         }
@@ -30,12 +36,14 @@ class Pizza{
     }
 
     public void setAdicionais(Map<Produto, Integer> adicionais) {
-        if (novosAdicionais != null) {
+        if (adicionais != null) {
             this.adicionais = adicionais;
         } else {
-            //throw new IllegalArgumentException("A lista de adicionais não pode ser nula.");
+            // throw new IllegalArgumentException("A lista de adicionais não pode ser
+            // nula.");
         }
     }
+
     public float getValor() {
         return valor;
     }
@@ -44,7 +52,7 @@ class Pizza{
         if (valor > 0) {
             this.valor = valor;
         } else {
-            //throw new IllegalArgumentException("O valor da pizza está inválido");
+            // throw new IllegalArgumentException("O valor da pizza está inválido");
         }
     }
 
@@ -56,7 +64,7 @@ class Pizza{
         if (tamanho == 'P' || tamanho == 'M' || tamanho == 'G') {
             this.tamanho = tamanho;
         } else {
-            //throw new IllegalArgumentException("Tamanho da pizza inválido.");
+            // throw new IllegalArgumentException("Tamanho da pizza inválido.");
         }
     }
 
@@ -73,19 +81,19 @@ class Pizza{
     }
 
     public float calcularValor() {
-        //return total;
+        return valor;
     }
 
-    public Pizza buscar(String nome) {
-        // return Pizza; 
-    }
+    // public Pizza buscar(String nome) {
+    // return Pizza;
+    // }
 
     public void adicionarAdicional(Produto adicional, int quantidade) {
-        System.out.printl("Adicionado");
+        System.out.println("Adicionado");
     }
 
     public void removerAdicional(Produto adicional) {
-        System.out.printl("Removido");
+        System.out.println("Removido");
     }
 
 }
