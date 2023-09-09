@@ -12,8 +12,21 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
 
     @Override
     public void alterar(Usuario entity) {
-        // TODO Auto-generated method stub
-
+     String sql = "UPDATE Usuario SET nome=?, cpf=?, telefone=? WHERE id=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, Usuario.getNome());
+            stmt.setString(2, Usuario.getCpf());
+            stmt.setString(3, Usuario.getTelefone());
+            stmt.setInt(4, Usuario.getId());
+            stmt.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
     }
 
     @Override
@@ -24,8 +37,19 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
 
     @Override
     public void deletar(Usuario entity) {
-        // TODO Auto-generated method stub
-
+        
+            String sql = "DELETE FROM Usuario WHERE id=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
     }
 
     public Long inserir(Usuario usu) {
@@ -57,13 +81,28 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
         } finally {
             closeConnection();
         }
-
     }
 
     @Override
-    public List listar() {
-        // TODO Auto-generated method stub
-        return null;
+    public List listar() { 
+      String sql = "SELECT * FROM Usuario";
+        List<Cliente> listUsu = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                Usuario usuario = new Usuario();
+                Usuario.setId(resultado.getInt("id"));
+                Usuario.setNome(resultado.getString("nome"));
+                Usuario.setCpf(resultado.getString("cpf"));
+                Usuario.setTelefone(resultado.getString("telefone"));
+                retorno.add(usuario);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listUsu;
+    }finally {
+       closeConnection();
     }
-
 }
