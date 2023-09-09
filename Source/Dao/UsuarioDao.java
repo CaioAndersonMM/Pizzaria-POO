@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Entity.Usuario;
@@ -12,18 +13,16 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
 
     @Override
     public void alterar(Usuario entity) {
-     String sql = "UPDATE Usuario SET nome=?, cpf=?, telefone=? WHERE id=?";
+        String sql = "UPDATE Usuario SET nome=?, cpf=?, senha=? WHERE id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, Usuario.getNome());
-            stmt.setString(2, Usuario.getCpf());
-            stmt.setString(3, Usuario.getTelefone());
-            stmt.setInt(4, Usuario.getId());
+            stmt.setString(1, entity.getNome());
+            stmt.setString(2, entity.getCPF());
+            stmt.setString(3, entity.getSenha());
+            stmt.setLong(4, entity.getId());
             stmt.execute();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         } finally {
             closeConnection();
         }
@@ -31,22 +30,35 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
 
     @Override
     public Usuario buscar(Usuario entity) {
-        // TODO Auto-generated method stub
-        return null;
+        String sql = "SELECT * FROM tb_users as e where e.nome =? or where e.cpf = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+
+            //Pegar um usuário
+
+            if (rs.next())
+                //return usuario;
+            else
+                return null;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
     }
 
     @Override
     public void deletar(Usuario entity) {
-        
-            String sql = "DELETE FROM Usuario WHERE id=?";
+
+        String sql = "DELETE FROM Usuario WHERE id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setLong(1, entity.getId());
             stmt.execute();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         } finally {
             closeConnection();
         }
@@ -55,7 +67,7 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
     public Long inserir(Usuario usu) {
         Connection con = getConnection();
         String sql = "INSERT INTO tb_users (nome,cpf,senha) "
-                + "values (?,?,?,?)";
+                + "values (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, usu.getNome());
@@ -84,25 +96,25 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
     }
 
     @Override
-    public List listar() { 
-      String sql = "SELECT * FROM Usuario";
-        List<Cliente> listUsu = new ArrayList<>();
+    public List listar() {
+        String sql = "SELECT * FROM Usuario";
+        List<Usuario> listUsu = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
                 Usuario usuario = new Usuario();
-                Usuario.setId(resultado.getInt("id"));
-                Usuario.setNome(resultado.getString("nome"));
-                Usuario.setCpf(resultado.getString("cpf"));
-                Usuario.setTelefone(resultado.getString("telefone"));
-                retorno.add(usuario);
+                usuario.setId(resultado.getLong("id"));
+                usuario.setNome(resultado.getString("nome"));
+                usuario.setCPF(resultado.getString("cpf"));
+                listUsu.add(usuario);
             }
+            return listUsu;
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
         }
-        return listUsu;
-    }finally {
-       closeConnection();
     }
 }
