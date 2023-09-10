@@ -3,8 +3,9 @@ package Model.Entity;
 import java.util.Map;
 
 public class Pizza {
+    private Long id;
     private TipoPizza tipo;
-    private Map<Produto, Integer> adicionais;
+    private Produto[] adicionais;
     private float valor;
     private char tamanho;
 
@@ -12,11 +13,22 @@ public class Pizza {
     }
 
     // construtor
-    public Pizza(TipoPizza tipo, Map<Produto, Integer> adicionais, float valor, char tamanho) {
+    public Pizza(TipoPizza tipo, Produto[] adicionais, float valor, char tamanho) {
         setTipo(tipo);
         setAdicionais(adicionais);
         setValor(valor);
         setTamanho(tamanho);
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            return;
+        }
+        this.id = id;
     }
 
     public TipoPizza getTipo() {
@@ -31,11 +43,11 @@ public class Pizza {
         }
     }
 
-    public Map<Produto, Integer> getAdicionais() {
+    public Produto[] getAdicionais() {
         return adicionais;
     }
 
-    public void setAdicionais(Map<Produto, Integer> adicionais) {
+    public void setAdicionais(Produto[] adicionais) {
         if (adicionais != null) {
             this.adicionais = adicionais;
         } else {
