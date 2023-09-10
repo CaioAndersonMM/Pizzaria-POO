@@ -43,4 +43,8 @@ public class Produto {
         }
         this.valor = valor;
     }
+
+    public long getId() {
+        return 0;
+    }
 }

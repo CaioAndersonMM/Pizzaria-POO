@@ -1,13 +1,14 @@
 package Dao;
 
+import Model.Entity.Usuario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import Model.Entity.Usuario;
+import java.util.Scanner;
 
 public class UsuarioDao extends BaseDaoImp<Usuario> {
 
@@ -30,20 +31,25 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
 
     @Override
     public Usuario buscar(Usuario entity) {
-        String sql = "SELECT * FROM tb_users as e where e.nome =? or where e.cpf = ?";
+        String sql = "SELECT * FROM tb_users as e where e.nome =? or e.cpf = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
 
             //Pegar um usuário
 
-            if (rs.next())
-                //return usuario;
-            else
-                return null;
+            if (resultado.next());
+            Usuario usuario = new Usuario();
+            usuario.setId(resultado.getLong("id"));
+            usuario.setNome(resultado.getString("nome"));
+            usuario.setCPF(resultado.getString("cpf"));
+            // Defina outros atributos do usuário conforme necessário
+            return usuario;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
             closeConnection();
         }
@@ -113,6 +119,8 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
             closeConnection();
         }
