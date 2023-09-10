@@ -15,23 +15,21 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
         String sql = "INSERT INTO tb_cliente (cpf, endereco, nome) VALUES (?, ?, ?)";
 
         try {
-            Connection con = getConnection();
-
-            // Inserir ao banco
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.setString(2, entity.getEndereco());
             stmt.setString(3, entity.getNome());
             stmt.execute();
             stmt.close();
- 
-            // Buscar cliente criado e retornar id
+
             sql = "SELECT * FROM tb_cliente as e WHERE e.cpf=?";
-			stmt = con.prepareStatement(sql);
-			stmt.setString(1, entity.getCpf());
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, entity.getCpf());
             ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
+            if (rs.next()) {
                 return rs.getLong("id");
+            } else {
+                return null;
             }
 
         } catch (SQLException e) {
@@ -53,7 +51,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
             stmt.setString(1, entity.getCpf());
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -69,7 +67,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            
+
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getEndereco());
             stmt.setString(3, entity.getCpf());
@@ -77,7 +75,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -87,7 +85,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
     @Override
     public Cliente buscar(Cliente entity) {
         String sql = "SELECT * FROM tb_cliente as e WHERE e.id = ?";
-        
+
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -101,7 +99,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
                 return cliente;
             }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -135,7 +133,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
                 clientes.add(cliente);
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();

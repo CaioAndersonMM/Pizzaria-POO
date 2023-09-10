@@ -3,11 +3,12 @@ package Model.Entity;
 import java.time.LocalDate;
 
 public class Pedido {
-    Cliente cliente;
-    Pizza[] pizzas;
-    float valor;
-    LocalDate data;
-    boolean status;
+    private long id;
+    private Cliente cliente;
+    private Pizza[] pizzas;
+    private float valor;
+    private LocalDate data;
+    private boolean status;
 
     public Pedido() {
     }
@@ -61,17 +62,21 @@ public class Pedido {
         return data;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        if (id > 0)
+            this.id = id;
+    }
+
     public void setData(LocalDate data) {
         if (data != null)
             this.data = data;
     }
 
-    public boolean verificarStatus() {
-        return status;
-    }
-
-    // get - verificar status
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

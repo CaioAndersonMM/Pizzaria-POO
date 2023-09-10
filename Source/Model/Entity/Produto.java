@@ -1,6 +1,7 @@
 package Model.Entity;
 
 public class Produto {
+    private long id;
     private String nomeProduto;
     private int quatidadeProduto;
     private float valor;
@@ -45,6 +46,6 @@ public class Produto {
     }
 
     public long getId() {
-        return 0;
+        return this.id;
     }
 }

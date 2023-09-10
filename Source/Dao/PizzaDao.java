@@ -32,8 +32,8 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
             stmt = con.prepareStatement(sql);
             stmt.setLong(1, entity.getTipo().getId());
             ResultSet rs = stmt.executeQuery();
-            
-            if(rs.last()) {
+
+            if (rs.last()) {
                 return rs.getLong("id");
             }
         } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
             stmt.setLong(1, entity.getId());
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -69,8 +69,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
                 "WHERE id = ?;";
 
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setLong(1, entity.getTipo().getId());
             stmt.setFloat(2, entity.getValor());
@@ -79,7 +78,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
 
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -90,10 +89,9 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
     public Pizza buscar(Pizza entity) {
         String sql = "SELECT * FROM tb_pizza as p WHERE p.id = ?";
         TipoPizzaDao tipoPizzaDao = new TipoPizzaDao();
-        
+
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -104,7 +102,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
                 TipoPizza tipoPizza = new TipoPizza();
                 tipoPizza.setId(rs.getLong("tipo"));
                 tipoPizza = tipoPizzaDao.buscar(tipoPizza);
-                
+
                 pizza.setId(rs.getLong("id"));
                 pizza.setTipo(tipoPizza);
                 pizza.setValor(rs.getFloat("valor"));
@@ -112,7 +110,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
                 return pizza;
             }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -128,14 +126,13 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
         TipoPizzaDao tipoPizzaDao = new TipoPizzaDao();
 
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             stmt.close();
 
             while (rs.next()) {
                 Pizza pizza = new Pizza();
-                
+
                 TipoPizza tipoPizza = new TipoPizza();
                 tipoPizza.setId(rs.getLong("tipo"));
                 tipoPizza = tipoPizzaDao.buscar(tipoPizza);
@@ -146,7 +143,7 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
                 pizza.setTamanho(rs.getString("tamanho").charAt(0));
                 pizzas.add(pizza);
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();

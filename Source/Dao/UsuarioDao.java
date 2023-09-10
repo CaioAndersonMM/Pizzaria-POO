@@ -2,13 +2,11 @@ package Dao;
 
 import Model.Entity.Usuario;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UsuarioDao extends BaseDaoImp<Usuario> {
 
@@ -34,17 +32,22 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
         String sql = "SELECT * FROM tb_users as e where e.nome =? or e.cpf = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, entity.getNome());
+            stmt.setString(2, entity.getCPF());
             ResultSet resultado = stmt.executeQuery();
 
-            //Pegar um usuário
+            // Verifica se foi encontrado
+            if (resultado.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(resultado.getLong("id"));
+                usuario.setNome(resultado.getString("nome"));
+                usuario.setCPF(resultado.getString("cpf"));
+                // Defina outros atributos do usuário conforme necessário
+                return usuario;
+            } else {
+                return null;
+            }
 
-            if (resultado.next());
-            Usuario usuario = new Usuario();
-            usuario.setId(resultado.getLong("id"));
-            usuario.setNome(resultado.getString("nome"));
-            usuario.setCPF(resultado.getString("cpf"));
-            // Defina outros atributos do usuário conforme necessário
-            return usuario;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -71,29 +74,25 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
     }
 
     public Long inserir(Usuario usu) {
-        Connection con = getConnection();
         String sql = "INSERT INTO tb_users (nome,cpf,senha) "
                 + "values (?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, usu.getNome());
             // ps.setString(2, usu.getEmail());
             ps.setString(2, usu.getCPF());
             ps.setString(3, usu.getSenha());
             ps.execute();
-            ps.close();
 
             sql = "SELECT * FROM tb_users as e WHERE e.cpf=?";
-            ps = con.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
             ps.setString(1, usu.getCPF());
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getLong("id");
             else
                 return null;
-
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
         } finally {

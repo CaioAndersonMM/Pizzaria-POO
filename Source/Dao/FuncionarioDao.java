@@ -14,12 +14,11 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public Long inserir(Funcionario entity) {
 
-        String sql = "INSERT INTO Funcionario (cpf, nome, senha) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Funcionario (cpf, nome, senha) VALUES (?, ?, ?)";
 
         try {
-            Connection con = getConnection();
 
-            PreparedStatement stmt = ((Connection) con).prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.setString(2, entity.getNome());
             stmt.setString(3, entity.getSenha());
@@ -28,7 +27,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
             stmt.close();
 
             sql = "SELECT * FROM Funcionario as e WHERE e.cpf=?";
-            stmt = con.prepareStatement(sql);
+            stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -118,14 +117,12 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
         List<Funcionario> funcionarios = new ArrayList<>();
 
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Funcionario funcionario = new Funcionario();
 
-                // Configure os atributos do funcionário a partir dos dados do ResultSet
                 funcionario.setId(rs.getLong("id"));
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
