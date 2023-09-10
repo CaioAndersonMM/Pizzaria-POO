@@ -1,17 +1,18 @@
 package Model.Entity;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoPizza {
     private Long id;
     private String nomeSabor;
-    private Produto[] ingredientes;
+    private List<Produto> ingredientes;
     private float[] valores;
 
     public TipoPizza() {
     }
     
-    public TipoPizza(String nomeSabor, Produto[] ingredientes, float[] valores) {
+    public TipoPizza(String nomeSabor, List<Produto> ingredientes, float[] valores) {
         setNomeSabor(nomeSabor);
         setIngredientes(ingredientes);
         setValores(valores);
@@ -50,30 +51,15 @@ public class TipoPizza {
         System.arraycopy(valores, 0, this.valores, 0, valores.length);
     }
 
-    public Produto[] getIngredientes() {
-        // return Map.copyOf(this.ingredientes);
-        return this.ingredientes;
+    public List<Produto> getIngredientes() {
+        return new ArrayList<Produto>(this.ingredientes);
     }
 
-    public void setIngredientes(Produto[] ingredientes) {
-        // this.ingredientes = Map.copyOf(ingredientes);
-    }
-
-    public void addIngrediente(Produto ingrediente, Integer quantidade) {
-        // Verificar se os valores informados são válidos
-        if (ingrediente == null) {
-            throw new IllegalArgumentException("O ingrediente não pode ser nulo.");
+    public void setIngredientes(List<Produto> ingredientes) {
+        if (ingredientes == null) {
+            return;
         }
-        if (quantidade < 0) {
-            throw new IllegalArgumentException("Não é possível adicionar um produto com quantidade negativa.");
-        }
-
-        // Adicionar ingrediente
-        this.ingredientes.put(ingrediente, quantidade);
-    }
-
-    public void removeIngrediente(Produto ingrediente) {
-        this.ingredientes.remove(ingrediente);
+        this.ingredientes = new ArrayList<Produto>(ingredientes);
     }
 
     public String getNomeSabor() {
