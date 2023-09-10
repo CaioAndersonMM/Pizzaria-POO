@@ -3,8 +3,9 @@ package Model.Entity;
 import java.util.Map;
 
 public class Pizza {
+    private Long id;
     private TipoPizza tipo;
-    private Map<Produto, Integer> adicionais;
+    private Produto[] adicionais;
     private float valor;
     private char tamanho;
 
@@ -12,11 +13,22 @@ public class Pizza {
     }
 
     // construtor
-    public Pizza(TipoPizza tipo, Map<Produto, Integer> adicionais, float valor, char tamanho) {
+    public Pizza(TipoPizza tipo, Produto[] adicionais, float valor, char tamanho) {
         setTipo(tipo);
         setAdicionais(adicionais);
         setValor(valor);
         setTamanho(tamanho);
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            return;
+        }
+        this.id = id;
     }
 
     public TipoPizza getTipo() {
@@ -31,11 +43,11 @@ public class Pizza {
         }
     }
 
-    public Map<Produto, Integer> getAdicionais() {
+    public Produto[] getAdicionais() {
         return adicionais;
     }
 
-    public void setAdicionais(Map<Produto, Integer> adicionais) {
+    public void setAdicionais(Produto[] adicionais) {
         if (adicionais != null) {
             this.adicionais = adicionais;
         } else {
@@ -67,33 +79,4 @@ public class Pizza {
             // throw new IllegalArgumentException("Tamanho da pizza inválido.");
         }
     }
-
-    public void alterarValor(float novoValor) {
-        setValor(novoValor);
-    }
-
-    public void alterarTipo(TipoPizza novoTipo) {
-        setTipo(novoTipo);
-    }
-
-    public void alterarTamanho(char novoTamanho) {
-        setTamanho(novoTamanho);
-    }
-
-    public float calcularValor() {
-        return valor;
-    }
-
-    // public Pizza buscar(String nome) {
-    // return Pizza;
-    // }
-
-    public void adicionarAdicional(Produto adicional, int quantidade) {
-        System.out.println("Adicionado");
-    }
-
-    public void removerAdicional(Produto adicional) {
-        System.out.println("Removido");
-    }
-
 }

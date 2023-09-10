@@ -1,16 +1,32 @@
 package Model.Entity;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TipoPizza {
+    private Long id;
     private String nomeSabor;
-    private Map<Produto, Integer> ingredientes;
+    private List<Produto> ingredientes;
     private float[] valores;
 
-    public TipoPizza(String nomeSabor, Map<Produto, Integer> ingredientes, float[] valores) {
+    public TipoPizza() {
+    }
+    
+    public TipoPizza(String nomeSabor, List<Produto> ingredientes, float[] valores) {
         setNomeSabor(nomeSabor);
         setIngredientes(ingredientes);
         setValores(valores);
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            return;
+        }
+        this.id = id;
     }
 
     public float[] getValores() {
@@ -35,29 +51,15 @@ public class TipoPizza {
         System.arraycopy(valores, 0, this.valores, 0, valores.length);
     }
 
-    public Map<Produto, Integer> getIngredientes() {
-        return Map.copyOf(this.ingredientes);
+    public List<Produto> getIngredientes() {
+        return new ArrayList<Produto>(this.ingredientes);
     }
 
-    public void setIngredientes(Map<Produto, Integer> ingredientes) {
-        this.ingredientes = Map.copyOf(ingredientes);
-    }
-
-    public void addIngrediente(Produto ingrediente, Integer quantidade) {
-        // Verificar se os valores informados são válidos
-        if (ingrediente == null) {
-            throw new IllegalArgumentException("O ingrediente não pode ser nulo.");
+    public void setIngredientes(List<Produto> ingredientes) {
+        if (ingredientes == null) {
+            return;
         }
-        if (quantidade < 0) {
-            throw new IllegalArgumentException("Não é possível adicionar um produto com quantidade negativa.");
-        }
-
-        // Adicionar ingrediente
-        this.ingredientes.put(ingrediente, quantidade);
-    }
-
-    public void removeIngrediente(Produto ingrediente) {
-        this.ingredientes.remove(ingrediente);
+        this.ingredientes = new ArrayList<Produto>(ingredientes);
     }
 
     public String getNomeSabor() {
