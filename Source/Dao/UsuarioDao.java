@@ -96,7 +96,7 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
     }
 
     @Override
-    public List listar() {
+    public List<Usuario> listar() {
         String sql = "SELECT * FROM Usuario";
         List<Usuario> listUsu = new ArrayList<>();
         try {
@@ -104,10 +104,14 @@ public class UsuarioDao extends BaseDaoImp<Usuario> {
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setId(resultado.getLong("id"));
-                usuario.setNome(resultado.getString("nome"));
-                usuario.setCPF(resultado.getString("cpf"));
-                listUsu.add(usuario);
+                try {
+                    usuario.setId(resultado.getLong("id"));
+                    usuario.setNome(resultado.getString("nome"));
+                    usuario.setCPF(resultado.getString("cpf"));
+                    listUsu.add(usuario);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             return listUsu;
         } catch (SQLException ex) {
