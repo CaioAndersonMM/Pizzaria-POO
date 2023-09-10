@@ -3,14 +3,29 @@ package Model.Entity;
 import java.util.Map;
 
 public class TipoPizza {
+    private Long id;
     private String nomeSabor;
-    private Map<Produto, Integer> ingredientes;
+    private Produto[] ingredientes;
     private float[] valores;
 
-    public TipoPizza(String nomeSabor, Map<Produto, Integer> ingredientes, float[] valores) {
+    public TipoPizza() {
+    }
+    
+    public TipoPizza(String nomeSabor, Produto[] ingredientes, float[] valores) {
         setNomeSabor(nomeSabor);
         setIngredientes(ingredientes);
         setValores(valores);
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            return;
+        }
+        this.id = id;
     }
 
     public float[] getValores() {
@@ -35,12 +50,13 @@ public class TipoPizza {
         System.arraycopy(valores, 0, this.valores, 0, valores.length);
     }
 
-    public Map<Produto, Integer> getIngredientes() {
-        return Map.copyOf(this.ingredientes);
+    public Produto[] getIngredientes() {
+        // return Map.copyOf(this.ingredientes);
+        return this.ingredientes;
     }
 
-    public void setIngredientes(Map<Produto, Integer> ingredientes) {
-        this.ingredientes = Map.copyOf(ingredientes);
+    public void setIngredientes(Produto[] ingredientes) {
+        // this.ingredientes = Map.copyOf(ingredientes);
     }
 
     public void addIngrediente(Produto ingrediente, Integer quantidade) {
