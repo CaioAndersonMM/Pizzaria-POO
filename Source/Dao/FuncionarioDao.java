@@ -1,5 +1,10 @@
 package Dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Entity.Funcionario;
@@ -8,26 +13,25 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
     public Long inserir(Funcionario entity) {
-        
-       String sql = "INSERT INTO Funcionario (cpf, endereco, nome, senha) VALUES (?, ?, ?, ?)";
+
+        String sql = "INSERT INTO Funcionario (cpf, nome, senha) VALUES (?, ?, ?, ?)";
 
         try {
             Connection con = getConnection();
-            
-            PreparedStatement stmt = con.prepareStatement(sql);
+
+            PreparedStatement stmt = ((Connection) con).prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
-            stmt.setString(2, entity.getEndereco());
-            stmt.setString(3, entity.getNome());
+            stmt.setString(2, entity.getNome());
             stmt.setString(3, entity.getSenha());
-            
+
             stmt.execute();
             stmt.close();
 
             sql = "SELECT * FROM Funcionario as e WHERE e.cpf=?";
-			stmt = con.prepareStatement(sql);
-			stmt.setString(1, entity.getCpf());
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, entity.getCPF());
             ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
+            if (rs.next()) {
                 return rs.getLong("id");
             }
 
@@ -36,20 +40,21 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
         } finally {
             closeConnection();
         }
+        return null;
     }
 
     @Override
     public void deletar(Funcionario entity) {
-        
+
         String sql = "DELETE FROM Funcionario as e WHERE e.cpf = ?";
 
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, entity.getCpf());
+            stmt.setString(1, entity.getCPF());
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -58,9 +63,9 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
     public void alterar(Funcionario entity) {
-      
+
         String sql = "UPDATE Funcionario\n" + //
-                "SET nome = ?, endereco = ?, cpf = ?\n" + //
+                "SET nome = ?, cpf = ?\n" + //
                 "WHERE id = ?;";
 
         try {
@@ -68,13 +73,12 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
-            stmt.setString(2, entity.getEndereco());
-            stmt.setString(3, entity.getCpf());
-            stmt.setLong(4, entity.getId());
+            stmt.setString(2, entity.getCPF());
+            stmt.setLong(3, entity.getId());
 
             stmt.execute();
             stmt.close();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -83,7 +87,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
     public Funcionario buscar(Funcionario entity) {
-          
+
         String sql = "SELECT * FROM Funcionario as e WHERE e.id = ?";
 
         try {
@@ -99,46 +103,46 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
                 return funcionario;
             }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeConnection();
         }
+        return entity;
     }
 
     @Override
     public List<Funcionario> listar() {
 
         String sql = "SELECT * FROM Funcionario";
-        List<Funcionario> funcionario = new ArrayList<Funcionario>();
+        List<Funcionario> funcionarios = new ArrayList<>();
 
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             while (rs.next()) {
                 Funcionario funcionario = new Funcionario();
 
-                try {
-                    cliente.setId(rs.getLong("id"));
-                    cliente.setCpf(rs.getString("cpf"));
-                    cliente.setEndereco(rs.getString("endereco"));
-                    cliente.setNome(rs.getString("nome"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                // Configure os atributos do funcionário a partir dos dados do ResultSet
+                funcionario.setId(rs.getLong("id"));
+                funcionario.setCPF(rs.getString("cpf"));
+                funcionario.setNome(rs.getString("nome"));
 
-                funcionario.add(funcionario);
+                funcionarios.add(funcionario);
             }
-        } catch(SQLException e) {
+
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
             closeConnection();
         }
 
-        return funcionario;
+        return funcionarios;
     }
 }
-   
