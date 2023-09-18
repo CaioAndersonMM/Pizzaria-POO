@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,10 +12,10 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public void alterar(Produto entity) {
-        String sql = "UPDATE Produto SET nome=?, quantidade=?, valor=? WHERE id=?";
+        String sql = "UPDATE tb_produtos SET nome=?, quantidade=?, valor=? WHERE id=?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeProduto());
             stmt.setInt(2, entity.getQuatidadeProduto());
             stmt.setFloat(3, entity.getValor());
@@ -32,7 +31,8 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public Produto buscar(Produto entity) {
-        String sql = "SELECT * FROM produto as e WHERE e.nome = ? ";
+        String sql = "SELECT * FROM tb_produtos as e WHERE e.nome = ? ";
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeProduto());
@@ -56,7 +56,8 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
     @Override
     public void deletar(Produto entity) {
 
-        String sql = "DELETE FROM Produto WHERE id=?";
+        String sql = "DELETE FROM tb_produtos WHERE id=?";
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
@@ -72,8 +73,9 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public Long inserir(Produto entity) {
-        String sql = "INSERT INTO Produto (nome, quatidade, valor) "
+        String sql = "INSERT INTO tb_produtos (nome, quatidade, valor) "
                 + "values (?,?,?)";
+        connection = getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, entity.getNomeProduto());
@@ -82,7 +84,7 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
             ps.execute();
             ps.close();
 
-            sql = "SELECT * FROM Produto as e WHERE e.nomeProduto=?";
+            sql = "SELECT * FROM tb_produtos as e WHERE e.nomeProduto=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, entity.getNomeProduto());
             ResultSet rs = ps.executeQuery();
@@ -101,7 +103,9 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public List<Produto> listar() {
-        String sql = "SELECT * FROM Produtos";
+        String sql = "SELECT * FROM tb_produtos";
+        connection = getConnection();
+
         List<Produto> listProd = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

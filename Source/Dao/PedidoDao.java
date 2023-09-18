@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,11 +15,11 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public Long inserir(Pedido entity) {
-        String sql = "INSERT INTO Pedido (cliente, pizzas, valor, data, status)) "
+        String sql = "INSERT INTO tb_pedidos (cliente, pizzas, valor, data, status)) "
                 + "values (?,?,?,?,?)";
+        connection = getConnection();
         try {
-            Connection con = null;
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // gerará chave inserçao
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // gerará chave inserçao
             ps.setObject(1, entity.getCliente());
             ps.setObject(2, entity.getPizzas());
             ps.setFloat(3, entity.getValor());
@@ -47,7 +46,8 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public void deletar(Pedido entity) {
-        String sql = "DELETE FROM Pedido WHERE id = ?";
+        String sql = "DELETE FROM tb_pedidos WHERE id = ?";
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
@@ -62,7 +62,8 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public void alterar(Pedido entity) {
-        String sql = "UPDATE Pedido SET cliente=?, pizzas=?, valor=?, data=?, status=? WHERE id=?";
+        String sql = "UPDATE tb_pedidos SET cliente=?, pizzas=?, valor=?, data=?, status=? WHERE id=?";
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setObject(1, entity.getCliente());
@@ -83,9 +84,10 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public Pedido buscar(Pedido entity) {
-        String sql = "SELECT * FROM Pedido WHERE id = ?";
-        Pedido pedido = new Pedido();
+        String sql = "SELECT * FROM tb_pedidos WHERE id = ?";
+        connection = getConnection();
 
+        Pedido pedido = new Pedido();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
@@ -118,7 +120,8 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public List<Pedido> listar() {
-        String sql = "SELECT * FROM Pedido";
+        String sql = "SELECT * FROM tb_pedidos";
+        connection = getConnection();
         List<Pedido> pedidos = new ArrayList<>();
         ClienteDao clientedao = new ClienteDao();
         PizzaDao pizzadao = new PizzaDao();

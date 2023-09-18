@@ -1,7 +1,5 @@
 package Model.Entity;
 
-import java.util.Map;
-
 public class Pizza {
     private Long id;
     private TipoPizza tipo;
@@ -12,7 +10,6 @@ public class Pizza {
     public Pizza() {
     }
 
-    // construtor
     public Pizza(TipoPizza tipo, Produto[] adicionais, float valor, char tamanho) {
         setTipo(tipo);
         setAdicionais(adicionais);

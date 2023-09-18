@@ -1,6 +1,6 @@
 package Model.Entity;
 
-public class Cliente extends Usuario {
+public class Cliente{
     private Long id;
     private String endereco;
     private String nome;
@@ -39,7 +39,7 @@ public class Cliente extends Usuario {
         return this.nome;
     }
 
-    public void setCpf(String cpf) {
+    public void setCPF(String cpf) {
         if (cpf == null || cpf.length() < 11) {
             return;
         }
@@ -47,7 +47,7 @@ public class Cliente extends Usuario {
         this.cpf = cpf;
     }
 
-    public String getCpf() {
+    public String getCPF() {
         return this.cpf;
     }
 

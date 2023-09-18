@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,13 +12,12 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
     @Override
     public void alterar(Gerente entity) {
 
-        String sql = "UPDATE Gerente\n" +
+        String sql = "UPDATE tb_gerentes\n" +
                 "SET nome = ?, cpf = ?, senha=?\n" +
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getCPF());
@@ -37,11 +35,10 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
 
     @Override
     public Gerente buscar(Gerente entity) {
-        String sql = "SELECT * FROM Gerente as e WHERE e.id = ?";
-
+        String sql = "SELECT * FROM tb_gerentes as e WHERE e.id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -64,12 +61,10 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
 
     @Override
     public void deletar(Gerente entity) {
-        // TODO Auto-generated method stub
-        String sql = "DELETE FROM Gerente as e WHERE e.cpf = ?";
-
+        String sql = "DELETE FROM tb_gerentes as e WHERE e.cpf = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.execute();
             stmt.close();
@@ -86,10 +81,9 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
         String sql = "UPDATE Gerente\n" + //
                 "SET nome = ?, cpf = ?\n" + //
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getCPF());
@@ -111,10 +105,10 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
     @Override
     public List<Gerente> listar() {
             List<Gerente> listaGerentes = new ArrayList<>();
-            String sql = "SELECT * FROM Gerente";
+            String sql = "SELECT * FROM tb_gerentes";
+            connection = getConnection();
             try {
-                Connection con = getConnection();
-                PreparedStatement stmt = con.prepareStatement(sql);
+                PreparedStatement stmt = connection.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {

@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,13 +11,10 @@ import Model.Entity.TipoPizza;
 public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
     @Override
     public Long inserir(TipoPizza entity) {
-        String sql = "INSERT INTO tb_tipo_pizza (nome_sabor, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
-
+        String sql = "INSERT INTO tb_tipo_pizzas (nome_sabor, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-
-            // Inserir ao banco
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeSabor());
             stmt.setFloat(2, entity.getValores()[0]);
             stmt.setFloat(3, entity.getValores()[1]);
@@ -27,8 +23,8 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.close();
 
             // Buscar tipo de pizza criado e retornar id
-            sql = "SELECT * FROM tb_tipo_pizza as tp WHERE tp.nome_sabor=?";
-            stmt = con.prepareStatement(sql);
+            sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.nome_sabor=?";
+            stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeSabor());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -46,11 +42,10 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public void deletar(TipoPizza entity) {
-        String sql = "DELETE FROM tb_tipo_pizza as tp WHERE tp.id = ?";
-
+        String sql = "DELETE FROM tb_tipo_pizzas as tp WHERE tp.id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
             stmt.execute();
             stmt.close();
@@ -63,13 +58,12 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public void alterar(TipoPizza entity) {
-        String sql = "UPDATE tb_tipo_pizza\n" +
+        String sql = "UPDATE tb_tipo_pizzas\n" +
                 "SET nome_sabor = ?, valor_p = ?, valor_m = ?, valor_g = ?\n" +
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNomeSabor());
             stmt.setFloat(2, entity.getValores()[0]);
@@ -88,11 +82,10 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public TipoPizza buscar(TipoPizza entity) {
-        String sql = "SELECT * FROM tb_tipo_pizza as tp WHERE tp.id = ?";
-
+        String sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -124,12 +117,12 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public List<TipoPizza> listar() {
-        String sql = "SELECT * FROM tb_tipo_pizza";
-        List<TipoPizza> tiposPizza = new ArrayList<TipoPizza>();
+        String sql = "SELECT * FROM tb_tipo_pizzas";
+        connection = getConnection();
 
+        List<TipoPizza> tiposPizza = new ArrayList<TipoPizza>();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             stmt.close();
 

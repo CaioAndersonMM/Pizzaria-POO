@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,10 +13,9 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public Long inserir(Funcionario entity) {
 
-        String sql = "INSERT INTO Funcionario (cpf, nome, senha) VALUES (?, ?, ?)";
-
+        String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha) VALUES (?, ?, ?)";
+        connection = getConnection();
         try {
-
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.setString(2, entity.getNome());
@@ -45,11 +43,10 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public void deletar(Funcionario entity) {
 
-        String sql = "DELETE FROM Funcionario as e WHERE e.cpf = ?";
-
+        String sql = "DELETE FROM tb_funcionarios as e WHERE e.cpf = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.execute();
             stmt.close();
@@ -63,13 +60,12 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public void alterar(Funcionario entity) {
 
-        String sql = "UPDATE Funcionario\n" + //
+        String sql = "UPDATE tb_funcionarios\n" + //
                 "SET nome = ?, cpf = ?\n" + //
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getCPF());
@@ -87,11 +83,10 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public Funcionario buscar(Funcionario entity) {
 
-        String sql = "SELECT * FROM Funcionario as e WHERE e.id = ?";
-
+        String sql = "SELECT * FROM tb_funcionarios WHERE id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -113,9 +108,9 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     @Override
     public List<Funcionario> listar() {
 
-        String sql = "SELECT * FROM Funcionario";
+        String sql = "SELECT * FROM tb_funcionarios";
         List<Funcionario> funcionarios = new ArrayList<>();
-
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

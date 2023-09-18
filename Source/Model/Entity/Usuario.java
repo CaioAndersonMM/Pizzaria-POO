@@ -1,8 +1,6 @@
 package Model.Entity;
 
-import Model.BO.UsuarioBo;
-
-public class Usuario {
+public abstract class Usuario {
     private Long id;
     private String cpf;
     private String nome;
@@ -64,16 +62,9 @@ public class Usuario {
         }
     }
 
-    public void criarUsuario(String cpf, String nome, String senha) {
-        // Verificar Funcionamento
-        UsuarioBo usubo = new UsuarioBo();
-        Usuario usu = new Usuario(cpf, nome, senha);
-        usubo.criar(usu);
-    }
+    public void criarUsuario(String cpf, String nome, String senha) {}
 
-    public void removerUsuario(Usuario usuario) {
-        System.out.println("Usuário Removido");
-    }
+    public void removerUsuario(Usuario usuario) {}
 
     public boolean verificarLogin(Usuario usuario) {
         // ...

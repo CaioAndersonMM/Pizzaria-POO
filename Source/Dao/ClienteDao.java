@@ -12,8 +12,8 @@ import Model.Entity.Cliente;
 public class ClienteDao extends BaseDaoImp<Cliente> {
     @Override
     public Long inserir(Cliente entity) {
-        String sql = "INSERT INTO tb_cliente (cpf, endereco, nome) VALUES (?, ?, ?)";
-
+        String sql = "INSERT INTO tb_clientes (cpf, endereco, nome) VALUES (?, ?, ?)";
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
@@ -22,9 +22,9 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
             stmt.execute();
             stmt.close();
 
-            sql = "SELECT * FROM tb_cliente as e WHERE e.cpf=?";
+            sql = "SELECT * FROM tb_clientes WHERE cpf=?";
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, entity.getCpf());
+            stmt.setString(1, entity.getCPF());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getLong("id");
@@ -43,12 +43,12 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
     @Override
     public void deletar(Cliente entity) {
-        String sql = "DELETE FROM tb_cliente as e WHERE e.cpf = ?";
-
+        String sql = "DELETE FROM tb_clientes WHERE cpf = ?";
+        connection = getConnection();
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, entity.getCpf());
+            stmt.setString(1, entity.getCPF());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -60,17 +60,17 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
     @Override
     public void alterar(Cliente entity) {
-        String sql = "UPDATE tb_cliente\n" + //
+        String sql = "UPDATE tb_clientes\n" + //
                 "SET nome = ?, endereco = ?, cpf = ?\n" + //
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
             Connection con = getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getEndereco());
-            stmt.setString(3, entity.getCpf());
+            stmt.setString(3, entity.getCPF());
             stmt.setLong(4, entity.getId());
 
             stmt.execute();
@@ -84,11 +84,10 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
     @Override
     public Cliente buscar(Cliente entity) {
-        String sql = "SELECT * FROM tb_cliente as e WHERE e.id = ?";
-
+        String sql = "SELECT * FROM tb_clientes WHERE id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
@@ -110,12 +109,11 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
     @Override
     public List<Cliente> listar() {
-        String sql = "SELECT * FROM tb_cliente";
+        String sql = "SELECT * FROM tb_clientes";
         List<Cliente> clientes = new ArrayList<Cliente>();
-
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             stmt.close();
 
@@ -124,7 +122,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
 
                 try {
                     cliente.setId(rs.getLong("id"));
-                    cliente.setCpf(rs.getString("cpf"));
+                    cliente.setCPF(rs.getString("cpf"));
                     cliente.setEndereco(rs.getString("endereco"));
                     cliente.setNome(rs.getString("nome"));
                 } catch (Exception e) {

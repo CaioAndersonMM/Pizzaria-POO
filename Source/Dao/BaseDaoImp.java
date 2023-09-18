@@ -7,8 +7,8 @@ import java.util.List;
 
 public abstract class BaseDaoImp<E> implements BaseDao<E> {
     final static String URL = "jdbc:postgresql://localhost:5432/Pizzaria";
-    final static String USER = "alunolcc";
-    final static String PASS = "melhormateria";
+    final static String USER = "postgres";
+    final static String PASS = "caiosql";
     static Connection connection = null;
 
     // Abrir Conexão

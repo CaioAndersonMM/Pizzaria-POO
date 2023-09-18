@@ -5,7 +5,6 @@ public class Gerente extends Usuario {
     public Gerente() {
     }
 
-    // construtor
     public Gerente(String cpf, String senha) {
         setCPF(cpf);
         setSenha(senha);
@@ -19,13 +18,7 @@ public class Gerente extends Usuario {
         System.out.println("Usuário Removido");
     }
 
-    public boolean verificarLogin(Gerente usuario) {
-        // ...
-        return true;
-    }
-
     public void buscar(String nomeusuario) {
-        // Chamara método de Usuário
     }
 
 }

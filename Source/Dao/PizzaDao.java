@@ -1,6 +1,5 @@
 package Dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,18 +8,16 @@ import java.util.List;
 
 import Model.Entity.Pizza;
 import Model.Entity.TipoPizza;
-import Dao.TipoPizzaDao;
 
 public class PizzaDao extends BaseDaoImp<Pizza> {
     @Override
     public Long inserir(Pizza entity) {
-        String sql = "INSERT INTO tb_pizza (tipo, valor, tamanho) VALUES (?, ?, ?)";
-
+        String sql = "INSERT INTO tb_pizzas (tipo, valor, tamanho) VALUES (?, ?, ?)";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
 
             // Inserir ao banco
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getTipo().getId());
             stmt.setFloat(2, entity.getValor());
             stmt.setString(3, String.valueOf(entity.getTamanho()));
@@ -28,8 +25,8 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
             stmt.close();
 
             // Buscar pizza criada e retornar id
-            sql = "SELECT * FROM tb_pizza as p WHERE p.tipo=?";
-            stmt = con.prepareStatement(sql);
+            sql = "SELECT * FROM tb_pizzas as p WHERE p.tipo=?";
+            stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getTipo().getId());
             ResultSet rs = stmt.executeQuery();
 
@@ -47,11 +44,10 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
 
     @Override
     public void deletar(Pizza entity) {
-        String sql = "DELETE FROM tb_pizza as p WHERE p.id = ?";
-
+        String sql = "DELETE FROM tb_pizzas as p WHERE p.id = ?";
+        connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
             stmt.execute();
             stmt.close();
@@ -64,18 +60,16 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
 
     @Override
     public void alterar(Pizza entity) {
-        String sql = "UPDATE tb_pizza\n" +
+        String sql = "UPDATE tb_pizzas\n" +
                 "SET tipo = ?, valor = ?, tamanho = ?\n" +
                 "WHERE id = ?;";
-
+        connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-
             stmt.setLong(1, entity.getTipo().getId());
             stmt.setFloat(2, entity.getValor());
             stmt.setString(3, String.valueOf(entity.getTamanho()));
             stmt.setLong(4, entity.getId());
-
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -87,13 +81,13 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
 
     @Override
     public Pizza buscar(Pizza entity) {
-        String sql = "SELECT * FROM tb_pizza as p WHERE p.id = ?";
-        TipoPizzaDao tipoPizzaDao = new TipoPizzaDao();
+        String sql = "SELECT * FROM tb_pizzas as p WHERE p.id = ?";
+        connection = getConnection();
 
+        TipoPizzaDao tipoPizzaDao = new TipoPizzaDao();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
-
             ResultSet rs = stmt.executeQuery();
             stmt.close();
 
@@ -121,10 +115,11 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
 
     @Override
     public List<Pizza> listar() {
-        String sql = "SELECT * FROM tb_pizza";
+        String sql = "SELECT * FROM tb_pizzas";
+        connection = getConnection();
+
         List<Pizza> pizzas = new ArrayList<Pizza>();
         TipoPizzaDao tipoPizzaDao = new TipoPizzaDao();
-
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

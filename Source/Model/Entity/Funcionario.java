@@ -5,7 +5,6 @@ public class Funcionario extends Usuario {
     public Funcionario() {
     }
 
-    // construtor
     public Funcionario(String cpf, String senha) {
         setCPF(cpf);
         setSenha(senha);
