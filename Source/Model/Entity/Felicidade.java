@@ -18,8 +18,20 @@ public class Felicidade {
     */
 
     ClienteDao cliente = new ClienteDao();
-    Cliente cli = new Cliente("029312", "rua 14", "caio");
+    Cliente cli = new Cliente("029312321492", "rua 15", "caio");
 
-    cliente.inserir(cli);
+    cli.setId(cliente.inserir(cli));
+   
+    //cliente.deletar(cli);
+   // System.out.println(cli.getId());
+    //System.out.println(cliente.buscar(cli));
+
+
+    //Alteração
+    //Cliente cli = new Cliente("029312321432", "rua 15", "caio");
+    //cli.setId(4l);
+   // cliente.alterar(cli);
+
+   //cliente.listar();
     }
 }

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Statement;
 
 import Model.Entity.Cliente;
 
@@ -14,23 +15,32 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
     public Long inserir(Cliente entity) {
         String sql = "INSERT INTO tb_clientes (cpf, endereco, nome) VALUES (?, ?, ?)";
         connection = getConnection();
+
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+             // Verificar se já existe um cliente com o mesmo CPF
+            String checkSql = "SELECT id FROM tb_clientes WHERE cpf=?";
+            PreparedStatement checkStmt = connection.prepareStatement(checkSql);
+            checkStmt.setString(1, entity.getCPF());
+            ResultSet checkRs = checkStmt.executeQuery();
+
+            if (checkRs.next()) {
+                // Se já existe um cliente com o mesmo CPF
+                return checkRs.getLong("id");
+            } else {
+
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, entity.getCPF());
             stmt.setString(2, entity.getEndereco());
             stmt.setString(3, entity.getNome());
             stmt.execute();
-            stmt.close();
 
-            sql = "SELECT * FROM tb_clientes WHERE cpf=?";
-            stmt = connection.prepareStatement(sql);
-            stmt.setString(1, entity.getCPF());
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
-                return rs.getLong("id");
+                return rs.getLong(1);
             } else {
                 return null;
             }
+        }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,8 +75,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
                 "WHERE id = ?;";
         connection = getConnection();
         try {
-            Connection con = getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getEndereco());
@@ -91,7 +100,6 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             if (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -115,7 +123,6 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
