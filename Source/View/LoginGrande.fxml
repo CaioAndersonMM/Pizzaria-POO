@@ -7,47 +7,52 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
-   <children>
-      <ImageView fx:id="bot" fitHeight="504.0" fitWidth="682.0" layoutX="-3.0" layoutY="-2.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/background.png" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="-0.6" />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="410.0" fitWidth="474.0" layoutX="112.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Modal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="291.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Login.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="botoLogin" layoutX="153.0" layoutY="317.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="40.0" prefWidth="387.0" text="ENTRAR" />
-      <PasswordField fx:id="senha" layoutX="153.0" layoutY="245.0" prefHeight="40.0" prefWidth="387.0" promptText="SENHA" />
-      <TextField fx:id="cpf" layoutX="153.0" layoutY="183.0" prefHeight="40.0" prefWidth="387.0" promptText="CPF" />
-      <Label layoutX="196.0" layoutY="387.0" prefHeight="40.0" prefWidth="316.0" text="Não possui uma conta? Cadastrar" textAlignment="CENTER" textFill="#ffc500">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <Label layoutX="316.0" layoutY="108.0" prefHeight="55.0" prefWidth="94.0" text="Login" textFill="#ffc500">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="214.0" fitWidth="257.0" layoutX="438.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/dedo.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="erroautenticacao" layoutX="153.0" layoutY="104.0" prefHeight="63.0" prefWidth="127.0" text="Label" textFill="RED" underline="true" visible="false" />
-   </children>
-</Pane>
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="bot" fitHeight="504.0" fitWidth="682.0" layoutX="-3.0" layoutY="-2.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/background.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.6" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="410.0" fitWidth="474.0" layoutX="112.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Modal.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="291.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Login.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="botoLogin" layoutX="153.0" layoutY="317.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="40.0" prefWidth="387.0" text="ENTRAR" />
+            <PasswordField fx:id="senha" layoutX="153.0" layoutY="245.0" prefHeight="40.0" prefWidth="387.0" promptText="SENHA" />
+            <TextField fx:id="cpf" layoutX="153.0" layoutY="183.0" prefHeight="40.0" prefWidth="387.0" promptText="CPF" />
+            <Label layoutX="196.0" layoutY="387.0" prefHeight="40.0" prefWidth="316.0" text="Não possui uma conta? Cadastrar" textAlignment="CENTER" textFill="#ffc500">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="316.0" layoutY="108.0" prefHeight="55.0" prefWidth="94.0" text="Login" textFill="#ffc500">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="214.0" fitWidth="257.0" layoutX="438.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/dedo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="erroautenticacao" layoutX="153.0" layoutY="104.0" prefHeight="63.0" prefWidth="127.0" text="Label" textFill="RED" underline="true" visible="false" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
