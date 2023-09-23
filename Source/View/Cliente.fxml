@@ -50,68 +50,104 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </ToolBar>
-                  <ToolBar layoutX="10.0" layoutY="59.0" prefHeight="40.0" prefWidth="457.0">
+                  <ToolBar layoutX="10.0" layoutY="59.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey;">
                      <items>
-                        <Label text="Nome">
+                        <Label text="Nome" textFill="WHITE">
                            <padding>
                               <Insets right="100.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="CPF">
+                        <Label text="CPF" textFill="WHITE">
                            <padding>
                               <Insets right="80.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="Endereço">
+                        <Label text="Endereço" textFill="WHITE">
                            <padding>
                               <Insets right="60.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
                         <Button mnemonicParsing="false" text="EDITAR" />
                         <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
                      </items>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </ToolBar>
-                  <ToolBar layoutX="10.0" layoutY="60.0" prefHeight="40.0" prefWidth="457.0">
+                  <ToolBar layoutX="10.0" layoutY="60.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey;">
                      <items>
-                        <Label text="Nome">
+                        <Label text="Nome" textFill="WHITE">
                            <padding>
                               <Insets right="100.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="CPF">
+                        <Label text="CPF" textFill="WHITE">
                            <padding>
                               <Insets right="80.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="Endereço">
+                        <Label text="Endereço" textFill="WHITE">
                            <padding>
                               <Insets right="60.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
                         <Button mnemonicParsing="false" text="EDITAR" />
                         <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
                      </items>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </ToolBar>
-                  <ToolBar layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="457.0">
+                  <ToolBar layoutX="10.0" layoutY="111.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey;">
                      <items>
-                        <Label text="Nome">
+                        <Label text="Nome" textFill="WHITE">
                            <padding>
                               <Insets right="100.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="CPF">
+                        <Label text="CPF" textFill="WHITE">
                            <padding>
                               <Insets right="80.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label text="Endereço">
+                        <Label text="Endereço" textFill="WHITE">
                            <padding>
                               <Insets right="60.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
                         <Button mnemonicParsing="false" text="EDITAR" />
                         <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
                      </items>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </ToolBar>
                </children>
             </VBox>
