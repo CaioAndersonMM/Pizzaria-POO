@@ -19,11 +19,11 @@ public abstract class Usuario {
         return id;
     }
 
-    public void setId(Long id) throws Exception {
+    public void setId(Long id){
         if (id > 0)
             this.id = id;
-        else
-            throw new Exception();
+        //lse
+            //throw new Exception();
     }
 
     public String getCPF() {
@@ -55,7 +55,7 @@ public abstract class Usuario {
     }
 
     public void setSenha(String senha) {
-        if (senha != null && senha.length() == 8) {
+        if (senha != null && senha.length() > 3) {
             this.senha = senha;
         } else {
             //

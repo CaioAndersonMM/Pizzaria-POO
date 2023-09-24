@@ -6,12 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Entity.Funcionario;
 import Model.VO.FuncionarioVO;
 
-public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
+public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
-    public Long inserir(FuncionarioVO entity) {
+    public Long inserir(Funcionario entity) {
         String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha) VALUES (?, ?, ?)";
         connection = getConnection();
         try {
@@ -40,7 +41,7 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
     }
 
     @Override
-    public void deletar(FuncionarioVO entity) {
+    public void deletar(Funcionario entity) {
 
         String sql = "DELETE FROM tb_funcionarios as e WHERE e.cpf = ?";
         connection = getConnection();
@@ -57,7 +58,7 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
     }
 
     @Override
-    public void alterar(FuncionarioVO entity) {
+    public void alterar(Funcionario entity) {
 
         String sql = "UPDATE tb_funcionarios\n" + //
                 "SET nome = ?, cpf = ?\n" + //
@@ -80,7 +81,7 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
     }
 
     @Override
-    public FuncionarioVO buscar(FuncionarioVO entity) {
+    public Funcionario buscar(Funcionario entity) {
 
         String sql = "SELECT * FROM tb_funcionarios WHERE id = ?";
         connection = getConnection();
@@ -89,10 +90,9 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             if (rs.next()) {
-                FuncionarioVO funcionario = new FuncionarioVO();
+                Funcionario funcionario = new Funcionario();
                 return funcionario;
             }
 
@@ -104,7 +104,7 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
         return entity;
     }
 
-    public ResultSet buscarPorCPF(FuncionarioVO vo){
+    public ResultSet buscarPorCPF(Funcionario vo){
 		String sql = "select * from tb_funcionarios where cpf = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -118,7 +118,7 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
 		return rs;
 	}
 
-    public ResultSet buscarPorNome(FuncionarioVO vo){
+    public ResultSet buscarPorNome(Funcionario vo){
 		String sql = "select * from tb_funcionarios where name = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -135,17 +135,17 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
 
 
     @Override
-    public List<FuncionarioVO> listar() {
+    public List<Funcionario> listar() {
 
         String sql = "SELECT * FROM tb_funcionarios";
-        List<FuncionarioVO> funcionarios = new ArrayList<>();
+        List<Funcionario> funcionarios = new ArrayList<>();
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                FuncionarioVO funcionario = new FuncionarioVO();
+                Funcionario funcionario = new Funcionario();
 
                 funcionario.setId(rs.getLong("id"));
                 funcionario.setCPF(rs.getString("cpf"));
@@ -153,9 +153,6 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
 
                 funcionarios.add(funcionario);
             }
-
-            rs.close();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -163,7 +160,6 @@ public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
         } finally {
             closeConnection();
         }
-
         return funcionarios;
     }
 }

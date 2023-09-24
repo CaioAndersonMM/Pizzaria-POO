@@ -8,10 +8,10 @@ import java.util.List;
 import Model.Entity.Gerente;
 import Model.VO.GerenteVO;
 
-public class GerenteDao extends BaseDaoImp<GerenteVO> {
+public class GerenteDao extends BaseDaoImp<Gerente> {
 
     @Override
-    public void alterar(GerenteVO entity) {
+    public void alterar(Gerente entity) {
 
         String sql = "UPDATE tb_gerentes\n" +
                 "SET nome = ?, cpf = ?, senha=?\n" +
@@ -35,18 +35,15 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
     }
 
     @Override
-    public GerenteVO buscar(GerenteVO entity) {
+    public Gerente buscar(Gerente entity) {
         String sql = "SELECT * FROM tb_gerentes WHERE id = ?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
-
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
-
             if (rs.next()) {
-                GerenteVO gerente = new GerenteVO();
+                Gerente gerente = new Gerente();
                 return gerente;
             }
 
@@ -58,7 +55,7 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
         return null;
     }
 
-    public ResultSet buscarPorCPF(GerenteVO vo){
+    public ResultSet buscarPorCPF(Gerente vo){
 		String sql = "select * from tb_gerentes where cpf = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -88,14 +85,13 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
 	}
 
     @Override
-    public void deletar(GerenteVO entity) {
+    public void deletar(Gerente entity) {
         String sql = "DELETE FROM tb_gerentes as e WHERE e.cpf = ?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.execute();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -105,7 +101,7 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
 
 
     @Override
-    public Long inserir(GerenteVO entity) {
+    public Long inserir(Gerente entity) {
         String sql = "UPDATE Gerente\n" + //
                 "SET nome = ?, cpf = ?\n" + //
                 "WHERE id = ?;";
@@ -119,7 +115,6 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
             // stmt.setLong(4, entity.getId());
 
             stmt.execute();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -131,8 +126,8 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
 
 
     @Override
-    public List<GerenteVO> listar() {
-            List<GerenteVO> listaGerentes = new ArrayList<>();
+    public List<Gerente> listar() {
+            List<Gerente> listaGerentes = new ArrayList<>();
             String sql = "SELECT * FROM tb_gerentes";
             connection = getConnection();
             try {
@@ -140,7 +135,7 @@ public class GerenteDao extends BaseDaoImp<GerenteVO> {
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
-                    GerenteVO gerente = new GerenteVO();
+                    Gerente gerente = new Gerente();
                     gerente.setId(rs.getLong("id"));
                     gerente.setCPF(rs.getString("cpf"));
                     gerente.setNome(rs.getString("nome"));

@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import Dao.GerenteDao;
 import Exception.AutenticationException;
 import Exception.InsertException;
-import Model.VO.GerenteVO;
+import Model.Entity.Gerente;
 
 public class GerenteBo {
     static private GerenteDao dao = new GerenteDao();
 
-    public GerenteVO autenticar(GerenteVO vo) throws AutenticationException{
+    public Gerente autenticar(Gerente vo) throws AutenticationException{
 		ResultSet rs = dao.buscarPorCPF(vo);
 		try {
 			if(rs.next()) {//encontrou gerente
 				if(rs.getString("senha").equals(vo.getSenha())) {
-					GerenteVO res = new GerenteVO();
+					Gerente res = new Gerente();
 					res.setId(rs.getLong("id"));
 					res = dao.buscar(res);
 						if(res != null) {//cumprir o protocolo por desencargo de consciência
@@ -33,7 +33,7 @@ public class GerenteBo {
 		}
 	}
 
-    public void cadastrar(GerenteVO vo) throws InsertException {
+    public void cadastrar(Gerente vo) throws InsertException {
 		try {
             ResultSet rs = dao.buscarPorCPF(vo); //ID
 			if (rs.next()) {

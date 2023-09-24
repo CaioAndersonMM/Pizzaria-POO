@@ -5,17 +5,17 @@ import java.sql.SQLException;
 
 import Dao.FuncionarioDao;
 import Exception.AutenticationException;
-import Model.VO.FuncionarioVO;
+import Model.Entity.Funcionario;
 
 public class FuncionarioBo {
  static private FuncionarioDao dao = new FuncionarioDao();
 
- public FuncionarioVO autenticar(FuncionarioVO vo) throws AutenticationException{
+ public Funcionario autenticar(Funcionario vo) throws AutenticationException{
 		ResultSet rs = dao.buscarPorCPF(vo);
 		try {
 			if(rs.next()) {//encontrou funcionário
 				if(rs.getString("senha").equals(vo.getSenha())) {
-					FuncionarioVO res = new FuncionarioVO();
+					Funcionario res = new Funcionario();
 					res.setId(rs.getLong("id"));
 					res = dao.buscar(res);
 						if(res != null) {//cumprir o protocolo por desencargo de consciência
