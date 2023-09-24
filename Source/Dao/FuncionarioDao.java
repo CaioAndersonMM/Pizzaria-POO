@@ -6,10 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Entity.Funcionario;
-import Model.Entity.Gerente;
 import Model.VO.FuncionarioVO;
-import Model.VO.GerenteVO;
 
 public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
 

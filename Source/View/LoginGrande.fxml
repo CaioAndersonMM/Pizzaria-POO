@@ -33,10 +33,16 @@
                   <Image url="@Ve/Login.png" />
                </image>
             </ImageView>
-            <Button fx:id="botoLogin" layoutX="153.0" layoutY="317.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="40.0" prefWidth="387.0" text="ENTRAR" />
-            <PasswordField fx:id="senha" layoutX="153.0" layoutY="245.0" prefHeight="40.0" prefWidth="387.0" promptText="SENHA" />
-            <TextField fx:id="cpf" layoutX="153.0" layoutY="183.0" prefHeight="40.0" prefWidth="387.0" promptText="CPF" />
-            <Label layoutX="196.0" layoutY="387.0" prefHeight="40.0" prefWidth="316.0" text="Não possui uma conta? Cadastrar" textAlignment="CENTER" textFill="#ffc500">
+            <Button fx:id="botoLogin" layoutX="153.0" layoutY="317.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="40.0" prefWidth="387.0" style="-fx-background-color: orange;" text="ENTRAR" />
+            <PasswordField fx:id="senha" layoutX="203.0" layoutY="245.0" prefHeight="40.0" prefWidth="337.0" promptText="SENHA">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></PasswordField>
+            <TextField fx:id="cpf" layoutX="202.0" layoutY="183.0" prefHeight="39.0" prefWidth="338.0" promptText="CPF">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+            <Label layoutX="205.0" layoutY="397.0" prefHeight="40.0" prefWidth="316.0" text="Não possui uma conta? Cadastrar" textAlignment="CENTER" textFill="#ffc500">
                <font>
                   <Font size="19.0" />
                </font>
@@ -51,7 +57,30 @@
                   <Image url="@Ve/dedo.png" />
                </image>
             </ImageView>
-            <Label fx:id="erroautenticacao" layoutX="153.0" layoutY="104.0" prefHeight="63.0" prefWidth="127.0" text="Label" textFill="RED" underline="true" visible="false" />
+            <Label fx:id="erroautenticacao" contentDisplay="CENTER" layoutX="151.0" layoutY="368.0" prefHeight="40.0" prefWidth="392.0" text="Label" textAlignment="CENTER" textFill="RED" underline="true" visible="false">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font></Label>
+            <ImageView fitHeight="44.0" fitWidth="52.0" layoutX="153.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Rectangle%2038.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="52.0" layoutX="153.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Rectangle%2038.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="164.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/iconperfil.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="162.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/iconpassword.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </center>

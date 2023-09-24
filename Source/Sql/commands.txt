@@ -1,0 +1,20 @@
+CREATE TABLE tb_clientes (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60),
+    cpf VARCHAR(60),
+    endereco VARCHAR(60)
+);
+
+CREATE TABLE tb_clientes (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60),
+    cpf VARCHAR(60),
+    endereco VARCHAR(60)
+);
+
+CREATE TABLE tb_funcionarios(
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60),
+    cpf VARCHAR(11) not null,
+    senha VARCHAR(50) not null
+);

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class HelloFx extends Application{
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Cliente.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginGrande.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
