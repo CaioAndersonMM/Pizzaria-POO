@@ -1,16 +1,17 @@
 package Model.VO;
 
 public class UsuarioVO{
+	private String nome;
     private String cpf;
 	private String senha;
-	private Long idUsu;
+	//private Long idUsu;
 
-    public Long getIdUsu() {
-		return idUsu;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setIdUsu(Long idUsu) {
-		this.idUsu = idUsu;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {

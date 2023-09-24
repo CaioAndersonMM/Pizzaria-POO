@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Entity.Funcionario;
+import Model.Entity.Gerente;
+import Model.VO.FuncionarioVO;
+import Model.VO.GerenteVO;
 
-public class FuncionarioDao extends BaseDaoImp<Funcionario> {
+public class FuncionarioDao extends BaseDaoImp<FuncionarioVO> {
 
     @Override
-    public Long inserir(Funcionario entity) {
-
+    public Long inserir(FuncionarioVO entity) {
         String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha) VALUES (?, ?, ?)";
         connection = getConnection();
         try {
@@ -41,7 +43,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     }
 
     @Override
-    public void deletar(Funcionario entity) {
+    public void deletar(FuncionarioVO entity) {
 
         String sql = "DELETE FROM tb_funcionarios as e WHERE e.cpf = ?";
         connection = getConnection();
@@ -58,7 +60,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     }
 
     @Override
-    public void alterar(Funcionario entity) {
+    public void alterar(FuncionarioVO entity) {
 
         String sql = "UPDATE tb_funcionarios\n" + //
                 "SET nome = ?, cpf = ?\n" + //
@@ -81,7 +83,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     }
 
     @Override
-    public Funcionario buscar(Funcionario entity) {
+    public FuncionarioVO buscar(FuncionarioVO entity) {
 
         String sql = "SELECT * FROM tb_funcionarios WHERE id = ?";
         connection = getConnection();
@@ -93,7 +95,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
             stmt.close();
 
             if (rs.next()) {
-                Funcionario funcionario = new Funcionario();
+                FuncionarioVO funcionario = new FuncionarioVO();
                 return funcionario;
             }
 
@@ -105,18 +107,48 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
         return entity;
     }
 
+    public ResultSet buscarPorCPF(FuncionarioVO vo){
+		String sql = "select * from tb_funcionarios where cpf = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getCPF());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+    public ResultSet buscarPorNome(FuncionarioVO vo){
+		String sql = "select * from tb_funcionarios where name = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getNome());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+
     @Override
-    public List<Funcionario> listar() {
+    public List<FuncionarioVO> listar() {
 
         String sql = "SELECT * FROM tb_funcionarios";
-        List<Funcionario> funcionarios = new ArrayList<>();
+        List<FuncionarioVO> funcionarios = new ArrayList<>();
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Funcionario funcionario = new Funcionario();
+                FuncionarioVO funcionario = new FuncionarioVO();
 
                 funcionario.setId(rs.getLong("id"));
                 funcionario.setCPF(rs.getString("cpf"));
