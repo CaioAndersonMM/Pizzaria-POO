@@ -24,7 +24,7 @@ public class HelloFx extends Application{
         launch();
     }
     public static void telaLogin() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("LoginGrande.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("Funcionarios_v1.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
     }
