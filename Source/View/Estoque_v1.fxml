@@ -10,224 +10,230 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="491.0" fitWidth="600.0" layoutX="120.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/background.png" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="-0.22" contrast="-0.39" />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="668.0" fitWidth="278.0" layoutX="-20.0" layoutY="-42.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Variant3.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Arrow---Left-Circle.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="3.0" layoutY="37.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="68.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Clientes">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="99.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Pedidos">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="130.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Estoque">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="159.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Pizzas">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="190.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Funcionários">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="3.0" layoutY="221.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Relatórios">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="40.0" fitWidth="476.0" layoutX="166.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/BackgroundHeader.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="175.0" layoutY="45.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <TextField layoutX="236.0" layoutY="45.0" prefHeight="26.0" prefWidth="193.0" promptText="Ingrediente, Fabricante" />
-      <Button layoutX="515.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Adicionar Produto" />
-      <VBox layoutX="166.0" layoutY="82.0" prefHeight="337.0" prefWidth="476.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0">
          <children>
-            <ToolBar prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
-               <items>
-                  <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Produto" textFill="WHITE">
-                     <padding>
-                        <Insets right="60.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
-                     <padding>
-                        <Insets right="30.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button mnemonicParsing="false" text="Editar" />
-                  <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
-               </items>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </ToolBar>
-            <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
-               <items>
-                  <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Produto" textFill="WHITE">
-                     <padding>
-                        <Insets right="60.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
-                     <padding>
-                        <Insets right="30.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button mnemonicParsing="false" text="Editar" />
-                  <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
-               </items>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </ToolBar>
-            <ToolBar layoutX="10.0" layoutY="55.0" prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
-               <items>
-                  <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Produto" textFill="WHITE">
-                     <padding>
-                        <Insets right="60.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
-                     <padding>
-                        <Insets right="30.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button mnemonicParsing="false" text="Editar" />
-                  <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
-               </items>
-            </ToolBar>
+            <ImageView fitHeight="528.0" fitWidth="711.0" layoutX="120.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/background.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.3" contrast="-0.3" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="668.0" fitWidth="278.0" layoutX="-20.0" layoutY="-42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Variant3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Arrow---Left-Circle.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="3.0" layoutY="37.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="68.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Clientes">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="99.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Pedidos">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="130.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Estoque">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="159.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Pizzas">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="190.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Funcionários">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="3.0" layoutY="221.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Relatórios">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="476.0" layoutX="166.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/BackgroundHeader.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="175.0" layoutY="45.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="236.0" layoutY="45.0" prefHeight="26.0" prefWidth="193.0" promptText="Ingrediente, Fabricante" />
+            <Button layoutX="515.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Adicionar Produto" />
+            <VBox layoutX="166.0" layoutY="79.0" prefHeight="337.0" prefWidth="476.0">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Produto" textFill="WHITE">
+                           <padding>
+                              <Insets right="60.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </ToolBar>
+                  <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Produto" textFill="WHITE">
+                           <padding>
+                              <Insets right="60.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </ToolBar>
+                  <ToolBar layoutX="10.0" layoutY="55.0" prefHeight="40.0" prefWidth="501.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label prefHeight="18.0" prefWidth="49.0" text="ID" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Produto" textFill="WHITE">
+                           <padding>
+                              <Insets right="60.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="172.0" layoutY="16.0" text="Fabricante" textFill="WHITE">
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="288.0" layoutY="16.0" text="Quantidade" textFill="WHITE">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                  </ToolBar>
+               </children>
+            </VBox>
+            <Label layoutX="340.0" layoutY="3.0" prefHeight="35.0" prefWidth="278.0" text="ESTOQUE" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <DialogPane layoutX="119.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
+                <header>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+                     <children>
+                        <TextField layoutX="166.0" layoutY="124.0" />
+                     </children>
+                  </AnchorPane>
+                </header>
+                <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
+                     <children>
+                        <Button layoutX="214.0" layoutY="11.0" mnemonicParsing="false" text="Button" />
+                     </children>
+                  </AnchorPane>
+                </content>
+                <expandableContent>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                </expandableContent>
+            </DialogPane>
          </children>
-      </VBox>
-      <Label layoutX="340.0" layoutY="3.0" prefHeight="35.0" prefWidth="278.0" text="ESTOQUE" textAlignment="JUSTIFY" textFill="#ff8800">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <DialogPane layoutX="119.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
-          <header>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
-               <children>
-                  <TextField layoutX="166.0" layoutY="124.0" />
-               </children>
-            </AnchorPane>
-          </header>
-          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
-               <children>
-                  <Button layoutX="214.0" layoutY="11.0" mnemonicParsing="false" text="Button" />
-               </children>
-            </AnchorPane>
-          </content>
-          <expandableContent>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-          </expandableContent>
-      </DialogPane>
-   </children>
-</Pane>
+      </Pane>
+   </center>
+</BorderPane>

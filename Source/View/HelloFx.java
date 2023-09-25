@@ -36,7 +36,7 @@ public class HelloFx extends Application{
     }
 
     public static void telaPrincipalFuncionario() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Cliente.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pedidos_V1.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -7,219 +8,161 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="491.0" fitWidth="600.0" layoutX="14.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/background.png" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="-0.61" />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="683.0" fitWidth="183.0" layoutX="-22.0" layoutY="-64.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Variant3.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Arrow---Left-Circle.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="6.0" layoutY="35.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="66.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Clientes">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="97.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Pedidos">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="128.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Estoque">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="157.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Pizzas">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="188.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Funcionários">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="6.0" layoutY="219.0" mnemonicParsing="false" opacity="0.31" prefHeight="25.0" prefWidth="130.0" text="Relatórios">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="38.0" fitWidth="449.0" layoutX="145.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/BackgroundHeader.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="182.0" layoutY="66.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="158.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Ve/Search.png" />
-         </image>
-      </ImageView>
-      <TextField layoutX="243.0" layoutY="66.0" prefHeight="25.0" prefWidth="194.0" promptText="Nome do Funcionário , CPF..." />
-      <Button layoutX="449.0" layoutY="66.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Cadastrar Funcionário" />
-      <VBox layoutX="145.0" layoutY="110.0" prefHeight="301.0" prefWidth="449.0">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0">
          <children>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
+            <ImageView fitHeight="525.0" fitWidth="693.0" layoutX="-6.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/background.png" />
+               </image>
                <effect>
-                  <ColorAdjust brightness="-0.45" />
+                  <ColorAdjust brightness="-0.3" contrast="-0.3" />
                </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Label prefHeight="17.0" prefWidth="52.0" text="ID " />
-                  <Label prefHeight="17.0" prefWidth="109.0" text="Nome " />
-                  <Label prefHeight="17.0" prefWidth="150.0" text="Nome usuário" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="Editar">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Excluir" />
-               </items>
-               <effect>
-                  <ColorAdjust brightness="-0.45" />
-               </effect>
-            </ToolBar>
+            </ImageView>
+            <ImageView fitHeight="703.0" fitWidth="196.0" layoutX="-22.0" layoutY="-64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Variant3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Arrow---Left-Circle.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="6.0" layoutY="35.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="66.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Clientes">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="97.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Pedidos">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="128.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Estoque">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="157.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Pizzas">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="188.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Funcionários">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="6.0" layoutY="219.0" mnemonicParsing="false" opacity="0.7" prefHeight="25.0" prefWidth="130.0" text="Relatórios">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="41.0" fitWidth="491.0" layoutX="162.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/BackgroundHeader.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="199.0" layoutY="52.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="175.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Ve/Search.png" />
+               </image>
+            </ImageView>
+            <TextField layoutX="260.0" layoutY="52.0" prefHeight="25.0" prefWidth="194.0" promptText="Nome do Funcionário , CPF" />
+            <Button layoutX="513.0" layoutY="53.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="133.0" text="Cadastrar Funcionário" />
+            <VBox layoutX="162.0" layoutY="97.0" prefHeight="315.0" prefWidth="490.0">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label layoutX="10.0" layoutY="16.0" text="ID" textFill="WHITE">
+                           <padding>
+                              <Insets right="100.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nome" textFill="WHITE">
+                           <padding>
+                              <Insets right="110.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="CPF" textFill="WHITE">
+                           <padding>
+                              <Insets right="80.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </ToolBar>
+                  <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label layoutX="10.0" layoutY="16.0" text="ID" textFill="WHITE">
+                           <padding>
+                              <Insets right="100.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nome" textFill="WHITE">
+                           <padding>
+                              <Insets right="110.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="CPF" textFill="WHITE">
+                           <padding>
+                              <Insets right="80.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                  </ToolBar>
+               </children>
+            </VBox>
+            <Label layoutX="296.0" layoutY="-1.0" prefHeight="28.0" prefWidth="223.0" text="FUNCIONÁRIOS" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
          </children>
-      </VBox>
-      <Label layoutX="249.0" layoutY="14.0" prefHeight="35.0" prefWidth="278.0" text="FUNCIONÁRIOS" textAlignment="JUSTIFY" textFill="#ff8800">
-         <font>
-            <Font name="System Bold" size="29.0" />
-         </font>
-      </Label>
-   </children>
-</Pane>
+      </Pane>
+   </center>
+</BorderPane>
