@@ -8,6 +8,7 @@ import Model.Entity.Funcionario;
 import Model.Entity.Gerente;
 import Model.VO.FuncionarioVO;
 import Model.VO.GerenteVO;
+import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -21,7 +22,7 @@ public class FrontController {
 
     //private static UsuarioInterBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
 
-    public void autenticar(ActionEvent event) throws AutenticationEmptyException{
+    public void autenticar(ActionEvent event) throws AutenticationEmptyException, Exception{
         String cpfText = cpf.getText();
         String passwordText = senha.getText();
 
@@ -33,31 +34,28 @@ public class FrontController {
             vo2.setCPF(cpfText);
             vo2.setSenha(passwordText);
 
-            //AO USAR ENTITY AGORA ESTOU VALIDANDO O CPF 
-            // (SetCPF) não existe CPF com menos de 11 caracteres
+            // CUIDADO ---- AO USAR ENTITY AGORA ESTAMOS VALIDANDO 
+            // (SetCPF) - Não existe CPF com menos de 11 caracteres
+            // (SetSenha) - Senha maior que 3 caracteres
 
             try {
                 GerenteBo gerbo = new GerenteBo();
-                System.out.println("Entrou");
                 Gerente autenticado = gerbo.autenticar(vo);
+
                 if (autenticado != null) {
-                    //Abrir Janela do Gerente
-                    System.out.println("GERENTE AUTENTICADO");
+                    HelloFx.telaPrincipalGerente();
                 } 
-            } catch (AutenticationException e) {
-                System.out.println("catch gerente");
-                //verificar Funcionário
-                    try {
+            } catch (AutenticationException e) { //verificar Funcionário
+                try {
                     FuncionarioBo funBo = new FuncionarioBo();
                     Funcionario autenticado2 = funBo.autenticar(vo2);
-                     if (autenticado2 != null) {
-                        System.out.println("Funcionário AUTENTICADO");
-                        //abrir janela do Funcionario
+                    if (autenticado2 != null) {
+                        HelloFx.telaPrincipalFuncionario();
                     } else throw new AutenticationException();
-                    } catch (AutenticationException e2) {
-                        erroautenticacao.setText("CPF OU SENHA NÃO ENCONTRADOS!");
-                        erroautenticacao.setVisible(true);
-                    }
+                } catch (AutenticationException e2) {
+                    erroautenticacao.setText("CPF OU SENHA NÃO ENCONTRADOS!");
+                    erroautenticacao.setVisible(true);
+                }
             }
         } else{
             erroautenticacao.setText("É NECESSÁRIO PREENCHER TODOS OS CAMPOS");
