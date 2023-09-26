@@ -131,6 +131,10 @@
   -fx-border-radius: 4px;
 }
 
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
 .scroll-bar .increment-button, .scroll-bar .decrement-button {
   visibility: false;
 }
