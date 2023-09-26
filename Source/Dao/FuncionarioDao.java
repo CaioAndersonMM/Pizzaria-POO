@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Entity.Funcionario;
-import Model.VO.FuncionarioVO;
 
 public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 

@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Entity.Gerente;
-import Model.VO.GerenteVO;
 
 public class GerenteDao extends BaseDaoImp<Gerente> {
 
