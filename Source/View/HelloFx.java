@@ -20,6 +20,7 @@ public class HelloFx extends Application{
         primaryStage.setTitle("Pizzaria do Michelangelo - Login");
         primaryStage.show();
         telaLogin();
+
     }
 
     public static void main(String[] args){
@@ -27,7 +28,7 @@ public class HelloFx extends Application{
     }
     public static void telaLogin() throws Exception{
         URL backgroundImageUrl = HelloFx.class.getResource("/View/Ve/background_transparent.png");
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("clientes_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("Funcionarios_v2.fxml"));
         Scene scene = new Scene(root);
 
         if (backgroundImageUrl != null) {
@@ -39,13 +40,13 @@ public class HelloFx extends Application{
     }
 
     public static void telaPrincipalGerente() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Cliente.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
     }
 
     public static void telaPrincipalFuncionario() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pedidos_V1.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
     }

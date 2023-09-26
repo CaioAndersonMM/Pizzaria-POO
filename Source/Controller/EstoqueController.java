@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class FuncionariosController {
+public class EstoqueController {
 
     @FXML
     private Button adicionar;
@@ -55,9 +55,6 @@ public class FuncionariosController {
     private Button delete1111111111111;
 
     @FXML
-    private Button delete11111111111111;
-
-    @FXML
     private Button edit;
 
     @FXML
@@ -98,9 +95,6 @@ public class FuncionariosController {
 
     @FXML
     private Button edit1111111111111;
-
-    @FXML
-    private Button edit11111111111111;
 
     @FXML
     private Button estoque;

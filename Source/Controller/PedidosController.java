@@ -1,32 +1,156 @@
+
 package Controller;
 
-import java.beans.EventHandler;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.DialogPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+        import javafx.event.ActionEvent;
+        import javafx.fxml.FXML;
+        import javafx.scene.control.Button;
 
 public class PedidosController {
-    @FXML private DialogPane modal;
 
-    public void adicionarPedido(ActionEvent event){
-        System.out.println("Clicou");
-        System.out.println(modal);
-        modal.setVisible(true);
-    }
-    public void fecharModal(ActionEvent event){
-        System.out.println("Clicou P/fechar");
-        modal.setVisible(false);
+    @FXML
+    private Button adicionar;
+
+    @FXML
+    private Button clientes;
+
+    @FXML
+    private Button delete;
+
+    @FXML
+    private Button delete1;
+
+    @FXML
+    private Button delete11;
+
+    @FXML
+    private Button delete111;
+
+    @FXML
+    private Button delete1111;
+
+    @FXML
+    private Button delete11111;
+
+    @FXML
+    private Button delete111111;
+
+    @FXML
+    private Button delete1111111;
+
+    @FXML
+    private Button delete11111111;
+
+    @FXML
+    private Button delete111111111;
+
+    @FXML
+    private Button delete1111111111;
+
+    @FXML
+    private Button delete11111111111;
+
+    @FXML
+    private Button edit;
+
+    @FXML
+    private Button edit1;
+
+    @FXML
+    private Button edit11;
+
+    @FXML
+    private Button edit111;
+
+    @FXML
+    private Button edit1111;
+
+    @FXML
+    private Button edit11111;
+
+    @FXML
+    private Button edit111111;
+
+    @FXML
+    private Button edit1111111;
+
+    @FXML
+    private Button edit11111111;
+
+    @FXML
+    private Button edit111111111;
+
+    @FXML
+    private Button edit1111111111;
+
+    @FXML
+    private Button edit11111111111;
+
+    @FXML
+    private Button estoque;
+
+    @FXML
+    private Button funcionarios;
+
+    @FXML
+    private Button pedidos;
+
+    @FXML
+    private Button pizzas;
+
+    @FXML
+    private Button relatorios;
+
+    @FXML
+    private Button sair;
+
+    @FXML
+    void adicionar(ActionEvent event) {
+
     }
 
-    public void ChamarModalCliente(ActionEvent event){
-        System.out.println("Proximo Modal...");
-        modal.setVisible(false);
+    @FXML
+    void delete(ActionEvent event) {
+
+    }
+
+    @FXML
+    void edit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void loggout(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaClientes(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaEstoque(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaFuncionarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaPedidos(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaPizzas(ActionEvent event) {
+
+    }
+
+    @FXML
+    void telaRelatorios(ActionEvent event) {
+
     }
 
 }
