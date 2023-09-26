@@ -1,0 +1,137 @@
+.window {
+	-fx-background-color: #232323;
+	-fx-background-image: url("Ve/background_transparent.png"); 
+	-fx-background-size: 800px;
+}
+
+.menu {
+  -fx-background-color: #252525;
+  -fx-border-color: #111111;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20px, 0px, 0px, 0px);
+}
+
+.menu Button {
+  -fx-background-color: #1c1c1c;
+  -fx-border-radius: 6px;
+  -fx-border-color: rgba(0, 0, 0, 0.3);
+  -fx-text-fill: white;
+  -fx-font-family: ubuntu;
+  -fx-font-size: 18;
+  -fx-font-weight: 800;
+}
+
+.menu Button:hover {
+  -fx-background-color: #161616;
+  /*-fx-border-color: #ff8f3e;*/
+  -fx-border-width: 2px;
+}
+
+#content {
+}
+
+#content #page-title {
+  -fx-text-fill: white;
+  -fx-font-size: 36;
+  -fx-font-family: ubuntu;
+  -fx-font-weight: 800;
+}
+
+#header {
+  -fx-background-color: #ff8f3e;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+}
+
+#header TextField {
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
+  -fx-border-width: 1px;
+  -fx-border-color: #A0A0A0;
+  -fx-border-style: solid outside;
+  -fx-background-color: white;
+  -fx-font-size: 18;
+  -fx-font-weight: 600;
+  -fx-font-family: ubuntu;
+}
+
+#header TextField:focused {
+  -fx-border-color: #0095ff;
+
+}
+
+#header Button {
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
+  -fx-border-style: solid outside;
+  -fx-border-color: #A0A0A0;
+  -fx-background-color: #F2F2F2;
+  -fx-font-size: 18;
+  -fx-font-weight: 600;
+  -fx-font-family: Ubuntu;
+}
+#header Button:hover {
+  -fx-background-color: #C4C4C4;
+}
+
+#header Button:focused {
+  -fx-border-color: #0095ff;
+}
+
+#header Label {
+  -fx-text-fill: white;
+}
+
+
+#header #search-bar-label {
+  -fx-font-size: 20;
+  -fx-font-weight: 800;
+  -fx-font-family: ubuntu;
+}
+
+#main_table {
+  -fx-background-color: transparent;
+}
+
+#main_table .table_row {
+  -fx-background-color: #474747;
+  -fx-border-color: #1F1A19;
+  -fx-background-radius: 8px; 
+  -fx-border-radius: 8px;
+}
+
+#main_table .table_row > Button {
+  -fx-background-color: #383838;
+  -fx-text-fill: #ccc;
+  -fx-border-color: rgba(0, 0, 0, 0.1);
+}
+
+#main_table .table_row > Button:hover {
+  -fx-background-color: #5a5e61;
+}
+
+#main_table .table_row Label {
+  -fx-text-fill: #ccc;
+  -fx-font-size: 16;
+}
+
+.scroll-bar, .scroll-bar .track {
+  -fx-background-color: none;
+}
+
+.scroll-bar .track-background {
+  -fx-background-color: rgba(0, 0, 0, 0.3);
+  -fx-background-radius: 4px;
+  -fx-border-radius: 0;
+}
+
+.scroll-bar .thumb {
+  -fx-background-color: #808080;
+  -fx-border-color: #4c4c4c;
+  -fx-background-radius: 4px;
+  -fx-border-radius: 4px;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+  visibility: false;
+}
+
