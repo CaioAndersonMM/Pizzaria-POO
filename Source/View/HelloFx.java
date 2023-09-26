@@ -1,5 +1,7 @@
 package View;
 
+import java.net.URL;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,8 +26,15 @@ public class HelloFx extends Application{
         launch();
     }
     public static void telaLogin() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Funcionarios_v1.fxml"));
+        URL backgroundImageUrl = HelloFx.class.getResource("/View/Ve/background_transparent.png");
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("clientes_v2.fxml"));
         Scene scene = new Scene(root);
+
+        if (backgroundImageUrl != null) {
+            String backgroundImage = "url('" + backgroundImageUrl.toExternalForm() + "')";
+            scene.getRoot().setStyle("-fx-background-image: " + backgroundImage);
+        }
+
         primaryStage.setScene(scene);
     }
 

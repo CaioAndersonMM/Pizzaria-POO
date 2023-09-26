@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@styles/clientes.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@styles/clientes.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" styleClass="menu">
          <children>
@@ -47,9 +47,18 @@
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
+            <Separator orientation="VERTICAL" prefHeight="198.0" prefWidth="12.0" visible="false" VBox.vgrow="ALWAYS" />
+            <Button layoutX="20.0" layoutY="403.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="Ubuntu Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
          </children>
          <padding>
-            <Insets top="20.0" />
+            <Insets bottom="20.0" top="20.0" />
          </padding>
       </VBox>
       <VBox id="content" alignment="TOP_CENTER" prefHeight="800.0" prefWidth="784.0" spacing="20.0" HBox.hgrow="ALWAYS">
@@ -64,7 +73,7 @@
             <HBox id="header" alignment="CENTER_LEFT" maxWidth="900.0" prefWidth="200.0">
                <children>
                   <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
-                  <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por cliente" />
+                  <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por nome, telefone, endereço" />
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
                   <Button mnemonicParsing="false" prefHeight="50.0" text="+ Adicionar">
                      <HBox.margin>
