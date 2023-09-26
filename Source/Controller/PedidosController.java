@@ -1,8 +1,15 @@
 package Controller;
 
+import java.beans.EventHandler;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class PedidosController {
     @FXML private DialogPane modal;
