@@ -17,38 +17,38 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" styleClass="menu">
          <children>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Clientes" textFill="WHITE">
+            <Button fx:id="clientes" mnemonicParsing="false" onAction="#telaClientes" prefHeight="54.0" prefWidth="220.0" text="Clientes" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Pedidos" textFill="WHITE">
+            <Button fx:id="pedidos" mnemonicParsing="false" onAction="#telaPedidos" prefHeight="54.0" prefWidth="220.0" text="Pedidos" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Estoque" textFill="WHITE">
+            <Button fx:id="estoque" mnemonicParsing="false" onAction="#telaEstoque" prefHeight="54.0" prefWidth="220.0" text="Estoque" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Pizzas" textFill="WHITE">
+            <Button fx:id="pizzas" mnemonicParsing="false" onAction="#telaPizzas" prefHeight="54.0" prefWidth="220.0" text="Pizzas" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Funcionários" textFill="WHITE">
+            <Button fx:id="funcionarios" mnemonicParsing="false" onAction="#telaFuncionarios" prefHeight="54.0" prefWidth="220.0" text="Funcionários" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Relatórios" textFill="WHITE">
+            <Button fx:id="relatorios" mnemonicParsing="false" onAction="#telaRelatorios" prefHeight="54.0" prefWidth="220.0" text="Relatórios" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="198.0" prefWidth="12.0" visible="false" VBox.vgrow="ALWAYS" />
-            <Button layoutX="20.0" layoutY="403.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="220.0" text="Sair" textFill="WHITE">
+            <Button fx:id="sair" layoutX="20.0" layoutY="403.0" mnemonicParsing="false" onAction="#loggout" prefHeight="54.0" prefWidth="220.0" text="Sair" textFill="WHITE">
                <font>
                   <Font name="Ubuntu Bold" size="18.0" />
                </font>
@@ -75,7 +75,7 @@
                   <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
                   <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por nome, telefone, endereço" />
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" text="+ Adicionar">
+                  <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" text="+ Adicionar">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -98,7 +98,7 @@
                               <Label text="Telefone" />
                               <Label text="Endereço" />
                               <Separator prefWidth="200.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="40.0" text="Editar">
+                              <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -106,7 +106,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button mnemonicParsing="false" prefHeight="40.0" text="Excluir">
+                              <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" text="Excluir">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
