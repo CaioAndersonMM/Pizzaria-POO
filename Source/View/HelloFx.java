@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class HelloFx extends Application{
     private static Stage primaryStage;
-    private static URL backgroundImageUrl = HelloFx.class.getResource("/View/Ve/background_transparent.png");
+    private static URL backgroundImageUrl = HelloFx.class.getResource("/View/images/background_transparent.png");
 
     public static void setPrimaryStage(Stage primaryStage) {
         HelloFx.primaryStage = primaryStage;
@@ -31,8 +31,9 @@ public class HelloFx extends Application{
     public static void main(String[] args){
         launch();
     }
+
     public static void telaLogin() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pedidos_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pedidos_v2.fxml"));
         Scene scene = new Scene(root);
         style(scene);
 
@@ -40,17 +41,16 @@ public class HelloFx extends Application{
     }
 
     public static void telaPrincipalGerente() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
         style(scene);
         primaryStage.setScene(scene);
     }
 
     public static void telaPrincipalFuncionario() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
         style(scene);
         primaryStage.setScene(scene);
     }
-
 }
