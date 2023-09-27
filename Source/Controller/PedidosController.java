@@ -119,7 +119,7 @@ public class PedidosController {
 
     @FXML
     void adicionar(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("dialogs/fazer_pedido_1.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/dialogs/fazer_pedido_1.fxml"));
         Scene scene = new Scene(root);
 
         // Cria uma nova janela de diálogo
