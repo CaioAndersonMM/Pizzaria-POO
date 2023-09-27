@@ -31,7 +31,7 @@ public class App extends Application {
     public static void telaLogin() throws IOException {
         Parent root = FXMLLoader.load(App.class.getResource("VE/Login.fxml"));
         Scene scene = new Scene(root);
-        
+        style(scene);
         primaryStage.setTitle("Pizzaria - Login");
         primaryStage.setScene(scene);
     }
@@ -39,7 +39,7 @@ public class App extends Application {
     public static void telaPedidos() throws IOException{
         Parent root = FXMLLoader.load(App.class.getResource("VE/Pedidos.fxml"));
         Scene scene = new Scene(root);
-        
+        style(scene);
         primaryStage.setTitle("Pizzaria - Pedidos");
         primaryStage.setScene(scene);
     }

@@ -21,5 +21,8 @@ public class LoginController {
         if (cpfString.equals("12345678910") && senhaString.equals("admin")) {
             App.telaPedidos();
         }
+        if (cpfString.equals("123") && senhaString.equals("123")) {
+            App.telaPedidos();
+        }
     }
 }
