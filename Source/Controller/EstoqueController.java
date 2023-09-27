@@ -1,8 +1,16 @@
 package Controller;
 
+import java.io.IOException;
+
+import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class EstoqueController {
 
@@ -16,85 +24,7 @@ public class EstoqueController {
     private Button delete;
 
     @FXML
-    private Button delete1;
-
-    @FXML
-    private Button delete11;
-
-    @FXML
-    private Button delete111;
-
-    @FXML
-    private Button delete1111;
-
-    @FXML
-    private Button delete11111;
-
-    @FXML
-    private Button delete111111;
-
-    @FXML
-    private Button delete1111111;
-
-    @FXML
-    private Button delete11111111;
-
-    @FXML
-    private Button delete111111111;
-
-    @FXML
-    private Button delete1111111111;
-
-    @FXML
-    private Button delete11111111111;
-
-    @FXML
-    private Button delete111111111111;
-
-    @FXML
-    private Button delete1111111111111;
-
-    @FXML
     private Button edit;
-
-    @FXML
-    private Button edit1;
-
-    @FXML
-    private Button edit11;
-
-    @FXML
-    private Button edit111;
-
-    @FXML
-    private Button edit1111;
-
-    @FXML
-    private Button edit11111;
-
-    @FXML
-    private Button edit111111;
-
-    @FXML
-    private Button edit1111111;
-
-    @FXML
-    private Button edit11111111;
-
-    @FXML
-    private Button edit111111111;
-
-    @FXML
-    private Button edit1111111111;
-
-    @FXML
-    private Button edit11111111111;
-
-    @FXML
-    private Button edit111111111111;
-
-    @FXML
-    private Button edit1111111111111;
 
     @FXML
     private Button estoque;
@@ -115,8 +45,20 @@ public class EstoqueController {
     private Button sair;
 
     @FXML
-    void adicionar(ActionEvent event) {
+    void adicionar(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("dialogs/fazer_pedido_1.fxml"));
+        Scene scene = new Scene(root);
 
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
+        dialogStage.setScene(scene);
+
+        // Define um título para a janela de diálogo (opcional)
+        //dialogStage.setTitle("addpedido");
+        // Exibe a janela de diálogo
+        dialogStage.showAndWait();
     }
 
     @FXML

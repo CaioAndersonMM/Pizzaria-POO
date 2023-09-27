@@ -6,8 +6,6 @@ import Model.BO.FuncionarioBo;
 import Model.BO.GerenteBo;
 import Model.Entity.Funcionario;
 import Model.Entity.Gerente;
-import Model.VO.FuncionarioVO;
-import Model.VO.GerenteVO;
 import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +17,6 @@ public class FrontController {
     @FXML private TextField cpf;
     @FXML private Label erroautenticacao;
     @FXML private PasswordField senha;
-
-    //private static UsuarioInterBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
 
     public void autenticar(ActionEvent event) throws AutenticationEmptyException, Exception{
         String cpfText = cpf.getText();

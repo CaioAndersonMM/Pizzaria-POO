@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@styles/clientes.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PizzasController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@styles/clientes.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FuncionariosController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" styleClass="menu">
          <children>
@@ -69,16 +69,19 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label id="page-title" text="Pizzas" />
+            <Label id="page-title" text="Funcionários" />
             <HBox id="header" alignment="CENTER_LEFT" maxWidth="900.0" prefWidth="200.0">
                <children>
                   <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
-                  <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Sabor, Ingrediente ..." />
+                  <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="477.0" promptText="Pesquisar por Nome, CPF, ID ..." />
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" text="+ Adicionar Pizza">
+                  <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" text="+ Cadastrar ">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
                   </Button>
                </children>
                <padding>
@@ -90,22 +93,21 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -113,7 +115,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -125,22 +127,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit1" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -149,7 +150,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -161,22 +162,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit11" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -185,7 +185,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -197,22 +197,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -221,7 +220,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -233,22 +232,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit1111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -257,7 +255,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -269,22 +267,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit11111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -293,7 +290,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -305,22 +302,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -329,7 +325,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -341,22 +337,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit1111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -365,7 +360,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -377,22 +372,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit11111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -401,7 +395,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -413,22 +407,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -437,7 +430,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -449,22 +442,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit1111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -473,7 +465,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -485,22 +477,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit11111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -509,7 +500,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -521,22 +512,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit111111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -545,7 +535,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -557,22 +547,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit1111111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -581,7 +570,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -593,22 +582,21 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
                            <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
+                              <Hyperlink prefHeight="33.0" prefWidth="42.0" text="ID" textFill="#88b6e8">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
+                              <Label prefHeight="25.0" prefWidth="244.0" text="Nome Funcionário" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="26.0" visible="false" />
+                              <Label text="CPF" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" />
+                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="45.0" visible="false" HBox.hgrow="ALWAYS" />
                               <Button fx:id="edit11111111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -617,43 +605,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="20.0" styleClass="table_row">
-                           <children>
-                              <Hyperlink text="Sabor Pizza" textFill="#88b6e8">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Hyperlink>
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="42.0" visible="false" HBox.hgrow="ALWAYS" />
-                              <Label text="Ingredientes" />
-                              <Separator orientation="VERTICAL" prefHeight="38.0" prefWidth="24.0" visible="false" />
-                              <Label text="Valor P" />
-                              <Label text="Valor M" />
-                              <Label text="Valor G" />
-                              <Button fx:id="edit111111111111111" mnemonicParsing="false" onAction="#edit" prefHeight="40.0" text="Editar">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Ve/edit.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="delete111111111111111" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" text="Excluir">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

@@ -21,7 +21,7 @@
          <children>
             <ImageView fx:id="bot" fitHeight="504.0" fitWidth="682.0" layoutX="-3.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Ve/background.png" />
+                  <Image url="@../images/background.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="-0.3" contrast="-0.3" />
@@ -108,12 +108,12 @@
             </MenuButton>
             <ImageView fitHeight="684.0" fitWidth="179.0" layoutX="-10.0" layoutY="-76.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Ve/Variant3.png" />
+                  <Image url="@../images/Variant3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Ve/Arrow---Left-Circle.png" />
+                  <Image url="@../images/Arrow---Left-Circle.png" />
                </image>
             </ImageView>
             <Button layoutX="13.0" layoutY="47.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
@@ -153,7 +153,7 @@
             </Button>
             <ImageView fitHeight="40.0" fitWidth="476.0" layoutX="163.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Ve/BackgroundHeader.png" />
+                  <Image url="@../images/BackgroundHeader.png" />
                </image>
             </ImageView>
             <Label layoutX="172.0" layoutY="47.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">

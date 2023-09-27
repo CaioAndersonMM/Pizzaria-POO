@@ -10,9 +10,15 @@ import javafx.stage.Stage;
 
 public class HelloFx extends Application{
     private static Stage primaryStage;
+    private static URL backgroundImageUrl = HelloFx.class.getResource("/View/images/background_transparent.png");
 
     public static void setPrimaryStage(Stage primaryStage) {
         HelloFx.primaryStage = primaryStage;
+    }
+
+    public static void style(Scene cene){
+        String backgroundImage = "url('" + backgroundImageUrl.toExternalForm() + "')";
+        cene.getRoot().setStyle("-fx-background-image: " + backgroundImage);
     }
 
     public void start(Stage primaryStage) throws Exception{
@@ -20,35 +26,31 @@ public class HelloFx extends Application{
         primaryStage.setTitle("Pizzaria do Michelangelo - Login");
         primaryStage.show();
         telaLogin();
-
     }
 
     public static void main(String[] args){
         launch();
     }
-    public static void telaLogin() throws Exception{
-        URL backgroundImageUrl = HelloFx.class.getResource("/View/Ve/background_transparent.png");
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Funcionarios_v2.fxml"));
-        Scene scene = new Scene(root);
 
-        if (backgroundImageUrl != null) {
-            String backgroundImage = "url('" + backgroundImageUrl.toExternalForm() + "')";
-            scene.getRoot().setStyle("-fx-background-image: " + backgroundImage);
-        }
+    public static void telaLogin() throws Exception{
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pedidos_v2.fxml"));
+        Scene scene = new Scene(root);
+        style(scene);
 
         primaryStage.setScene(scene);
     }
 
     public static void telaPrincipalGerente() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
+        style(scene);
         primaryStage.setScene(scene);
     }
 
     public static void telaPrincipalFuncionario() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("Pizzas_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas_v2.fxml"));
         Scene scene = new Scene(root);
+        style(scene);
         primaryStage.setScene(scene);
     }
-
 }

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@styles/clientes.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientesController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="window" stylesheets="@../styles/clientes.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PedidosController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="240.0" spacing="20.0" styleClass="menu">
             <children>
@@ -105,7 +105,7 @@
                                             <graphic>
                                                 <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@Ve/edit.png" />
+                                                        <Image url="@../images/edit.png" />
                                                     </image>
                                                 </ImageView>
                                             </graphic></Button>
@@ -113,7 +113,7 @@
                                             <graphic>
                                                 <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@Ve/trash-can.png" />
+                                                        <Image url="@../images/trash-can.png" />
                                                     </image>
                                                 </ImageView>
                                             </graphic>
@@ -139,7 +139,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -148,7 +148,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -174,7 +174,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -183,7 +183,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -209,7 +209,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -218,7 +218,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -244,7 +244,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -253,7 +253,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -279,7 +279,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -288,7 +288,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -314,7 +314,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -323,7 +323,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -349,7 +349,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -358,7 +358,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -384,7 +384,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -393,7 +393,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -419,7 +419,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -428,7 +428,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -454,7 +454,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -463,7 +463,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -489,7 +489,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/edit.png" />
+                                          <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -498,7 +498,7 @@
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Ve/trash-can.png" />
+                                          <Image url="@../images/trash-can.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

@@ -1,8 +1,13 @@
 package Controller;
 
+import java.io.IOException;
+
+import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,48 +54,18 @@ public class ClientesController {
     private Button sair;
 
     @FXML
-    void adicionar(ActionEvent event) {
-        Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setTitle("Criar Novo Cliente");
+    void adicionar(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("dialogs/adicionar_cliente.fxml"));
+        Scene scene = new Scene(root);
 
-        // Inputs
-        TextField nomeField = new TextField();
-        TextField cpfField = new TextField();
-        TextField enderecoField = new TextField();
-
-        Label nomeLabel = new Label("Nome:");
-        Label cpfLabel = new Label("CPF:");
-        Label enderecoLabel = new Label("Endereço:");
-
-         // Estilize os elementos conforme necessário
-        nomeLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12;");
-        cpfLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12;");
-        enderecoLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12;");
-
-        Button salvarButton = new Button("Salvar");
-        salvarButton.setOnAction(e -> {
-            // Aqui você pode acessar os valores dos campos de entrada (inputs)
-            String nome = nomeField.getText();
-            String cpf = cpfField.getText();
-            String endereco = enderecoField.getText();
-
-            // Feche o modal
-            dialog.close();
-        }); 
-        VBox modalLayout = new VBox(10);
-        modalLayout.setPadding(new Insets(10));
-        modalLayout.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        modalLayout.getChildren().addAll(
-            nomeLabel, nomeField,
-            cpfLabel, cpfField,
-            enderecoLabel, enderecoField,
-            salvarButton
-        );
-
-        Scene dialogScene = new Scene(modalLayout, 400, 300);
-        dialog.setScene(dialogScene);
-        dialog.showAndWait(); // Mostra o modal e aguarda até que seja fechado
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
+        dialogStage.setScene(scene);
+        //dialogStage.setTitle("AddCliente");
+        // Exibe a janela de diálogo
+        dialogStage.showAndWait();
     }
 
     @FXML
