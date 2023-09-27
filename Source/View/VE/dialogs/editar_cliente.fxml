@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditarClienteController">
    <children>
       <Button fx:id="salvar" layoutX="487.0" layoutY="335.0" mnemonicParsing="false" onAction="#salvar" styleClass="confirmation_button" text="Salvar" />
       <Button fx:id="cancel" layoutX="20.0" layoutY="335.0" mnemonicParsing="false" onAction="#cancelar" styleClass="cancellation_button" text="Cancelar" />
