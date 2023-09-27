@@ -2,22 +2,14 @@ package Controller;
 
 import java.io.IOException;
 
+import View.App;
 import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -82,30 +74,29 @@ public class ClientesController {
     void loggout(ActionEvent event) {
 
     }
-
-    @FXML
-    void telaClientes(ActionEvent event) {
-
+   @FXML
+    void telaClientes(ActionEvent event) throws Exception {
+        App.telaClientes();
     }
 
     @FXML
-    void telaEstoque(ActionEvent event) {
-
+    void telaEstoque(ActionEvent event) throws Exception {
+         App.telaEstoque();
     }
 
     @FXML
-    void telaFuncionarios(ActionEvent event) {
-
+    void telaFuncionarios(ActionEvent event) throws Exception {
+         App.telaFuncionarios();
     }
 
     @FXML
-    void telaPedidos(ActionEvent event) {
-
+    void telaPedidos(ActionEvent event) throws IOException {
+        App.telaPedidos();
     }
 
     @FXML
-    void telaPizzas(ActionEvent event) {
-
+    void telaPizzas(ActionEvent event) throws Exception {
+        App.telaPizzas();
     }
 
     @FXML

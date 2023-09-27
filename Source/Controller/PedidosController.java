@@ -1,21 +1,15 @@
 
 package Controller;
+import java.io.IOException;
 
-        import View.HelloFx;
+import View.App;
+import View.HelloFx;
 import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -31,73 +25,7 @@ public class PedidosController {
     private Button delete;
 
     @FXML
-    private Button delete1;
-
-    @FXML
-    private Button delete11;
-
-    @FXML
-    private Button delete111;
-
-    @FXML
-    private Button delete1111;
-
-    @FXML
-    private Button delete11111;
-
-    @FXML
-    private Button delete111111;
-
-    @FXML
-    private Button delete1111111;
-
-    @FXML
-    private Button delete11111111;
-
-    @FXML
-    private Button delete111111111;
-
-    @FXML
-    private Button delete1111111111;
-
-    @FXML
-    private Button delete11111111111;
-
-    @FXML
     private Button edit;
-
-    @FXML
-    private Button edit1;
-
-    @FXML
-    private Button edit11;
-
-    @FXML
-    private Button edit111;
-
-    @FXML
-    private Button edit1111;
-
-    @FXML
-    private Button edit11111;
-
-    @FXML
-    private Button edit111111;
-
-    @FXML
-    private Button edit1111111;
-
-    @FXML
-    private Button edit11111111;
-
-    @FXML
-    private Button edit111111111;
-
-    @FXML
-    private Button edit1111111111;
-
-    @FXML
-    private Button edit11111111111;
 
     @FXML
     private Button estoque;
@@ -151,28 +79,28 @@ public class PedidosController {
     }
 
     @FXML
-    void telaClientes(ActionEvent event) {
-
+    void telaClientes(ActionEvent event) throws Exception {
+        App.telaClientes();
     }
 
     @FXML
-    void telaEstoque(ActionEvent event) {
-
+    void telaEstoque(ActionEvent event) throws Exception {
+         App.telaEstoque();
     }
 
     @FXML
-    void telaFuncionarios(ActionEvent event) {
-
+    void telaFuncionarios(ActionEvent event) throws Exception {
+         App.telaFuncionarios();
     }
 
     @FXML
-    void telaPedidos(ActionEvent event) {
-
+    void telaPedidos(ActionEvent event) throws IOException {
+        App.telaPedidos();
     }
 
     @FXML
-    void telaPizzas(ActionEvent event) {
-
+    void telaPizzas(ActionEvent event) throws Exception {
+        App.telaPizzas();
     }
 
     @FXML

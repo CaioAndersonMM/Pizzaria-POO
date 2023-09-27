@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import View.App;
 import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,34 +77,35 @@ public class EstoqueController {
 
     }
 
-    @FXML
-    void telaClientes(ActionEvent event) {
-
+   @FXML
+    void telaClientes(ActionEvent event) throws Exception {
+        App.telaClientes();
     }
 
     @FXML
-    void telaEstoque(ActionEvent event) {
-
+    void telaEstoque(ActionEvent event) throws Exception {
+         App.telaEstoque();
     }
 
     @FXML
-    void telaFuncionarios(ActionEvent event) {
-
+    void telaFuncionarios(ActionEvent event) throws Exception {
+         App.telaFuncionarios();
     }
 
     @FXML
-    void telaPedidos(ActionEvent event) {
-
+    void telaPedidos(ActionEvent event) throws IOException {
+        App.telaPedidos();
     }
 
     @FXML
-    void telaPizzas(ActionEvent event) {
-
+    void telaPizzas(ActionEvent event) throws Exception {
+        App.telaPizzas();
     }
 
     @FXML
     void telaRelatorios(ActionEvent event) {
 
     }
+
 
 }

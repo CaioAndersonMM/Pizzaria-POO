@@ -33,7 +33,7 @@ public class HelloFx extends Application{
     }
 
     public static void telaLogin() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pedidos_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pedidos.fxml"));
         Scene scene = new Scene(root);
         style(scene);
 
@@ -48,9 +48,17 @@ public class HelloFx extends Application{
     }
 
     public static void telaPrincipalFuncionario() throws Exception{
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas_v2.fxml"));
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Pizzas.fxml"));
         Scene scene = new Scene(root);
         style(scene);
         primaryStage.setScene(scene);
     }
+
+    public static void telaClientee() throws Exception{
+        Parent root = FXMLLoader.load(HelloFx.class.getResource("VE/Cliente.fxml"));
+        Scene scene = new Scene(root);
+        style(scene);
+        primaryStage.setScene(scene);
+    }
+
 }
