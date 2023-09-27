@@ -12,8 +12,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
-   <center>
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController" stylesheets="@../styles/clientes.css" styleClass="window">
+   <center> 
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="bot" fitHeight="504.0" fitWidth="682.0" layoutX="-3.0" layoutY="-2.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
