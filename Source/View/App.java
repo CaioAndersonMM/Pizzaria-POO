@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
 
 public class App extends Application {
     private static Stage primaryStage;
-    private static URL backgroundImageUrl = HelloFx.class.getResource("/View/images/background_transparent.png");
+    private static URL backgroundImageUrl = App.class.getResource("/View/images/background_transparent.png");
 
     public static void setPrimaryStage(Stage stage) {
         App.primaryStage = stage;
@@ -29,7 +29,7 @@ public class App extends Application {
     }
 
     public static void telaLogin() throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("VE/Login.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("VE/LoginGrande.fxml"));
         Scene scene = new Scene(root);
         style(scene);
         primaryStage.setTitle("Pizzaria - Login");

@@ -3,7 +3,6 @@ package Controller;
 import java.io.IOException;
 
 import View.App;
-import View.HelloFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +46,7 @@ public class EstoqueController {
 
     @FXML
     void adicionar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(HelloFx.class.getResource("dialogs/fazer_pedido_1.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("dialogs/fazer_pedido_1.fxml"));
         Scene scene = new Scene(root);
 
         // Cria uma nova janela de diálogo
