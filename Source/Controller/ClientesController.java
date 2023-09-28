@@ -46,7 +46,7 @@ public class ClientesController {
 
     @FXML
     void adicionar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("dialogs/adicionar_cliente.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/adicionar_cliente.fxml"));
         Scene scene = new Scene(root);
 
         // Cria uma nova janela de diálogo

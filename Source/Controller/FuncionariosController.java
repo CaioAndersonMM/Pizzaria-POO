@@ -5,7 +5,12 @@ import java.io.IOException;
 import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class FuncionariosController {
 
@@ -40,7 +45,21 @@ public class FuncionariosController {
     private Button sair;
 
     @FXML
-    void adicionar(ActionEvent event) {
+    void adicionar(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/adicionar_funcionario.fxml"));
+        Scene scene = new Scene(root);
+
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
+        dialogStage.setScene(scene);
+
+        // Define um título para a janela de diálogo (opcional)
+        dialogStage.setTitle("Minha Janela de Diálogo");
+
+        // Exibe a janela de diálogo
+        dialogStage.showAndWait();
     }
 
     @FXML
