@@ -89,7 +89,6 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             if (rs.next()) {
                 TipoPizza tipoPizza = new TipoPizza();
@@ -100,7 +99,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
                 valores[2] = rs.getFloat("valor_g");
 
                 tipoPizza.setId(rs.getLong("id"));
-                tipoPizza.setNomeSabor(rs.getString("nome_sabor"));
+                tipoPizza.setNomeSabor(rs.getString("nomeSabor"));
                 tipoPizza.setValores(valores);
                                 
                 return tipoPizza;
@@ -124,7 +123,6 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             while (rs.next()) {
                 TipoPizza tipoPizza = new TipoPizza();

@@ -123,13 +123,11 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
-
             while (rs.next()) {
                 Pizza pizza = new Pizza();
 
                 TipoPizza tipoPizza = new TipoPizza();
-                tipoPizza.setId(rs.getLong("tipo"));
+                tipoPizza.setId(rs.getLong("tipo_id"));
                 tipoPizza = tipoPizzaDao.buscar(tipoPizza);
 
                 pizza.setId(rs.getLong("id"));
@@ -143,7 +141,6 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
         } finally {
             closeConnection();
         }
-
         return pizzas;
     }
 }
