@@ -6,19 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Model.BO.PizzaBo;
-import Model.Entity.Pizza;
+import Model.BO.TipoPizzaBo;
+import Model.Entity.TipoPizza;
 import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -56,66 +59,63 @@ public class PizzasController implements  Initializable{
     private Button sair;
 
     @FXML
-    private ScrollPane tabela;
+    private VBox tabela;
 
-   public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Crie um HBox dinamicamente
-      
-        // Suponha que você tenha recuperado dados do banco de dados e armazenado em uma lista
-        List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        
+    List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
-       
-         // Crie um VBox para conter os HBox
-        VBox vboxContainer = new VBox();
+    for (Object[] dado : dadosDoBanco) {
+        HBox hboxContainer = new HBox();
 
-        // Para cada dado recuperado, crie um rótulo e adicione ao HBox
-        for (Object[] dado : dadosDoBanco) {
-
-            HBox hboxContainer = new HBox();
-
-            // Crie rótulos para cada elemento e adicione ao 
-            Label idLabel = new Label(String.valueOf(dado[0]));
-            System.out.println(String.valueOf(dado[0]));
-            Label tipoLabel = new Label(String.valueOf(dado[1]));
-             System.out.println(String.valueOf(dado[1]));
-            Label adicionaisLabel = new Label(String.valueOf(dado[2]));
-             System.out.println(String.valueOf(dado[2]));
-            Label valorLabel = new Label(String.valueOf(dado[3]));
-             System.out.println(String.valueOf(dado[3]));
-            Label tamanhoLabel = new Label(String.valueOf(dado[4]));
-             System.out.println(String.valueOf(dado[4]));
-
-            hboxContainer.getChildren().addAll(idLabel, tipoLabel, adicionaisLabel, valorLabel, tamanhoLabel);
-            vboxContainer.getChildren().add(hboxContainer);
-
-
+        Separator separator = new Separator();
+        Separator separator2 = new Separator();
+        Separator separator3 = new Separator();
+        
+        Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0]));
+        separator.setVisible(false);
+        HBox.setHgrow(separator, Priority.ALWAYS);
+        Label tipoLabel = new Label(String.valueOf(dado[1]));
+        separator2.setVisible(false);
+        HBox.setHgrow(separator2, Priority.ALWAYS);
+        Label valorpLabel = new Label(String.valueOf(dado[2]));
+        Label valormLabel = new Label(String.valueOf(dado[3]));
+        Label valorgLabel = new Label(String.valueOf(dado[4]));
+        separator3.setVisible(false);
+        HBox.setHgrow(separator3, Priority.ALWAYS);
+        Button button1 = new Button("Editar");
+        Button button2 = new Button("Excluir");
+        hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
+        hboxContainer.setSpacing(20);
+        Insets padding = new Insets(10, 10, 10, 10);
+        hboxContainer.setPadding(padding);
+        hboxContainer.prefHeight(80);
+        hboxContainer.getStyleClass().add("table_row");
+        
+        tabela.getChildren().add(hboxContainer);
         }
-
-        tabela.setContent(vboxContainer);
-
-
-        tabela.setStyle("-fx-background-color: lightgray;");
-
     }
 
-    // Simulação da recuperação de dados do banco de dados
     private List<Object[]> recuperarDadosDoBanco() {
-        PizzaBo pizzabo = new PizzaBo();
-        List<Pizza> vo = pizzabo.listar();
+        TipoPizzaBo pizzabo = new TipoPizzaBo();
+        List<TipoPizza> vo = pizzabo.listar();
 
         // Crie uma lista para armazenar todas as informações das pizzas
         List<Object[]> dados = new ArrayList<>();
 
         // Itere sobre os objetos Pizza e obtenha seus tamanhos
-        for (Pizza pizza : vo) {
-            Object[] pizzaInfo = new Object[5]; // Criar um array de objetos para armazenar as informações
+        for (TipoPizza pizza : vo) {
+            Object[] pizzaInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
             pizzaInfo[0] = pizza.getId();
-            pizzaInfo[1] = pizza.getTipo();
-            pizzaInfo[2] = pizza.getAdicionais();
-            pizzaInfo[3] = pizza.getValor();
-            pizzaInfo[4] = pizza.getTamanho();
+            pizzaInfo[1] = pizza.getNomeSabor();
+            float valores[] = pizza.getValores();
+            pizzaInfo[2] = valores[0];
+            pizzaInfo[3] = valores[1];
+            pizzaInfo[4] = valores[2];
+            //pizzaInfo[5] = pizza.getIngredientes();
 
-            dados.add(pizzaInfo); // Adicionar as informações ao array de dados
+
+            dados.add(pizzaInfo);
         }
 
         return dados;
@@ -142,12 +142,10 @@ public class PizzasController implements  Initializable{
 
     @FXML
     void delete(ActionEvent event) {
-
     }
 
     @FXML
     void edit(ActionEvent event) {
-
     }
 
     @FXML
@@ -184,6 +182,5 @@ public class PizzasController implements  Initializable{
     void telaRelatorios(ActionEvent event) {
 
     }
-
 
 }

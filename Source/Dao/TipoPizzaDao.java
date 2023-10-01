@@ -133,8 +133,10 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
                 valores[2] = rs.getFloat("valor_g");
 
                 tipoPizza.setId(rs.getLong("id"));
-                tipoPizza.setNomeSabor(rs.getString("nome_sabor"));
+                tipoPizza.setNomeSabor(rs.getString("nomeSabor"));
                 tipoPizza.setValores(valores);
+                
+                //tipoPizza.setIngredientes(rs.getString("id_produtos"));
                 
                 tiposPizza.add(tipoPizza);
             }
