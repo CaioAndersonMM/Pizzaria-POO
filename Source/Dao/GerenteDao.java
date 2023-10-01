@@ -35,15 +35,12 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
 
     @Override
     public Gerente buscar(Gerente entity) {
-        String sql = "SELECT * FROM tb_gerentes as e WHERE e.id = ?";
+        String sql = "SELECT * FROM tb_gerentes WHERE id = ?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
-
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
-
             if (rs.next()) {
                 Gerente gerente = new Gerente();
                 return gerente;
@@ -54,10 +51,37 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
         } finally {
             closeConnection();
         }
-
         return null;
     }
 
+    public ResultSet buscarPorCPF(Gerente vo){
+		String sql = "select * from tb_gerentes where cpf = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getCPF());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+    public ResultSet buscarPorNome(Gerente vo){
+		String sql = "select * from tb_gerentes where name = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getNome());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
     @Override
     public void deletar(Gerente entity) {
@@ -67,7 +91,6 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.execute();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -91,7 +114,6 @@ public class GerenteDao extends BaseDaoImp<Gerente> {
             // stmt.setLong(4, entity.getId());
 
             stmt.execute();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

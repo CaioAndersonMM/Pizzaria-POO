@@ -1,0 +1,52 @@
+CREATE TABLE tb_clientes (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60) not null,
+    cpf VARCHAR(11) UNIQUE NOT NULL CHECK (LENGTH(cpf) = 11),
+    endereco VARCHAR(60)
+);
+
+CREATE TABLE tb_gerentes (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60),
+    cpf VARCHAR(11) UNIQUE NOT NULL CHECK (LENGTH(cpf) = 11),
+    senha VARCHAR(50) NOT NULL  CHECK (LENGTH(cpf) > 3)
+);
+
+CREATE TABLE tb_funcionarios (
+    id BIGSERIAL PRIMARY KEY,
+    nome VARCHAR(60),
+    cpf VARCHAR(11) UNIQUE NOT NULL CHECK (LENGTH(cpf) = 11),
+    senha VARCHAR(50) NOT NULL  CHECK (LENGTH(cpf) > 3)
+);
+
+INSERT INTO tb_gerentes (nome, cpf, senha)
+VALUES ('caio', '12345678910', '1234');
+
+
+CREATE TABLE tb_tipo_pizzas (
+    id SERIAL PRIMARY KEY,
+    nomeSabor VARCHAR(50) NOT NULL,
+	valor_p float,
+	valor_m float,
+	valor_g float
+);
+
+INSERT INTO tb_tipo_pizzas (nomeSabor, valor_p, valor_m, valor_g)
+VALUES
+    ('Margherita', 10.99, 12.99, 14.99),
+    ('Pepperoni', 11.99, 13.99, 15.99),
+    ('Calabresa', 12.99, 14.99, 16.99);
+
+
+CREATE TABLE tb_pizzas (
+    id SERIAL PRIMARY KEY,
+    tipo_id INT REFERENCES tb_tipo_pizzas(id), -- Referência à tabela de tipos de pizza
+    valor NUMERIC(10, 2),
+    tamanho CHAR(1),
+    nome VARCHAR(30) NOT NULL
+);
+
+INSERT INTO tb_pizzas (tipo_id, valor, tamanho, nome)
+VALUES
+    (1, 12.99, 'M', 'Pizza de Pepperoni'),
+    (2, 15.99, 'G', 'Pizza de Calabresa');

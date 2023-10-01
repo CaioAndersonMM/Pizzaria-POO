@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="672.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="bot" fitHeight="504.0" fitWidth="682.0" layoutX="-3.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/background.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.3" contrast="-0.3" />
+               </effect>
+            </ImageView>
+            <Label fx:id="erroautenticacao" layoutX="153.0" layoutY="104.0" prefHeight="63.0" prefWidth="127.0" text="Label" textFill="RED" underline="true" visible="false" />
+            <VBox layoutX="160.0" layoutY="91.0" prefHeight="373.0" prefWidth="483.0">
+               <children>
+                  <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label text="Nome" textFill="WHITE">
+                           <padding>
+                              <Insets right="100.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="CPF" textFill="WHITE">
+                           <padding>
+                              <Insets right="80.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Endereço" textFill="WHITE">
+                           <padding>
+                              <Insets right="60.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </ToolBar>
+                  <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="457.0" style="-fx-background-color: grey; -fx-background-radius: 6;">
+                     <items>
+                        <Label text="Nome" textFill="WHITE">
+                           <padding>
+                              <Insets right="100.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="CPF" textFill="WHITE">
+                           <padding>
+                              <Insets right="80.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Endereço" textFill="WHITE">
+                           <padding>
+                              <Insets right="60.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" text="Editar" />
+                        <Button layoutX="125.0" layoutY="12.0" mnemonicParsing="false" text="Excluir" />
+                     </items>
+                  </ToolBar>
+               </children>
+            </VBox>
+            <MenuButton depthTest="ENABLE" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Menu">
+              <items>
+                <MenuItem mnemonicParsing="false" text="TELA INICIAL" />
+                <MenuItem mnemonicParsing="false" text="CLIENTES" />
+                  <MenuItem mnemonicParsing="false" text="PEDIDOS" />
+                  <MenuItem mnemonicParsing="false" text="ESTOQUE" />
+                  <MenuItem mnemonicParsing="false" text="PIZZAS" />
+                  <MenuItem mnemonicParsing="false" text="FUNCIONÁRIOS" />
+                  <MenuItem mnemonicParsing="false" text="RELATÓRIOS" />
+              </items>
+            </MenuButton>
+            <ImageView fitHeight="684.0" fitWidth="179.0" layoutX="-10.0" layoutY="-76.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Variant3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Arrow---Left-Circle.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="13.0" layoutY="47.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Tela inicial">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="78.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Clientes">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="109.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Pedidos">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="140.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Estoque">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="169.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Pizzas">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="200.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Funcionários">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="13.0" layoutY="231.0" mnemonicParsing="false" opacity="0.6" prefHeight="25.0" prefWidth="130.0" text="Relatórios">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="476.0" layoutX="163.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/BackgroundHeader.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="172.0" layoutY="47.0" prefHeight="23.0" prefWidth="70.0" text="Buscar:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="233.0" layoutY="47.0" prefHeight="26.0" prefWidth="193.0" promptText="Nome, CPF" />
+            <Button layoutX="512.0" layoutY="47.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" text="Adicionar Clientes" />
+            <Label layoutX="330.0" layoutY="7.0" prefHeight="35.0" prefWidth="278.0" text="CLIENTES" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

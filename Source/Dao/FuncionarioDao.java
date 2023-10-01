@@ -12,7 +12,6 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
     public Long inserir(Funcionario entity) {
-
         String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha) VALUES (?, ?, ?)";
         connection = getConnection();
         try {
@@ -90,7 +89,6 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             if (rs.next()) {
                 Funcionario funcionario = new Funcionario();
@@ -104,6 +102,36 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
         }
         return entity;
     }
+
+    public ResultSet buscarPorCPF(Funcionario vo){
+		String sql = "select * from tb_funcionarios where cpf = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getCPF());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+    public ResultSet buscarPorNome(Funcionario vo){
+		String sql = "select * from tb_funcionarios where name = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getNome());
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 
     @Override
     public List<Funcionario> listar() {
@@ -124,9 +152,6 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
                 funcionarios.add(funcionario);
             }
-
-            rs.close();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -134,7 +159,6 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
         } finally {
             closeConnection();
         }
-
         return funcionarios;
     }
 }

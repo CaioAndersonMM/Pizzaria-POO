@@ -1,0 +1,79 @@
+.root {
+  -fx-background-color: #212121;
+}
+
+#message {
+  -fx-font-size: 24;
+  -fx-font-weight: 800;
+}
+
+Label {
+  -fx-text-fill: #e1e1e1;
+}
+
+Button {
+  -fx-background-color: #dcdcdc;
+  -fx-background-radius: 6px;
+  -fx-border-radius: 6px;
+  -fx-font-size: 18;
+  -fx-font-weight: 800;
+  -fx-padding: 12px 20px;
+}
+
+Button:hover {
+  -fx-background-color: #ccc;
+}
+
+TextField {
+  -fx-border-radius: 6px;
+  -fx-font-size: 16;
+  -fx-text-fill: white;
+  -fx-background-color: #555;
+  -fx-background-radius: 6px;
+}
+
+
+.confirmation_button {
+  -fx-background-color: #3AD95D;
+  -fx-text-fill: white;
+}
+
+.confirmation_button:hover {
+  /*4BB948*/
+  
+  -fx-background-color: #6EEE6A;
+}
+
+.cancellation_button {
+  -fx-background-color: #696969;
+  -fx-text-fill: white;
+}
+
+.cancellation_button:hover {
+  -fx-background-color: #949494;
+}
+
+
+
+
+TableView {
+  -fx-background-color: #555;
+  -fx-background-radius: 6px;
+}
+
+TableView .column-header-background {
+  -fx-background-color: transparent;
+}
+
+TableView .column-header-background .filler, TableView .column-header-background .table-column {
+  -fx-background-color: #888;
+}
+
+TableView .column-header-background .filler {
+-fx-background-radius: 0px 6px 0px 0px;
+}
+
+TableView .column-header-background .table-column {
+-fx-background-radius: 6px 0px 0px 0px;
+}
+
