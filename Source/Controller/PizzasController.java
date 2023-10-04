@@ -85,6 +85,12 @@ public class PizzasController implements  Initializable{
         HBox.setHgrow(separator3, Priority.ALWAYS);
         Button button1 = new Button("Editar");
         Button button2 = new Button("Excluir");
+        button1.setOnAction((ActionEvent event) -> {
+            edit(event, (Long) dado[0]);
+        });
+        button2.setOnAction((ActionEvent event) -> {
+            delete(event, (Long) dado[0]);
+        });
         hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
         hboxContainer.setSpacing(20);
         Insets padding = new Insets(10, 10, 10, 10);
@@ -113,8 +119,6 @@ public class PizzasController implements  Initializable{
             pizzaInfo[3] = valores[1];
             pizzaInfo[4] = valores[2];
             //pizzaInfo[5] = pizza.getIngredientes();
-
-
             dados.add(pizzaInfo);
         }
 
@@ -141,11 +145,13 @@ public class PizzasController implements  Initializable{
     }
 
     @FXML
-    void delete(ActionEvent event) {
+    void delete(ActionEvent event, Long id) {
+        System.out.println("ID que será apagado é: "+ id);
     }
 
     @FXML
-    void edit(ActionEvent event) {
+    void edit(ActionEvent event, Long id) {
+         System.out.println("ID que será editado é: "+ id);
     }
 
     @FXML
