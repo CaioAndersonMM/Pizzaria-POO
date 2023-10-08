@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Model.BO.PizzaBo;
 import Model.BO.TipoPizzaBo;
 import Model.Entity.TipoPizza;
 import View.App;
@@ -86,7 +87,12 @@ public class PizzasController implements  Initializable{
         Button button1 = new Button("Editar");
         Button button2 = new Button("Excluir");
         button1.setOnAction((ActionEvent event) -> {
-            edit(event, (Long) dado[0]);
+            try {
+                edit(event, (Long) dado[0]);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         button2.setOnAction((ActionEvent event) -> {
             delete(event, (Long) dado[0]);
@@ -115,9 +121,9 @@ public class PizzasController implements  Initializable{
             pizzaInfo[0] = pizza.getId();
             pizzaInfo[1] = pizza.getNomeSabor();
             float valores[] = pizza.getValores();
-            pizzaInfo[2] = valores[0];
-            pizzaInfo[3] = valores[1];
-            pizzaInfo[4] = valores[2];
+            pizzaInfo[2] = valores[2]; //g
+            pizzaInfo[3] = valores[1]; //m
+            pizzaInfo[4] = valores[0]; //p
             //pizzaInfo[5] = pizza.getIngredientes();
             dados.add(pizzaInfo);
         }
@@ -150,8 +156,17 @@ public class PizzasController implements  Initializable{
     }
 
     @FXML
-    void edit(ActionEvent event, Long id) {
-         System.out.println("ID que será editado é: "+ id);
+    void edit(ActionEvent event, Long id) throws IOException  {
+        //System.out.println("ID que será editado é: "+ id);
+        EditarPizzaController.id = id;
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/editar_pizza.fxml"));
+        Scene scene = new Scene(root);
+
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
     }
 
     @FXML

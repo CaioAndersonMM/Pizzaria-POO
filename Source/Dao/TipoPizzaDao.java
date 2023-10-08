@@ -11,7 +11,7 @@ import Model.Entity.TipoPizza;
 public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
     @Override
     public Long inserir(TipoPizza entity) {
-        String sql = "INSERT INTO tb_tipo_pizzas (nome_sabor, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_tipo_pizzas (nomeSabor, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -23,7 +23,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.close();
 
             // Buscar tipo de pizza criado e retornar id
-            sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.nome_sabor=?";
+            sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.nomeSabor=?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeSabor());
             ResultSet rs = stmt.executeQuery();
@@ -59,7 +59,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
     @Override
     public void alterar(TipoPizza entity) {
         String sql = "UPDATE tb_tipo_pizzas\n" +
-                "SET nome_sabor = ?, valor_p = ?, valor_m = ?, valor_g = ?\n" +
+                "SET nomeSabor =?, valor_p =?, valor_m =?, valor_g =?\n" +
                 "WHERE id = ?;";
         connection = getConnection();
         try {
