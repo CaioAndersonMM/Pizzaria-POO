@@ -88,14 +88,19 @@ public class PizzasController implements  Initializable{
         Button button2 = new Button("Excluir");
         button1.setOnAction((ActionEvent event) -> {
             try {
-                edit(event, (Long) dado[0]);
+                edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
         button2.setOnAction((ActionEvent event) -> {
-            delete(event, (Long) dado[0]);
+            try {
+                delete(event, (Long) dado[0]);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
         hboxContainer.setSpacing(20);
@@ -140,28 +145,37 @@ public class PizzasController implements  Initializable{
         // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
         dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
-        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
         dialogStage.setScene(scene);
-
-        // Define um título para a janela de diálogo (opcional)
-        dialogStage.setTitle("Minha Janela de Diálogo");
-
-        // Exibe a janela de diálogo
         dialogStage.showAndWait();
     }
 
     @FXML
-    void delete(ActionEvent event, Long id) {
+    void delete(ActionEvent event, Long id) throws IOException {
         System.out.println("ID que será apagado é: "+ id);
+        ExcluirCadastroController.tipopizza_id = id;
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
+        Scene scene = new Scene(root);
+
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
     }
 
     @FXML
-    void edit(ActionEvent event, Long id) throws IOException  {
-        //System.out.println("ID que será editado é: "+ id);
-        EditarPizzaController.id = id;
-        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/editar_pizza.fxml"));
-        Scene scene = new Scene(root);
+    void edit(ActionEvent event, Long id, String sabor, String precop, String precom, String precog) throws IOException  {
 
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("VE/dialogs/editar_pizza.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        
+        EditarPizzaController editarPizzaController = loader.getController();
+
+        editarPizzaController.setValoresEdicao(sabor, precop, precom, precog);
+        EditarPizzaController.id = id;
+
+    
         // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
         dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal

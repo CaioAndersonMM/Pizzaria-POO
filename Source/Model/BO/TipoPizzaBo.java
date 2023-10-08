@@ -18,4 +18,16 @@ public class TipoPizzaBo {
     pizza = dao.buscar(pizza);
     dao.alterar(pizzanova);
   }
+
+  public void deletar(Long id){
+    TipoPizza pizza = new TipoPizza();
+    pizza.setId(id);
+    pizza = dao.buscar(pizza);
+    dao.deletar(pizza);
+  }
+
+   public void criar(TipoPizza pizza){
+    dao.inserir(pizza);
+  }
+
 }
