@@ -1,6 +1,6 @@
 package Controller;
-import javafx.scene.Node; // Importe a classe Node do pacote correto
 
+import javafx.scene.Node;
 import Model.BO.TipoPizzaBo;
 import Model.Entity.TipoPizza;
 import View.App;
@@ -34,14 +34,23 @@ public class EditarPizzaController {
 
     public static Long id;
 
-    @FXML
-    void cancelar(ActionEvent event) {
+    
+    public void setValoresEdicao(String s_sabor, String s_precop, String s_precom, String s_precog) {
+        sabor.setText(s_sabor);
+        precop.setText(s_precop);
+        precom.setText(s_precom);
+        precog.setText(s_precog);
+    }
 
+    @FXML
+    void cancel(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void editar(ActionEvent event) throws Exception {
-        //System.out.println(id);
+
         TipoPizza tipopizza = new TipoPizza();
         tipopizza.setNomeSabor(sabor.getText());
         float valores[] = {
