@@ -1,9 +1,14 @@
 package Controller;
 
+import Model.BO.TipoPizzaBo;
+import Model.Entity.TipoPizza;
+import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class CadastrarPizzaController {
 
@@ -11,31 +16,46 @@ public class CadastrarPizzaController {
     private Button adicionar;
 
     @FXML
-    private Button cancelar;
+    private Button cancel;
 
     @FXML
-    private TextField ingredientes;
+    private TextField precog;
 
     @FXML
-    private TextField preco_G;
+    private TextField precom;
 
     @FXML
-    private TextField preco_M;
-
-    @FXML
-    private TextField preco_P;
+    private TextField precop;
 
     @FXML
     private TextField sabor;
 
-    @FXML
-    void adicionar(ActionEvent event) {
 
+    @FXML
+    void adicionar(ActionEvent event) throws Exception {
+        TipoPizza tipopizza = new TipoPizza();
+        tipopizza.setNomeSabor(sabor.getText());
+        float valores[] = {
+            Float.parseFloat(precog.getText()), 
+            Float.parseFloat(precom.getText()), 
+            Float.parseFloat(precop.getText())
+        };
+
+        tipopizza.setValores(valores);
+
+        TipoPizzaBo bo = new TipoPizzaBo();
+        bo.criar(tipopizza);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        App.telaPizzas();
     }
 
     @FXML
-    void cancelar(ActionEvent event) {
-
+    void cancel(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
 }
