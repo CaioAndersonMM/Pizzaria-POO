@@ -1,14 +1,29 @@
 package Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
+import Model.BO.ClienteBo;
+import Model.BO.TipoPizzaBo;
+import Model.Entity.Cliente;
+import Model.Entity.TipoPizza;
 import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -45,6 +60,74 @@ public class ClientesController {
     private Button sair;
 
     @FXML
+    private VBox tabela;
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        
+    List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
+
+    for (Object[] dado : dadosDoBanco) {
+        HBox hboxContainer = new HBox();
+
+        Separator separator = new Separator();
+        Separator separator2 = new Separator();
+        Separator separator3 = new Separator();
+        Separator separator4 = new Separator();
+        
+        Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0])); //id
+        separator.setVisible(false);
+        HBox.setHgrow(separator, Priority.ALWAYS);
+        Label nomelabel = new Label(String.valueOf(dado[1])); //nome
+        separator2.setVisible(false);
+        HBox.setHgrow(separator2, Priority.ALWAYS);
+        Label cpflabel = new Label(String.valueOf(dado[2])); //cpf
+        separator3.setVisible(false);
+        HBox.setHgrow(separator3, Priority.ALWAYS);
+        Label enderecolabel = new Label(String.valueOf(dado[3])); //endereco
+        separator4.setVisible(false);
+        HBox.setHgrow(separator4, Priority.ALWAYS);
+
+        Button button1 = new Button("Editar");
+        Button button2 = new Button("Excluir");
+        button1.setOnAction((ActionEvent event) -> {
+            edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
+        });
+        button2.setOnAction((ActionEvent event) -> {
+            delete(event, (Long) dado[0]);
+        });
+
+        hboxContainer.getChildren().addAll(idLabel, separator, nomelabel, separator2, cpflabel, separator3, enderecolabel, separator4, button1, button2);
+        hboxContainer.setSpacing(20);
+        Insets padding = new Insets(10, 10, 10, 10);
+        hboxContainer.setPadding(padding);
+        hboxContainer.prefHeight(80);
+        hboxContainer.getStyleClass().add("table_row");
+        
+        tabela.getChildren().add(hboxContainer);
+        }
+    }
+
+     private List<Object[]> recuperarDadosDoBanco() {
+        ClienteBo clientebo = new ClienteBo();
+        List<Cliente> vo = clientebo.listar();
+
+        List<Object[]> dados = new ArrayList<>();
+
+        // Itere sobre os objetos Pizza e obtenha seus tamanhos
+        for (Cliente cliente : vo) {
+            Object[] clienteinfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+            clienteinfo[0] = cliente.getId();
+            clienteinfo[1] = cliente.getNome();
+            clienteinfo[2] = cliente.getCPF();
+            clienteinfo[3] = cliente.getEndereco();
+            dados.add(clienteinfo);
+        }
+
+        return dados;
+    }
+
+
+    @FXML
     void adicionar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/adicionar_cliente.fxml"));
         Scene scene = new Scene(root);
@@ -60,12 +143,12 @@ public class ClientesController {
     }
 
     @FXML
-    void delete(ActionEvent event) {
+    void delete(ActionEvent event, Long id) {
 
     }
 
     @FXML
-    void edit(ActionEvent event) {
+    void edit(ActionEvent event, Long id, String nome, String cpf, String endereco) {
 
     }
 
