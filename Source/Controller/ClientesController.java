@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Model.BO.ClienteBo;
-import Model.BO.TipoPizzaBo;
 import Model.Entity.Cliente;
-import Model.Entity.TipoPizza;
 import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +25,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ClientesController {
+import javafx.fxml.Initializable;
+
+
+public class ClientesController implements Initializable {
 
     @FXML
     private Button adicionar;
@@ -63,7 +64,6 @@ public class ClientesController {
     private VBox tabela;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
     List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
     for (Object[] dado : dadosDoBanco) {
@@ -78,6 +78,7 @@ public class ClientesController {
         separator.setVisible(false);
         HBox.setHgrow(separator, Priority.ALWAYS);
         Label nomelabel = new Label(String.valueOf(dado[1])); //nome
+        System.out.println(String.valueOf(dado[1]));
         separator2.setVisible(false);
         HBox.setHgrow(separator2, Priority.ALWAYS);
         Label cpflabel = new Label(String.valueOf(dado[2])); //cpf
@@ -90,10 +91,20 @@ public class ClientesController {
         Button button1 = new Button("Editar");
         Button button2 = new Button("Excluir");
         button1.setOnAction((ActionEvent event) -> {
-            edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
+            try {
+                edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
         button2.setOnAction((ActionEvent event) -> {
-            delete(event, (Long) dado[0]);
+            try {
+                delete(event, (Long) dado[0]);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         });
 
         hboxContainer.getChildren().addAll(idLabel, separator, nomelabel, separator2, cpflabel, separator3, enderecolabel, separator4, button1, button2);
@@ -143,12 +154,35 @@ public class ClientesController {
     }
 
     @FXML
-    void delete(ActionEvent event, Long id) {
+    void delete(ActionEvent event, Long id) throws IOException {
+        ExcluirCadastroController.cliente_id = id;
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
+        Scene scene = new Scene(root);
 
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
     }
 
     @FXML
-    void edit(ActionEvent event, Long id, String nome, String cpf, String endereco) {
+    void edit(ActionEvent event, Long id, String nome, String cpf, String endereco) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("VE/dialogs/editar_cliente.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        
+        EditarClienteController editarCliente = loader.getController();
+
+        editarCliente.id = id;
+        editarCliente.setValoresEdicao(nome, cpf, endereco);
+
+    
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
 
     }
 
