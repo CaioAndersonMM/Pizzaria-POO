@@ -5,6 +5,9 @@ CREATE TABLE tb_clientes (
     endereco VARCHAR(60)
 );
 
+INSERT INTO tb_clientes (nome, cpf, endereco)
+VALUES ('caio', '12345678910', 'rua da ufersa');
+
 CREATE TABLE tb_gerentes (
     id BIGSERIAL PRIMARY KEY,
     nome VARCHAR(60),

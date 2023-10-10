@@ -26,7 +26,7 @@ public class TipoPizzaBo {
     dao.deletar(pizza);
   }
 
-   public void criar(TipoPizza pizza){
+  public void criar(TipoPizza pizza){
     dao.inserir(pizza);
   }
 
