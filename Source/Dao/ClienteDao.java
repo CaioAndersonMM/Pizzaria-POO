@@ -91,10 +91,15 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             if (rs.next()) {
                 Cliente cliente = new Cliente();
+
+                cliente.setId(rs.getLong("id"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNome(rs.getString("nome"));
+
                 return cliente;
             }
 
@@ -115,11 +120,9 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
-
                 try {
                     cliente.setId(rs.getLong("id"));
                     cliente.setCPF(rs.getString("cpf"));
