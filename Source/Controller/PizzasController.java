@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Model.BO.PizzaBo;
 import Model.BO.TipoPizzaBo;
 import Model.Entity.TipoPizza;
 import View.App;

@@ -78,7 +78,6 @@ public class ClientesController implements Initializable {
         separator.setVisible(false);
         HBox.setHgrow(separator, Priority.ALWAYS);
         Label nomelabel = new Label(String.valueOf(dado[1])); //nome
-        System.out.println(String.valueOf(dado[1]));
         separator2.setVisible(false);
         HBox.setHgrow(separator2, Priority.ALWAYS);
         Label cpflabel = new Label(String.valueOf(dado[2])); //cpf

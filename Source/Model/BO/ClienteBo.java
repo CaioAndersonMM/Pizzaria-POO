@@ -4,7 +4,6 @@ import java.util.List;
 
 import Dao.ClienteDao;
 import Model.Entity.Cliente;
-import Model.Entity.TipoPizza;
 
 public class ClienteBo {
 static private ClienteDao dao = new ClienteDao();
