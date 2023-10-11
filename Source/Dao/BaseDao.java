@@ -9,7 +9,7 @@ public interface BaseDao<E> {
 
     public void alterar(E entity);
 
-    public E buscar(E entity);
+    public List<E> buscar(E entity);
 
     public List<E> listar();
 }
