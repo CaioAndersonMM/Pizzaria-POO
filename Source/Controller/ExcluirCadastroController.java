@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.BO.ClienteBo;
+import Model.BO.FuncionarioBo;
 import Model.BO.TipoPizzaBo;
 import View.App;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ public class ExcluirCadastroController {
 
     public static Long tipopizza_id;
     public static Long cliente_id;
+    public static Long funcionario_id;
 
     @FXML
     void cancelar(ActionEvent event) {
@@ -41,10 +43,25 @@ public class ExcluirCadastroController {
 
          if(cliente_id != null){
             ClienteBo bo = new ClienteBo();
+            System.out.println("Indo Excluir ID: "+ cliente_id);
             bo.deletar(cliente_id);
+
+            cliente_id = null;
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
             App.telaClientes();
+        }
+        if (funcionario_id != null) {
+            System.out.println("ENTROU AQUI");
+            FuncionarioBo bo = new FuncionarioBo();
+            bo.deletar(funcionario_id);
+
+            funcionario_id = null;
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            App.telaFuncionarios();
         }
 
     }

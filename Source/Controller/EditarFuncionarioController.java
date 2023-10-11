@@ -10,7 +10,7 @@ public class EditarFuncionarioController {
     private Button adicionar;
 
     @FXML
-    private Button cancelar;
+    private Button salvar;
 
     @FXML
     private TextField confirm_senha;
@@ -22,11 +22,21 @@ public class EditarFuncionarioController {
     private TextField senha;
 
     @FXML
-    private TextField usuario;
+    private TextField cpf;
+
+    public Long id;
+
+    public void setValoresEdicao(Long id, String nomefuncionario, String cpffuncionario, String senhafuncionario) {
+        this.id = id;
+        nome.setText(nomefuncionario);
+        senha.setText(senhafuncionario);
+        confirm_senha.setText(senhafuncionario);
+        cpf.setText(cpffuncionario);
+    }
 
     @FXML
-    void adicionar(ActionEvent event) {
-
+    void salvar(ActionEvent event) {
+        
     }
 
     @FXML

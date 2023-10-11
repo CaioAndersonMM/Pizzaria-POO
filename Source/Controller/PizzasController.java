@@ -62,54 +62,53 @@ public class PizzasController implements  Initializable{
     private VBox tabela;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
-    List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
+        List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
-    for (Object[] dado : dadosDoBanco) {
-        HBox hboxContainer = new HBox();
+        for (Object[] dado : dadosDoBanco) {
+            HBox hboxContainer = new HBox();
 
-        Separator separator = new Separator();
-        Separator separator2 = new Separator();
-        Separator separator3 = new Separator();
-        
-        Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0]));
-        separator.setVisible(false);
-        HBox.setHgrow(separator, Priority.ALWAYS);
-        Label tipoLabel = new Label(String.valueOf(dado[1]));
-        separator2.setVisible(false);
-        HBox.setHgrow(separator2, Priority.ALWAYS);
-        Label valorpLabel = new Label(String.valueOf(dado[2]));
-        Label valormLabel = new Label(String.valueOf(dado[3]));
-        Label valorgLabel = new Label(String.valueOf(dado[4]));
-        separator3.setVisible(false);
-        HBox.setHgrow(separator3, Priority.ALWAYS);
-        Button button1 = new Button("Editar");
-        Button button2 = new Button("Excluir");
-        button1.setOnAction((ActionEvent event) -> {
-            try {
-                edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            Separator separator = new Separator();
+            Separator separator2 = new Separator();
+            Separator separator3 = new Separator();
+            
+            Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0]));
+            separator.setVisible(false);
+            HBox.setHgrow(separator, Priority.ALWAYS);
+            Label tipoLabel = new Label(String.valueOf(dado[1]));
+            separator2.setVisible(false);
+            HBox.setHgrow(separator2, Priority.ALWAYS);
+            Label valorpLabel = new Label(String.valueOf(dado[2]));
+            Label valormLabel = new Label(String.valueOf(dado[3]));
+            Label valorgLabel = new Label(String.valueOf(dado[4]));
+            separator3.setVisible(false);
+            HBox.setHgrow(separator3, Priority.ALWAYS);
+            Button button1 = new Button("Editar");
+            Button button2 = new Button("Excluir");
+            button1.setOnAction((ActionEvent event) -> {
+                try {
+                    edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            });
+            button2.setOnAction((ActionEvent event) -> {
+                try {
+                    delete(event, (Long) dado[0]);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            });
+            hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
+            hboxContainer.setSpacing(20);
+            Insets padding = new Insets(10, 10, 10, 10);
+            hboxContainer.setPadding(padding);
+            hboxContainer.prefHeight(80);
+            hboxContainer.getStyleClass().add("table_row");
+            
+            tabela.getChildren().add(hboxContainer);
             }
-        });
-        button2.setOnAction((ActionEvent event) -> {
-            try {
-                delete(event, (Long) dado[0]);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        });
-        hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
-        hboxContainer.setSpacing(20);
-        Insets padding = new Insets(10, 10, 10, 10);
-        hboxContainer.setPadding(padding);
-        hboxContainer.prefHeight(80);
-        hboxContainer.getStyleClass().add("table_row");
-        
-        tabela.getChildren().add(hboxContainer);
-        }
     }
 
     private List<Object[]> recuperarDadosDoBanco() {
@@ -164,7 +163,6 @@ public class PizzasController implements  Initializable{
 
     @FXML
     void edit(ActionEvent event, Long id, String sabor, String precop, String precom, String precog) throws IOException  {
-
         FXMLLoader loader = new FXMLLoader(App.class.getResource("VE/dialogs/editar_pizza.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
