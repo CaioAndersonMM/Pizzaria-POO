@@ -23,8 +23,7 @@ Button {
 Button:hover {
   -fx-background-color: #ccc;
 }
-
-TextField {
+TextField, PasswordField{
   -fx-border-radius: 6px;
   -fx-font-size: 16;
   -fx-text-fill: white;

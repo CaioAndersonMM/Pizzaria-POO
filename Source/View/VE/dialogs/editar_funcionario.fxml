@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="620.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditarFuncionarioController">
     <children>
-        <Button fx:id="adicionar" layoutX="447.0" layoutY="418.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="51.0" prefWidth="123.0" styleClass="confirmation_button" text="Adicionar" />
+        <Button fx:id="salvar" layoutX="447.0" layoutY="418.0" mnemonicParsing="false" onAction="#salvar" prefHeight="51.0" prefWidth="123.0" styleClass="confirmation_button" text="Salvar" />
         <Button fx:id="cancelar" layoutX="53.0" layoutY="418.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="51.0" prefWidth="123.0" styleClass="cancellation_button" text="Cancelar" />
         <Label layoutX="265.0" layoutY="41.0" text="Editar">
             <font>
@@ -21,7 +21,7 @@
             <Font name="System Bold" size="33.0" />
          </font>
       </Label>
-      <TextField fx:id="usuario" layoutX="53.0" layoutY="217.0" prefHeight="35.0" prefWidth="517.0" promptText="usuário" />
+      <TextField fx:id="cpf" layoutX="53.0" layoutY="217.0" prefHeight="35.0" prefWidth="517.0" promptText="CPF" />
       <TextField fx:id="senha" layoutX="53.0" layoutY="273.0" prefHeight="35.0" prefWidth="517.0" promptText="*******" />
       <TextField fx:id="confirm_senha" layoutX="53.0" layoutY="328.0" prefHeight="35.0" prefWidth="517.0" promptText="*******" />
     </children>
