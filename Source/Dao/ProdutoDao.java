@@ -17,7 +17,7 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeProduto());
-            stmt.setInt(2, entity.getQuatidadeProduto());
+            stmt.setInt(2, entity.getQuantidadeProduto());
             stmt.setFloat(3, entity.getValor());
             stmt.setLong(4, entity.getId());
             stmt.execute();
@@ -79,7 +79,7 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, entity.getNomeProduto());
-            ps.setInt(2, entity.getQuatidadeProduto());
+            ps.setInt(2, entity.getQuantidadeProduto());
             ps.setFloat(3, entity.getValor());
             ps.execute();
             ps.close();

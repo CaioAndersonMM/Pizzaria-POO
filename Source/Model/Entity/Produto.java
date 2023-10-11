@@ -3,13 +3,19 @@ package Model.Entity;
 public class Produto {
     private long id;
     private String nomeProduto;
+    private String nomeFabricante;
     private int quatidadeProduto;
     private float valor;
+    private boolean isAdicional = false;
 
     public Produto(String nomeProduto, int quatidadeProduto, float valor) {
         setNomeProduto(nomeProduto);
         setQuantidadeProduto(quatidadeProduto);
         setValor(valor);
+    }
+
+    public Produto() {
+
     }
 
     public String getNomeProduto() {
@@ -23,7 +29,7 @@ public class Produto {
         this.nomeProduto = nome;
     }
 
-    public int getQuatidadeProduto() {
+    public int getQuantidadeProduto() {
         return quatidadeProduto;
     }
 
@@ -47,5 +53,25 @@ public class Produto {
 
     public long getId() {
         return this.id;
+    }
+
+    public String getNomeFabricante() {
+        return nomeFabricante;
+    }
+
+    public void setNomeFabricante(String nomeFabricante) {
+        if (nomeFabricante == null || nomeFabricante.isEmpty()) {
+            throw new IllegalArgumentException("O fabricante não pode ser nulo ou uma string vazia.");
+        }
+       this.nomeFabricante = nomeFabricante;
+
+    }
+
+    public boolean isAdicional() {
+        return isAdicional;
+    }
+
+    public void setAdicional(boolean adicional) {
+        isAdicional = adicional;
     }
 }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.BO.ClienteBo;
 import Model.BO.ProdutoBo;
 import Model.Entity.Produto;
 import View.App;
@@ -11,10 +12,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AdicionarProdutoController {
+public class EditarProdutoController {
 
     @FXML
-    private Button adicionar;
+    private Button Salvar;
 
     @FXML
     private CheckBox booladicional;
@@ -33,42 +34,59 @@ public class AdicionarProdutoController {
 
     @FXML
     private TextField valor;
+    private Object produto;
+
+    public void initialize(Produto produto) {
+
+        nome.setText(produto.getNomeProduto());
+        fabricante.setText(produto.getNomeFabricante());
+        quantidade.setText(Integer.toString(produto.getQuantidadeProduto()));
+        valor.setText(Float.toString(produto.getValor()));
+        booladicional.setSelected(produto.isAdicional());
+
+    }
 
     @FXML
-    void adicionar(ActionEvent event) throws Exception {
-        Produto prod = new Produto();
-        prod.setNomeProduto(nome.getText());
-        prod.setNomeFabricante(fabricante.getText());
+    void salvar(ActionEvent event) throws Exception {
+
+        Produto produto = new Produto();
+
+        produto.setNomeProduto(nome.getText());
+        produto.setNomeFabricante(fabricante.getText());
 
         try {
             int quantidadeProduto = Integer.parseInt(quantidade.getText());
-            prod.setQuantidadeProduto(quantidadeProduto);
+            produto.setQuantidadeProduto(quantidadeProduto);
         } catch (NumberFormatException e) {
-            // tratar o exception de qtd
+            // Tratar exceção se a quantidade não for um número válido
             throw new IllegalArgumentException("A quantidade deve ser um valor numérico válido.");
         }
+
         try {
             float valorProduto = Float.parseFloat(valor.getText());
-            prod.setValor(valorProduto);
+            produto.setValor(valorProduto);
         } catch (NumberFormatException e) {
-            // tratar exception de valor
+            // Tratar exceção se o valor não for um número válido
             throw new IllegalArgumentException("O valor deve ser um número válido.");
         }
 
+        produto.setAdicional(booladicional.isSelected());
+
         ProdutoBo bo = new ProdutoBo();
-        bo.criar(prod);
+        bo.editar(produto);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
-        // ver qual tela esta ...
         App.telaEstoque();
     }
     @FXML
     void cancelar(ActionEvent event) {
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 }
+
 
 
