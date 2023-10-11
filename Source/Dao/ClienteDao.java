@@ -82,17 +82,49 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
         }
     }
 
-    @Override
-    public Cliente buscar(Cliente entity) {
+    private List<Cliente> buscarPorId(Cliente entity) {
         String sql = "SELECT * FROM tb_clientes WHERE id = ?";
         connection = getConnection();
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getId());
 
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+
+                cliente.setId(rs.getLong("id"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNome(rs.getString("nome"));
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        
+        return clientes;
+    }
+
+    private List<Cliente> buscarPorNome(Cliente entity) {
+        String sql = "SELECT * FROM tb_clientes WHERE nome = ?";
+        connection = getConnection();
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, entity.getNome());
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
                 Cliente cliente = new Cliente();
 
                 cliente.setId(rs.getLong("id"));
@@ -100,7 +132,7 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
                 cliente.setEndereco(rs.getString("endereco"));
                 cliente.setNome(rs.getString("nome"));
 
-                return cliente;
+                clientes.add(cliente);
             }
 
         } catch (SQLException e) {
@@ -109,7 +141,56 @@ public class ClienteDao extends BaseDaoImp<Cliente> {
             closeConnection();
         }
 
-        return null;
+        return clientes;
+    }
+
+    private List<Cliente> buscarPorCPF(Cliente entity) {
+        String sql = "SELECT * FROM tb_clientes WHERE id = ?";
+        connection = getConnection();
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, entity.getCPF());
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+
+                cliente.setId(rs.getLong("id"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNome(rs.getString("nome"));
+
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return clientes;
+    }
+
+    @Override
+    public List<Cliente> buscar(Cliente entity) {
+        if (entity.getId() != null) {
+            return buscarPorId(entity);
+        } 
+        else if (entity.getNome() != null){
+            return buscarPorNome(entity);
+        } 
+        else if (entity.getCPF() != null){
+            return buscarPorCPF(entity);        
+        }
+        else {
+            // throw new Exception("Não é possível buscar por cliente nulo.");
+            System.out.println("ERROR: Não é possível buscar por cliente nulo.");
+            return null;
+        }            
     }
 
     @Override
