@@ -23,7 +23,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
             stmt.execute();
             stmt.close();
 
-            sql = "SELECT * FROM Funcionario as e WHERE e.cpf=?";
+            sql = "SELECT * FROM tb_funcionarios as e WHERE e.cpf=?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             ResultSet rs = stmt.executeQuery();
@@ -92,7 +92,14 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
             if (rs.next()) {
                 Funcionario funcionario = new Funcionario();
+
+                funcionario.setId(rs.getLong("id"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setCPF(rs.getString("cpf"));
+                funcionario.setSenha(rs.getString("senha"));
+                
                 return funcionario;
+
             }
 
         } catch (SQLException e) {
