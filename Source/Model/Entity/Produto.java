@@ -7,7 +7,7 @@ public class Produto {
     private float valor;
     private boolean isAdicional = false;
     
-    public Produto(Long id,String nome, int quatidadeProduto, float valor, boolean isAdicional) {
+    public Produto(Long id,String nome, int quantidade, float valor, boolean isAdicional) {
         setId(id);
         setNome(nome);
         setQuantidade(quantidade);
