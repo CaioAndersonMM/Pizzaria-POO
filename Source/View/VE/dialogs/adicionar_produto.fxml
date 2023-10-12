@@ -16,10 +16,10 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="nome" layoutX="21.0" layoutY="83.0" prefHeight="51.0" prefWidth="558.0" text="Nome do Produto" />
-      <TextField fx:id="fabricante" layoutX="21.0" layoutY="141.0" prefHeight="51.0" prefWidth="558.0" text="Fabricante" />
-      <TextField fx:id="quantidade" layoutX="21.0" layoutY="199.0" prefHeight="51.0" prefWidth="558.0" text="Quantidade" />
-      <TextField fx:id="valor" layoutX="21.0" layoutY="257.0" prefHeight="51.0" prefWidth="558.0" text="Valor" />
+      <TextField fx:id="nome" layoutX="21.0" layoutY="83.0" prefHeight="51.0" prefWidth="558.0" promptText="Nome do Produto" />
+      <TextField fx:id="fabricante" layoutX="21.0" layoutY="141.0" prefHeight="51.0" prefWidth="558.0" promptText="Fabricante" />
+      <TextField fx:id="quantidade" layoutX="21.0" layoutY="199.0" prefHeight="51.0" prefWidth="558.0" promptText="Quantidade" />
+      <TextField fx:id="valor" layoutX="21.0" layoutY="257.0" prefHeight="51.0" prefWidth="558.0" promptText="Valor" />
       <CheckBox fx:id="booladicional" layoutX="21.0" layoutY="326.0" mnemonicParsing="false" text="Adicional" textFill="#f5f2f2">
          <font>
             <Font name="System Bold" size="12.0" />
