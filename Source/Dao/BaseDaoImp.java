@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public abstract class BaseDaoImp<E> implements BaseDao<E> {
-    final static String URL = "jdbc:postgresql://localhost:5432/pizzaria";
-    final static String USER = "thiago";
-    final static String PASS = "minhasenha";
+    final static String URL = "jdbc:postgresql://localhost:5432/Pizzaria";
+    final static String USER = "postgres";
+    final static String PASS = "caiosql";
     static Connection connection = null;
 
     // Abrir Conexão
@@ -44,7 +44,7 @@ public abstract class BaseDaoImp<E> implements BaseDao<E> {
 
     public abstract void alterar(E entity);
 
-    public abstract List<E> buscar(E entity);
+    public abstract E buscar(E entity);
 
     public abstract List<E> listar();
 
