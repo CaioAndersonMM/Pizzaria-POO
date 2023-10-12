@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.BO.ClienteBo;
 import Model.BO.ProdutoBo;
 import Model.Entity.Produto;
 import View.App;
@@ -34,6 +33,8 @@ public class EditarProdutoController {
 
     @FXML
     private TextField valor;
+
+    public static Long id;
     private Object produto;
 
     public void initialize(Produto produto) {
@@ -70,6 +71,8 @@ public class EditarProdutoController {
             throw new IllegalArgumentException("O valor deve ser um número válido.");
         }
 
+        produto.setId(id);
+
         produto.setAdicional(booladicional.isSelected());
 
         ProdutoBo bo = new ProdutoBo();
@@ -85,6 +88,14 @@ public class EditarProdutoController {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    public void setValoresEdicao(String nomeE, String fabricanteE, String quantidadeE, String valorE, Boolean s) {
+        nome.setText(nomeE);
+        fabricante.setText(fabricanteE);
+        quantidade.setText(quantidadeE);
+        valor.setText(valorE);
+        booladicional.setSelected(s);
     }
 }
 

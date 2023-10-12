@@ -2,6 +2,7 @@ package Controller;
 
 import Model.BO.ClienteBo;
 import Model.BO.FuncionarioBo;
+import Model.BO.ProdutoBo;
 import Model.BO.TipoPizzaBo;
 import View.App;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 
 public class ExcluirCadastroController {
 
+
     @FXML
     private Button cancel;
 
@@ -21,7 +23,7 @@ public class ExcluirCadastroController {
     public static Long tipopizza_id;
     public static Long cliente_id;
     public static Long funcionario_id;
-
+    public static Long produto_id;
     @FXML
     void cancelar(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -30,7 +32,7 @@ public class ExcluirCadastroController {
 
     @FXML
     void deletar(ActionEvent event) throws Exception {
-        if(tipopizza_id != null){
+        if(tipopizza_id != null) {
             TipoPizzaBo bo = new TipoPizzaBo();
             bo.deletar(tipopizza_id);
 
@@ -40,8 +42,7 @@ public class ExcluirCadastroController {
             stage.close();
             App.telaPizzas();
         }
-
-         if(cliente_id != null){
+         if(cliente_id != null) {
             ClienteBo bo = new ClienteBo();
             System.out.println("Indo Excluir ID: "+ cliente_id);
             bo.deletar(cliente_id);
@@ -63,7 +64,17 @@ public class ExcluirCadastroController {
             stage.close();
             App.telaFuncionarios();
         }
+        if (produto_id != null) {
 
+            ProdutoBo bo = new ProdutoBo();
+            bo.deletar(produto_id);
+
+            produto_id = null;
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            App.telaEstoque();
+        }
     }
 
 }

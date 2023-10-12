@@ -17,9 +17,6 @@ public class AdicionarProdutoController {
     private Button adicionar;
 
     @FXML
-    private CheckBox booladicional;
-
-    @FXML
     private Button cancel;
 
     @FXML
@@ -34,6 +31,8 @@ public class AdicionarProdutoController {
     @FXML
     private TextField valor;
 
+    @FXML
+    private CheckBox booladicional;
     @FXML
     void adicionar(ActionEvent event) throws Exception {
         Produto prod = new Produto();
@@ -54,6 +53,8 @@ public class AdicionarProdutoController {
             // tratar exception de valor
             throw new IllegalArgumentException("O valor deve ser um número válido.");
         }
+
+        prod.setAdicional(booladicional.isSelected());
 
         ProdutoBo bo = new ProdutoBo();
         bo.criar(prod);
