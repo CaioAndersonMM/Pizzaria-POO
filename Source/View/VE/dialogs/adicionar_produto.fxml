@@ -7,20 +7,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="600.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdicionarProdutoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdicionarProdutoController">
    <children>
-      <Button fx:id="adicionar" layoutX="464.0" layoutY="357.0" mnemonicParsing="false" onAction="#adicionar" styleClass="confirmation_button" text="Adicionar" />
-      <Button fx:id="cancel" layoutX="20.0" layoutY="357.0" mnemonicParsing="false" onAction="#cancelar" styleClass="cancellation_button" text="Cancelar" />
-      <Label layoutX="165.0" layoutY="26.0" text="Adicionar Novo Produto">
+      <Button fx:id="adicionar" layoutX="444.0" layoutY="334.0" mnemonicParsing="false" onAction="#adicionar" styleClass="confirmation_button" text="Adicionar" />
+      <Button fx:id="cancel" layoutX="20.0" layoutY="334.0" mnemonicParsing="false" onAction="#cancelar" styleClass="cancellation_button" text="Cancelar" />
+      <Label layoutX="126.0" layoutY="26.0" text="Adicionar Novo Produto">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
       <TextField fx:id="nome" layoutX="21.0" layoutY="83.0" prefHeight="51.0" prefWidth="558.0" promptText="Nome do Produto" />
-      <TextField fx:id="fabricante" layoutX="21.0" layoutY="141.0" prefHeight="51.0" prefWidth="558.0" promptText="Fabricante" />
-      <TextField fx:id="quantidade" layoutX="21.0" layoutY="199.0" prefHeight="51.0" prefWidth="558.0" promptText="Quantidade" />
-      <TextField fx:id="valor" layoutX="21.0" layoutY="257.0" prefHeight="51.0" prefWidth="558.0" promptText="Valor" />
-      <CheckBox fx:id="booladicional" layoutX="21.0" layoutY="326.0" mnemonicParsing="false" text="Adicional" textFill="#f5f2f2">
+      <TextField fx:id="quantidade" layoutX="21.0" layoutY="142.0" prefHeight="51.0" prefWidth="558.0" promptText="Quantidade" />
+      <TextField fx:id="valor" layoutX="21.0" layoutY="200.0" prefHeight="51.0" prefWidth="558.0" promptText="Valor" />
+      <CheckBox fx:id="booladicional" layoutX="22.0" layoutY="269.0" mnemonicParsing="false" text="Adicional" textFill="#f5f2f2">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
