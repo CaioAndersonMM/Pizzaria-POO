@@ -84,9 +84,9 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, entity.getNome());
-            ps.setInt(3, entity.getQuantidade());
-            ps.setFloat(4, entity.getValor());
-            ps.setBoolean(5,entity.isAdicional());
+            ps.setInt(2, entity.getQuantidade());
+            ps.setFloat(3, entity.getValor());
+            ps.setBoolean(4,entity.isAdicional());
             ps.execute();
             ps.close();
 
@@ -111,8 +111,8 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
     public List<Produto> listar() {
         String sql = "SELECT * FROM tb_produtos";
         connection = getConnection();
-
-        List<Produto> produtos = new ArrayList<>();
+        List<Produto> produtos = new ArrayList<Produto>();
+        
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -126,12 +126,12 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
                 );
                 produtos.add(produto);
             }
-            return produtos;
         } catch (SQLException ex) {
             ex.printStackTrace(); // Considere um tratamento de exceção mais adequado
-            return null;
         } finally {
             closeConnection();
         }
+
+        return produtos;
     }
 }
