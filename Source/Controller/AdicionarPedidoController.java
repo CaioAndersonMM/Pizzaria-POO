@@ -1,9 +1,12 @@
 package Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 // import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
@@ -39,14 +42,19 @@ public class AdicionarPedidoController {
         String nome_cliente = this.searchClientField.getText();
 
         cliente.setNome(nome_cliente);
-        List<Cliente> clientes = cliente_dao.buscar(cliente);
+        List<Cliente> clientes = cliente_dao.buscarPorNome(cliente);
 
         if (clientes == null) {
             System.out.println("Cliente não cadastrado!");
         } else {
+            nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf")); //Verificar isso aqui
+            telefoneCol.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+            ObservableList<Cliente> data = FXCollections.observableArrayList(clientes);
+            clientTable.setItems(data);
+
             for (int i = 0; i < clientes.size(); ++i) {
                System.out.println("Cliente " + (i + 1) + ": " + clientes.get(i).getNome());
-               
             }
         }
     }
