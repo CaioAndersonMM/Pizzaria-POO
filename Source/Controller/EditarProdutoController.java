@@ -23,9 +23,6 @@ public class EditarProdutoController {
     private Button cancel;
 
     @FXML
-    private TextField fabricante;
-
-    @FXML
     private TextField nome;
 
     @FXML
@@ -35,29 +32,22 @@ public class EditarProdutoController {
     private TextField valor;
 
     public static Long id;
-    private Object produto;
 
     public void initialize(Produto produto) {
-
-        nome.setText(produto.getNomeProduto());
-        fabricante.setText(produto.getNomeFabricante());
-        quantidade.setText(Integer.toString(produto.getQuantidadeProduto()));
+        nome.setText(produto.getNome());
+        quantidade.setText(Integer.toString(produto.getQuantidade()));
         valor.setText(Float.toString(produto.getValor()));
         booladicional.setSelected(produto.isAdicional());
-
     }
 
     @FXML
     void salvar(ActionEvent event) throws Exception {
-
         Produto produto = new Produto();
-
-        produto.setNomeProduto(nome.getText());
-        produto.setNomeFabricante(fabricante.getText());
+        produto.setNome(nome.getText());
 
         try {
             int quantidadeProduto = Integer.parseInt(quantidade.getText());
-            produto.setQuantidadeProduto(quantidadeProduto);
+            produto.setQuantidade(quantidadeProduto);
         } catch (NumberFormatException e) {
             // Tratar exceção se a quantidade não for um número válido
             throw new IllegalArgumentException("A quantidade deve ser um valor numérico válido.");
@@ -90,9 +80,8 @@ public class EditarProdutoController {
         stage.close();
     }
 
-    public void setValoresEdicao(String nomeE, String fabricanteE, String quantidadeE, String valorE, Boolean s) {
+    public void setValoresEdicao(String nomeE, String quantidadeE, String valorE, Boolean s) {
         nome.setText(nomeE);
-        fabricante.setText(fabricanteE);
         quantidade.setText(quantidadeE);
         valor.setText(valorE);
         booladicional.setSelected(s);

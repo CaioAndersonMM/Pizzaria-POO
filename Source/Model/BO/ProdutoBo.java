@@ -1,9 +1,7 @@
 package Model.BO;
 
 import Dao.ProdutoDao;
-import Model.Entity.Cliente;
 import Model.Entity.Produto;
-import Model.Entity.TipoPizza;
 
 import java.util.List;
 
@@ -11,16 +9,16 @@ public class ProdutoBo {
     static private ProdutoDao dao = new ProdutoDao();
 
     public List<Produto> listar(){
-        return dao.listar(); // Recupere e retorne a lista de pizzas
+        return dao.listar();
     }
     public void criar(Produto produto){
         dao.inserir(produto);
     }
 
-    public void editar(Produto produtoeditado) {
+    public void editar(Produto produtoEditado) {
         Produto produto = new Produto();
-        produto= dao.buscar(produto);
-        dao.alterar(produtoeditado);
+        produto = dao.buscar(produto);
+        dao.alterar(produtoEditado);
     }
 
     public void deletar(Long produtoId) {

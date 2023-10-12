@@ -36,12 +36,11 @@ public class AdicionarProdutoController {
     @FXML
     void adicionar(ActionEvent event) throws Exception {
         Produto prod = new Produto();
-        prod.setNomeProduto(nome.getText());
-        prod.setNomeFabricante(fabricante.getText());
+        prod.setNome(nome.getText());
 
         try {
             int quantidadeProduto = Integer.parseInt(quantidade.getText());
-            prod.setQuantidadeProduto(quantidadeProduto);
+            prod.setQuantidade(quantidadeProduto);
         } catch (NumberFormatException e) {
             // tratar o exception de qtd
             throw new IllegalArgumentException("A quantidade deve ser um valor numérico válido.");

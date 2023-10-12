@@ -55,19 +55,18 @@ public class EstoqueController implements Initializable {
     public static Long produto_id;
 
     private List<Object[]> recuperarDadosDoBanco() {
-        ProdutoBo produtobo = new ProdutoBo();
-        List<Produto> vo = produtobo.listar();
+        ProdutoBo produtoBo = new ProdutoBo();
+        List<Produto> vo = produtoBo.listar();
 
         List<Object[]> dados = new ArrayList<>();
 
         for (Produto produto : vo) {
             Object[] produtoInfo = new Object[6];
             produtoInfo[0] = produto.getId();
-            produtoInfo[1] = produto.getNomeProduto();
-            produtoInfo[2] = produto.getNomeFabricante();
-            produtoInfo[3] = produto.getQuantidadeProduto();
-            produtoInfo[4] = produto.getValor();
-            produtoInfo[5] = produto.isAdicional();
+            produtoInfo[1] = produto.getNome();
+            produtoInfo[2] = produto.getQuantidade();
+            produtoInfo[3] = produto.getValor();
+            produtoInfo[4] = produto.isAdicional();
             dados.add(produtoInfo);
         }// Criar um array de objetos para armazenar as informações
 
@@ -107,16 +106,14 @@ public class EstoqueController implements Initializable {
     }
 
     @FXML
-    void edit(ActionEvent event, Long id, String nome, String fabricante, String quantidade, String valor, Boolean isAdicional) throws IOException {
+    void edit(ActionEvent event, Long id, String nome, String quantidade, String valor, Boolean isAdicional) throws IOException {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("VE/dialogs/editar_produto .fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
         EditarProdutoController editarProduto = loader.getController();
         editarProduto.id = id;
-        editarProduto.setValoresEdicao (nome, fabricante, quantidade, valor, isAdicional);
-
-
+        editarProduto.setValoresEdicao(nome, quantidade, valor, isAdicional);
 
         // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
@@ -167,54 +164,70 @@ public class EstoqueController implements Initializable {
         for (Object[] dado : dadosDoBanco) {
             HBox hboxContainer = new HBox();
 
-            Separator separator = new Separator();
+            Separator separator1 = new Separator();
             Separator separator2 = new Separator();
             Separator separator3 = new Separator();
             Separator separator4 = new Separator();
-            Separator separator5 = new Separator();
+            
+            HBox.setHgrow(separator1, Priority.ALWAYS);
+            HBox.setHgrow(separator2, Priority.ALWAYS);
+            HBox.setHgrow(separator4, Priority.ALWAYS);
+            
+            separator1.setVisible(false);
+            separator2.setVisible(false);
+            separator3.setVisible(false);
+            separator4.setVisible(false);
 
             Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0])); //id
-            separator.setVisible(false);
-            HBox.setHgrow(separator, Priority.ALWAYS);
-            Label nomelabel = new Label(String.valueOf(dado[1])); //nome
-            separator2.setVisible(false);
-            HBox.setHgrow(separator2, Priority.ALWAYS);
-            Label fabricantelabel = new Label(String.valueOf(dado[2])); //fabricante
-            separator3.setVisible(false);
-            HBox.setHgrow(separator3, Priority.ALWAYS);
-            Label quantidadelabel = new Label(String.valueOf(dado[3])); //quantidade
-            separator4.setVisible(false);
-            HBox.setHgrow(separator4, Priority.ALWAYS);
-            Label valorlabel = new Label(String.valueOf(dado[4])); //valor
-            HBox.setHgrow(separator5, Priority.ALWAYS);
-            separator5.setVisible(false);
+            Label nomeLabel = new Label(String.valueOf(dado[1])); //nome
+            Label quantidadeLabel = new Label(String.valueOf(dado[2])); //quantidade
+            Label valorLabel = new Label(String.valueOf(dado[3])); //valor
+            
             CheckBox checkBox = new CheckBox();
-            System.out.println(dado[5]);
-            checkBox.setSelected((Boolean) dado[5]);
-            Label booleanlabel = new Label("adicional"); //valor
-
+            checkBox.setSelected((Boolean) dado[4]);
+            Label booleanLabel = new Label("adicional");
+            
             Button button1 = new Button("Editar");
             Button button2 = new Button("Excluir");
+            
             button1.setOnAction((ActionEvent event) -> {
                 try {
-                    edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]),String.valueOf(dado[4]), (Boolean) dado[5]);
+                    edit(
+                        event,
+                        (Long)dado[0],
+                        String.valueOf(dado[1]),
+                        String.valueOf(dado[2]),
+                        String.valueOf(dado[3]),
+                        (Boolean) dado[4]
+                    );
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
+
             button2.setOnAction((ActionEvent event) -> {
                 try {
                     delete(event, (Long) dado[0]);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
 
-            hboxContainer.getChildren().addAll(idLabel, separator, nomelabel, separator2,
-                                                fabricantelabel, separator3, quantidadelabel,
-                                                    separator4,valorlabel,separator5,booleanlabel,checkBox, button1, button2);
+            hboxContainer.getChildren().addAll(
+                idLabel,
+                separator1,
+                nomeLabel,
+                separator2, 
+                quantidadeLabel,
+                separator3,
+                valorLabel,
+                separator4,
+                booleanLabel,
+                checkBox,
+                button1,
+                button2
+            );
+
             hboxContainer.setSpacing(5);
             Insets padding = new Insets(10, 10, 10, 10);
             hboxContainer.setPadding(padding);

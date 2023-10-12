@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Model.BO.FuncionarioBo;
-import Model.BO.TipoPizzaBo;
 import Model.Entity.Funcionario;
-import Model.Entity.TipoPizza;
 import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

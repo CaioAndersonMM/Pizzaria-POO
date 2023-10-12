@@ -2,17 +2,15 @@ package Model.Entity;
 
 public class Produto {
     private long id;
-    private String nomeProduto;
-    private String nomeFabricante;
-    private int quatidadeProduto;
+    private String nome;
+    private int quantidade;
     private float valor;
     private boolean isAdicional = false;
-
-    public Produto(Long id,String nomeProduto, String fabricante, int quatidadeProduto, float valor, boolean isAdicional) {
+    
+    public Produto(Long id,String nome, int quatidadeProduto, float valor, boolean isAdicional) {
         setId(id);
-        setNomeProduto(nomeProduto);
-        setNomeFabricante(fabricante);
-        setQuantidadeProduto(quatidadeProduto);
+        setNome(nome);
+        setQuantidade(quantidade);
         setValor(valor);
         setAdicional(isAdicional);
     }
@@ -21,26 +19,26 @@ public class Produto {
 
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeProduto(String nome) {
+    public void setNome(String nome) {
         if (nome == null || nome.isEmpty()) {
             throw new IllegalArgumentException("O nome não pode ser nulo ou uma string vazia.");
         }
-        this.nomeProduto = nome;
+        this.nome = nome;
     }
 
-    public int getQuantidadeProduto() {
-        return quatidadeProduto;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadeProduto(int quantidade) {
+    public void setQuantidade(int quantidade) {
         if (quantidade < 0) {
             throw new IllegalArgumentException("Não é possível criar um produto com quantidade negativa.");
         }
-        this.quatidadeProduto = quantidade;
+        this.quantidade = quantidade;
     }
 
     public float getValor() {
@@ -57,19 +55,7 @@ public class Produto {
     public long getId() {
         return this.id;
     }
-
-    public String getNomeFabricante() {
-        return nomeFabricante;
-    }
-
-    public void setNomeFabricante(String nomeFabricante) {
-        if (nomeFabricante == null || nomeFabricante.isEmpty()) {
-            throw new IllegalArgumentException("O fabricante não pode ser nulo ou uma string vazia.");
-        }
-       this.nomeFabricante = nomeFabricante;
-
-    }
-
+    
     public boolean isAdicional() {
         return isAdicional;
     }

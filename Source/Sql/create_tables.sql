@@ -1,8 +1,9 @@
-CREATE TABLE tb_ingredientes (
+CREATE TABLE tb_produtos (
 	id BIGSERIAL PRIMARY KEY,
 	nome VARCHAR(40) NOT NULL,
-	quantidade INTEGER CHECK (quantidade >= 0),
-	valor NUMERIC(6, 2) CHECK (valor > 0)
+	quantidade INTEGER NOT NULL CHECK (quantidade >= 0),
+	valor NUMERIC(6, 2) NOT NULL CHECK (valor > 0),
+	is_adicional BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE tb_tipos_pizzas (
@@ -62,20 +63,20 @@ CREATE TABLE tb_pedidos_pizzas (
 	FOREIGN KEY (id_pizza) REFERENCES tb_pizzas(id)
 );
 
--- TABELA DE RELAÇÃO ENTRE TIPO_PIZZA (tb_tipos_pizzas) E INGREDIENTES (tb_ingredientes)
+-- TABELA DE RELAÇÃO ENTRE TIPO_PIZZA (tb_tipos_pizzas) E INGREDIENTES (tb_produtos)
 CREATE TABLE tb_tipos_pizzas_ingredientes (
 	id_tipo_pizza BIGINT,
 	id_ingrediente BIGINT,
 	quantidade float CHECK (quantidade > 0),
 	FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id),
-	FOREIGN KEY (id_ingrediente) REFERENCES tb_ingredientes(id)
+	FOREIGN KEY (id_ingrediente) REFERENCES tb_produtos(id)
 );
 
--- TABELA DE RELAÇÂO ENTRE PIZZA (tb_pizzas) E ADICIONAIS (tb_ingredientes)
+-- TABELA DE RELAÇÂO ENTRE PIZZA (tb_pizzas) E ADICIONAIS (tb_produtos)
 CREATE TABLE tb_pizzas_adicionais (
 	id_pizza BIGINT,
 	id_ingrediente BIGINT,
 	quantidade float CHECK (quantidade > 0),
 	FOREIGN KEY (id_pizza) REFERENCES tb_pizzas(id),
-	FOREIGN KEY (id_ingrediente) REFERENCES tb_ingredientes(id)
+	FOREIGN KEY (id_ingrediente) REFERENCES tb_produtos(id)
 )

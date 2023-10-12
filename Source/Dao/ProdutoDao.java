@@ -8,22 +8,19 @@ import java.util.List;
 
 import Model.Entity.Produto;
 
-import javax.swing.text.html.parser.Entity;
-
 public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public void alterar(Produto entity) {
-        String sql = "UPDATE tb_produtos SET nome=?, fabricante =?, quantidade=?, valor=? , isadicional=? WHERE id=?";
+        String sql = "UPDATE tb_produtos SET nome=?, quantidade=?, valor=? , is_adicional=? WHERE id=?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, entity.getNomeProduto());
-            stmt.setString(2, entity.getNomeFabricante());
-            stmt.setInt(3, entity.getQuantidadeProduto());
-            stmt.setFloat(4, entity.getValor());
-            stmt.setBoolean(5, entity.isAdicional());
-            stmt.setLong(6, entity.getId());
+            stmt.setString(1, entity.getNome());
+            stmt.setInt(2, entity.getQuantidade());
+            stmt.setFloat(3, entity.getValor());
+            stmt.setBoolean(4, entity.isAdicional());
+            stmt.setLong(5, entity.getId());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -44,7 +41,13 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
             if (rs.next()) {
                 // Crie um objeto Produto a partir dos dados do ResultSet e retorne-o
-                Produto produto = new Produto(rs.getLong("id") ,rs.getString("nome"), rs.getString("fabricante"), rs.getInt("quantidade"), rs.getFloat("valor"), rs.getBoolean("isAdicional"));
+                Produto produto = new Produto(
+                    rs.getLong("id"),
+                    rs.getString("nome"),
+                    rs.getInt("quantidade"),
+                    rs.getFloat("valor"),
+                    rs.getBoolean("is_adicional")
+                );
                 return produto;
             }
         } catch (SQLException ex) {
@@ -76,14 +79,12 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public Long inserir(Produto entity) {
-        String sql = "INSERT INTO tb_produtos (nome,fabricante,quantidade,valor,isAdicional) "
-                + "values (?,?,?,?,?)";
+        String sql = "INSERT INTO tb_produtos (nome, quantidade, valor, is_adicional) VALUES (?,?,?,?)";
         connection = getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, entity.getNomeProduto());
-            ps.setString(2, entity.getNomeFabricante());
-            ps.setInt(3, entity.getQuantidadeProduto());
+            ps.setString(1, entity.getNome());
+            ps.setInt(3, entity.getQuantidade());
             ps.setFloat(4, entity.getValor());
             ps.setBoolean(5,entity.isAdicional());
             ps.execute();
@@ -91,7 +92,7 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
             sql = "SELECT * FROM tb_produtos as e WHERE e.nome=?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, entity.getNomeProduto());
+            ps.setString(1, entity.getNome());
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getLong("id");
@@ -111,17 +112,21 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         String sql = "SELECT * FROM tb_produtos";
         connection = getConnection();
 
-        List<Produto> listProd = new ArrayList<>();
+        List<Produto> produtos = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
-                Produto produto = new Produto(resultado.getLong("id"), resultado.getString("nome"),resultado.getString("fabricante"), resultado.getInt("quantidade"),
-                        resultado.getFloat("valor"), resultado.getBoolean("isAdicional"));
-
-                listProd.add(produto);
+                Produto produto = new Produto(
+                    resultado.getLong("id"),
+                    resultado.getString("nome"),
+                    resultado.getInt("quantidade"),
+                    resultado.getFloat("valor"), 
+                    resultado.getBoolean("is_adicional")
+                );
+                produtos.add(produto);
             }
-            return listProd;
+            return produtos;
         } catch (SQLException ex) {
             ex.printStackTrace(); // Considere um tratamento de exceção mais adequado
             return null;
