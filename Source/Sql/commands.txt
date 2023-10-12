@@ -53,3 +53,14 @@ INSERT INTO tb_pizzas (tipo_id, valor, tamanho, nome)
 VALUES
     (1, 12.99, 'M', 'Pizza de Pepperoni'),
     (2, 15.99, 'G', 'Pizza de Calabresa');
+
+
+
+CREATE TABLE tb_produtos (
+    id bigserial PRIMARY KEY,
+    nome VARCHAR(60) NOT NULL ,
+    Fabricante VARCHAR(60) NOT NULL ,
+    quantidade INT,
+    valor REAL,
+    isAdicional BOOLEAN
+);

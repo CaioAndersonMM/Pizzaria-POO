@@ -8,10 +8,13 @@ public class Produto {
     private float valor;
     private boolean isAdicional = false;
 
-    public Produto(String nomeProduto, int quatidadeProduto, float valor) {
+    public Produto(Long id,String nomeProduto, String fabricante, int quatidadeProduto, float valor, boolean isAdicional) {
+        setId(id);
         setNomeProduto(nomeProduto);
+        setNomeFabricante(fabricante);
         setQuantidadeProduto(quatidadeProduto);
         setValor(valor);
+        setAdicional(isAdicional);
     }
 
     public Produto() {
@@ -73,5 +76,12 @@ public class Produto {
 
     public void setAdicional(boolean adicional) {
         isAdicional = adicional;
+    }
+
+    public void setId(Long id) {
+        if (id == null || id <= 0) {
+            return;
+        }
+        this.id = id;
     }
 }
