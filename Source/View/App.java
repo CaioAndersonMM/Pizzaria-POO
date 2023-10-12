@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javafx.application.Application;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
@@ -75,5 +76,18 @@ public class App extends Application {
         style(scene);
         primaryStage.setScene(scene);
     }
+
+    public static void telaRelatorio() throws Exception{
+
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/relatorio.fxml"));
+        Scene scene = new Scene(root);
+  
+        // Cria uma nova janela de diálogo
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
+    }
+
 
 }

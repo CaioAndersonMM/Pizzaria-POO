@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Dao.ClienteDao;
 import Model.BO.ClienteBo;
 import Model.Entity.Cliente;
 import View.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -63,79 +70,98 @@ public class ClientesController implements Initializable {
     @FXML
     private VBox tabela;
 
+    @FXML
+    private ImageView buscar;
+    
+    @FXML
+    private TextField searchField;
+
+    public static List<Cliente> filtrados;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
-    for (Object[] dado : dadosDoBanco) {
-        HBox hboxContainer = new HBox();
+            for (Object[] dado : dadosDoBanco) {
+                HBox hboxContainer = new HBox();
 
-        Separator separator = new Separator();
-        Separator separator2 = new Separator();
-        Separator separator3 = new Separator();
-        Separator separator4 = new Separator();
-        
-        Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0])); //id
-        separator.setVisible(false);
-        HBox.setHgrow(separator, Priority.ALWAYS);
-        Label nomelabel = new Label(String.valueOf(dado[1])); //nome
-        separator2.setVisible(false);
-        HBox.setHgrow(separator2, Priority.ALWAYS);
-        Label cpflabel = new Label(String.valueOf(dado[2])); //cpf
-        separator3.setVisible(false);
-        HBox.setHgrow(separator3, Priority.ALWAYS);
-        Label enderecolabel = new Label(String.valueOf(dado[3])); //endereco
-        separator4.setVisible(false);
-        HBox.setHgrow(separator4, Priority.ALWAYS);
+                Separator separator = new Separator();
+                Separator separator2 = new Separator();
+                Separator separator3 = new Separator();
+                Separator separator4 = new Separator();
+                
+                Hyperlink idLabel = new Hyperlink(String.valueOf(dado[0])); //id
+                separator.setVisible(false);
+                HBox.setHgrow(separator, Priority.ALWAYS);
+                Label nomelabel = new Label(String.valueOf(dado[1])); //nome
+                separator2.setVisible(false);
+                HBox.setHgrow(separator2, Priority.ALWAYS);
+                Label cpflabel = new Label(String.valueOf(dado[2])); //cpf
+                separator3.setVisible(false);
+                HBox.setHgrow(separator3, Priority.ALWAYS);
+                Label enderecolabel = new Label(String.valueOf(dado[3])); //endereco
+                separator4.setVisible(false);
+                HBox.setHgrow(separator4, Priority.ALWAYS);
 
-        Button button1 = new Button("Editar");
-        Button button2 = new Button("Excluir");
-        button1.setOnAction((ActionEvent event) -> {
-            try {
-                edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                Button button1 = new Button("Editar");
+                Button button2 = new Button("Excluir");
+                button1.setOnAction((ActionEvent event) -> {
+                    try {
+                        edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                });
+                button2.setOnAction((ActionEvent event) -> {
+                    try {
+                        delete(event, (Long) dado[0]);
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                });
+
+                hboxContainer.getChildren().addAll(idLabel, separator, nomelabel, separator2, cpflabel, separator3, enderecolabel, separator4, button1, button2);
+                hboxContainer.setSpacing(20);
+                Insets padding = new Insets(10, 10, 10, 10);
+                hboxContainer.setPadding(padding);
+                hboxContainer.prefHeight(80);
+                hboxContainer.getStyleClass().add("table_row");
+                
+                tabela.getChildren().add(hboxContainer);
             }
-        });
-        button2.setOnAction((ActionEvent event) -> {
-            try {
-                delete(event, (Long) dado[0]);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        });
-
-        hboxContainer.getChildren().addAll(idLabel, separator, nomelabel, separator2, cpflabel, separator3, enderecolabel, separator4, button1, button2);
-        hboxContainer.setSpacing(20);
-        Insets padding = new Insets(10, 10, 10, 10);
-        hboxContainer.setPadding(padding);
-        hboxContainer.prefHeight(80);
-        hboxContainer.getStyleClass().add("table_row");
-        
-        tabela.getChildren().add(hboxContainer);
-        }
     }
 
      private List<Object[]> recuperarDadosDoBanco() {
-        ClienteBo clientebo = new ClienteBo();
-        List<Cliente> vo = clientebo.listar();
-
+        
         List<Object[]> dados = new ArrayList<>();
 
-        // Itere sobre os objetos Pizza e obtenha seus tamanhos
-        for (Cliente cliente : vo) {
-            Object[] clienteinfo = new Object[6]; // Criar um array de objetos para armazenar as informações
-            clienteinfo[0] = cliente.getId();
-            clienteinfo[1] = cliente.getNome();
-            clienteinfo[2] = cliente.getCPF();
-            clienteinfo[3] = cliente.getEndereco();
-            dados.add(clienteinfo);
+        if(filtrados == null){
+            ClienteBo clientebo = new ClienteBo();
+            List<Cliente> vo = clientebo.listar();
+            // Itere sobre os objetos Pizza e obtenha seus tamanhos
+            for (Cliente cliente : vo) {
+                Object[] clienteinfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+                clienteinfo[0] = cliente.getId();
+                clienteinfo[1] = cliente.getNome();
+                clienteinfo[2] = cliente.getCPF();
+                clienteinfo[3] = cliente.getEndereco();
+                dados.add(clienteinfo);
+            }
+        } else{
+            // Itere sobre os objetos Pizza e obtenha seus tamanhos
+            for (Cliente cliente : filtrados) {
+                Object[] clienteinfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+                clienteinfo[0] = cliente.getId();
+                clienteinfo[1] = cliente.getNome();
+                clienteinfo[2] = cliente.getCPF();
+                clienteinfo[3] = cliente.getEndereco();
+                dados.add(clienteinfo);
+            }
         }
-
         return dados;
     }
-
 
     @FXML
     void adicionar(ActionEvent event) throws IOException {
@@ -183,6 +209,33 @@ public class ClientesController implements Initializable {
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
 
+    }
+
+    @FXML
+    void buscar(MouseEvent event) throws Exception {
+        
+        if(this.searchField.getText().isEmpty()){
+            filtrados = null;
+            App.telaClientes();
+        } else{
+            System.out.println("USUARIO FILTRADOS");
+            ClienteDao cliente_dao = new ClienteDao();
+            
+            Cliente cliente = new Cliente();
+            String nome_cliente = this.searchField.getText();
+
+            cliente.setNome(nome_cliente);
+            List<Cliente> clientes = cliente_dao.buscarPorNome(cliente);
+
+            if (clientes == null) {
+            System.out.println("Não encontrado");
+            } else {
+                filtrados = clientes;
+                App.telaClientes();
+            }
+        }
+           
+       
     }
 
     @FXML

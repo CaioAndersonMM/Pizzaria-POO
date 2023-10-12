@@ -46,7 +46,7 @@ public class PedidosController {
 
     @FXML
     void adicionar(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/fazer_pedido_1.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/pesquisar_cliente.fxml"));
         Scene scene = new Scene(root);
 
         // Cria uma nova janela de diálogo
@@ -103,8 +103,8 @@ public class PedidosController {
     }
 
     @FXML
-    void telaRelatorios(ActionEvent event) {
-
+    void telaRelatorios(ActionEvent event) throws Exception {
+        App.telaRelatorio();
     }
 
 }
