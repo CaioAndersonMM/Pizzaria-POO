@@ -206,8 +206,8 @@ public class FuncionariosController implements Initializable {
     }
 
     @FXML
-    void telaRelatorios(ActionEvent event) {
-
+    void telaRelatorios(ActionEvent event) throws Exception {
+        App.telaRelatorio();
     }
 
 
