@@ -10,7 +10,7 @@ VALUES
   ('Portuguesa', 31.00, 41.00, 51.00);
 
 -- Inserir 9 ingredientes fictícios
-INSERT INTO tb_ingredientes (nome, quantidade, valor)
+INSERT INTO tb_produtos (nome, quantidade, valor)
 VALUES
   ('Molho de Tomate', 0.2, 2.50),
   ('Queijo Mussarela', 0.3, 3.00),

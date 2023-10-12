@@ -7,4 +7,4 @@ DROP TABLE tb_pedidos;
 DROP TABLE tb_clientes;
 DROP TABLE tb_funcionarios;
 DROP TABLE tb_tipos_pizzas;
-DROP TABLE tb_ingredientes;
+DROP TABLE tb_produtos;
