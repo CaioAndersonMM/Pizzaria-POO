@@ -121,25 +121,8 @@ VALUES
   ('Isabela Martins', '77777777778', 'senha7', false),
   ('Matheus Ferreira', '88888888889', 'senha8', false);
 
--- Inserir 40 pedidos fictícios
--- Suponha que cada cliente faça 2 pedidos, e os funcionários atendam 5 pedidos cada.
--- Vamos gerar pedidos aleatórios, vinculando aleatoriamente clientes e funcionários.
--- Os valores dos pedidos são fictícios.
 
--- Criação de pedidos fictícios
-WITH pedidos_ficticios AS (
-  SELECT
-    generate_series(1, 40) AS id,
-    floor(random() * 20) + 1 AS id_cliente,
-    floor(random() * 8) + 1 AS id_funcionario,
-    random() * 50 + 10 AS valor
-  FROM generate_series(1, 40)
-)
 
--- Inserção de pedidos fictícios na tabela tb_pedidos
-INSERT INTO tb_pedidos (id_cliente, id_funcionario, valor)
-SELECT id_cliente, id_funcionario, valor
-FROM pedidos_ficticios;
 
 -- Inserir 10 pedidos fictícios
 -- Certifique-se de que o id_cliente e id_funcionario existam na tabela tb_pedidos.
