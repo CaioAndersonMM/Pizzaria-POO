@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -70,9 +72,14 @@
             <HBox id="header" alignment="CENTER_LEFT" maxWidth="900.0" prefWidth="200.0">
                <children>
                   <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
-                  <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Ingrediente, Fabricante ..." />
+                  <TextField fx:id="searchField" maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Ingrediente, Fabricante ..." />
+                  <ImageView fx:id="buscar" fitHeight="43.0" fitWidth="30.0" onMouseClicked="#buscar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Search.png" />
+                     </image>
+                  </ImageView>
                   <Separator visible="false" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" text="+ Adicionar Produto">
+                  <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" prefWidth="252.0" text="+ Adicionar Produto">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
