@@ -47,7 +47,7 @@ public class RelatorioController{
     public static List<Cliente> filtrados;
 
     @FXML
-    void gerarPdf(ActionEvent event) {
+    void gerarPDF(ActionEvent event) {
         String nomeDoArquivo = "exemplo.pdf";
         Document documento = new Document();
         try {
@@ -58,8 +58,8 @@ public class RelatorioController{
             List<DetalhesPedido> detalhesPedidos = detalhesPedidoDAO.obterDetalhesPedidos();
 
             Paragraph titulo = new Paragraph("Detalhe de Todos os Pedidos");
-            titulo.setAlignment(Paragraph.ALIGN_CENTER); // Alinhe o título ao centro
-            titulo.setSpacingAfter(20f); // Adicione espaço após o título
+            titulo.setAlignment(Paragraph.ALIGN_CENTER);
+            titulo.setSpacingAfter(20f);
             documento.add(titulo);
             for (DetalhesPedido detalhes : detalhesPedidos) {
                 documento.add(new Paragraph("ID do Pedido: " + detalhes.getIdPedido()));
@@ -72,8 +72,10 @@ public class RelatorioController{
 
             documento.close();
 
-            System.out.println("PDF gerado com sucesso!");
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
 
+            System.out.println("PDF gerado com sucesso!");
 
         } catch (Exception e) {
             System.out.println(e);
