@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Dao.TipoPizzaDao;
 import Model.BO.TipoPizzaBo;
 import Model.Entity.TipoPizza;
 import View.App;
@@ -20,6 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -61,6 +65,37 @@ public class PizzasController implements  Initializable{
     @FXML
     private VBox tabela;
 
+    @FXML
+    private ImageView buscar;
+
+    @FXML
+    private TextField searchField;
+
+    public static List<TipoPizza> filtrados;
+
+    @FXML
+    void buscar(MouseEvent event) throws Exception {
+         if(this.searchField.getText().isEmpty()){
+            filtrados = null;
+            App.telaPizzas();
+        } else{
+            TipoPizzaDao dao = new TipoPizzaDao();
+            
+            TipoPizza pizza = new TipoPizza();
+            String nome = this.searchField.getText();
+
+            pizza.setNomeSabor(nome);
+            //List<TipoPizza> pizzas = dao.buscarPorNome(pizza);
+
+            if (pizzas == null) {
+            System.out.println("Não encontrado");
+            } else {
+                //filtrados = pizzas;
+                App.telaPizzas();
+            }
+        }
+    }
+    
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
@@ -118,8 +153,8 @@ public class PizzasController implements  Initializable{
         // Crie uma lista para armazenar todas as informações das pizzas
         List<Object[]> dados = new ArrayList<>();
 
-        // Itere sobre os objetos Pizza e obtenha seus tamanhos
-        for (TipoPizza pizza : vo) {
+        if (filtrados == null) {
+            for (TipoPizza pizza : vo) {
             Object[] pizzaInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
             pizzaInfo[0] = pizza.getId();
             pizzaInfo[1] = pizza.getNomeSabor();
@@ -130,6 +165,21 @@ public class PizzasController implements  Initializable{
             //pizzaInfo[5] = pizza.getIngredientes();
             dados.add(pizzaInfo);
         }
+        } else {
+            for (TipoPizza pizza : filtrados) {
+            Object[] pizzaInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+            pizzaInfo[0] = pizza.getId();
+            pizzaInfo[1] = pizza.getNomeSabor();
+            float valores[] = pizza.getValores();
+            pizzaInfo[2] = valores[2]; //g
+            pizzaInfo[3] = valores[1]; //m
+            pizzaInfo[4] = valores[0]; //p
+            //pizzaInfo[5] = pizza.getIngredientes();
+            dados.add(pizzaInfo);
+            }
+        }
+        // Itere sobre os objetos Pizza e obtenha seus tamanhos
+        
 
         return dados;
     }

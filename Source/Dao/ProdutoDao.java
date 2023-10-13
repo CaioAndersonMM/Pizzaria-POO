@@ -59,6 +59,44 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         return null;
     }
 
+     public List<Produto> buscarPorNome(Produto entity) {
+        String sql = "SELECT * FROM tb_produtos WHERE nome LIKE ?";
+        String padrao = "%" + entity.getNome() + "%";
+
+        connection = getConnection();
+        List<Produto> produtos = new ArrayList<Produto>();
+        
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, padrao);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                    rs.getLong("id"),
+                    rs.getString("nome"),
+                    rs.getInt("quantidade"),
+                    rs.getFloat("valor"),
+                    rs.getBoolean("is_adicional")
+                );
+                
+                produtos.add(produto);
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return produtos;
+    }
+
+
+
     @Override
     public void deletar(Produto entity) {
 

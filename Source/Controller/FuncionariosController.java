@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Dao.FuncionarioDao;
 import Model.BO.FuncionarioBo;
 import Model.Entity.Funcionario;
 import View.App;
@@ -20,6 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -60,6 +64,37 @@ public class FuncionariosController implements Initializable {
 
     @FXML
     private Button sair;
+
+    @FXML
+    private ImageView buscar;
+
+    @FXML
+    private TextField searchField;
+
+    public static List<Funcionario> filtrados;
+
+    @FXML
+    void buscar(MouseEvent event) throws Exception {
+        if(this.searchField.getText().isEmpty()){
+            filtrados = null;
+            App.telaFuncionarios();
+        } else{
+            FuncionarioDao dao = new FuncionarioDao();
+            
+            Funcionario funcionario = new Funcionario();
+            String nome = this.searchField.getText();
+
+            funcionario.setNome(nome);
+            List<Funcionario> funcionarios = dao.buscarPorNome(funcionario);
+
+            if (funcionarios == null) {
+            System.out.println("Não encontrado");
+            } else {
+                filtrados = funcionarios;
+                App.telaFuncionarios();
+            }
+        }
+    }
 
      public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
@@ -117,7 +152,8 @@ public class FuncionariosController implements Initializable {
 
         List<Object[]> dados = new ArrayList<>();
 
-        for (Funcionario funcionario : vo) {
+        if (filtrados == null) {
+            for (Funcionario funcionario : vo) {
             Object[] funcionarioInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
             funcionarioInfo[0] = funcionario.getId();
             funcionarioInfo[1] = funcionario.getNome();
@@ -125,6 +161,18 @@ public class FuncionariosController implements Initializable {
             funcionarioInfo[3] = funcionario.getSenha();
             dados.add(funcionarioInfo);
         }
+        } else {
+            for (Funcionario funcionario : filtrados) {
+            Object[] funcionarioInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+            funcionarioInfo[0] = funcionario.getId();
+            funcionarioInfo[1] = funcionario.getNome();
+            funcionarioInfo[2] = funcionario.getCPF();
+            funcionarioInfo[3] = funcionario.getSenha();
+            dados.add(funcionarioInfo);
+            }
+        }
+
+        
         return dados;
     }
 

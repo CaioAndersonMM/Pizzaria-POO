@@ -124,19 +124,35 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 		return rs;
 	}
 
-    public ResultSet buscarPorNome(Funcionario vo){
-		String sql = "select * from tb_funcionarios where name = ?";
-		PreparedStatement ptst;
-		ResultSet rs = null;
+    public List<Funcionario> buscarPorNome(Funcionario entity){
+        String sql = "SELECT * FROM tb_funcionarios WHERE nome LIKE ?";
+        String padrao = "%" + entity.getNome() + "%";
+
+        connection = getConnection();
+        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        
 				
  		try {
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, vo.getNome());
-			rs = ptst.executeQuery();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, padrao);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Funcionario funcionario = new Funcionario();
+
+                funcionario.setId(rs.getLong("id"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setCPF(rs.getString("cpf"));
+                funcionario.setSenha(rs.getString("senha"));
+                
+               funcionarios.add(funcionario);
+            }
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs;
+		return funcionarios;
 	}
 
 
@@ -156,6 +172,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
                 funcionario.setId(rs.getLong("id"));
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
+                funcionario.setSenha(rs.getString("senha"));
 
                 funcionarios.add(funcionario);
             }

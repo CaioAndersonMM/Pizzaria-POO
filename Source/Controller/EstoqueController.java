@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Dao.ProdutoDao;
 import Model.BO.ProdutoBo;
 import Model.Entity.Produto;
 import View.App;
@@ -17,6 +18,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -52,24 +55,70 @@ public class EstoqueController implements Initializable {
     @FXML
     private VBox tabela;
 
+    @FXML
+    private ImageView buscar;
+
     public static Long produto_id;
 
-    private List<Object[]> recuperarDadosDoBanco() {
-        ProdutoBo produtoBo = new ProdutoBo();
-        List<Produto> vo = produtoBo.listar();
+    @FXML
+    private TextField searchField;
 
+    public static List<Produto> filtrados;
+
+    @FXML
+    void buscar(MouseEvent event) throws Exception {
+        if(this.searchField.getText().isEmpty()){
+            filtrados = null;
+            App.telaClientes();
+        } else{
+            ProdutoDao dao = new ProdutoDao();
+            
+            Produto produto = new Produto();
+            String nome_produto = this.searchField.getText();
+
+            produto.setNome(nome_produto);
+            List<Produto> produtos = dao.buscarPorNome(produto);
+
+            if (produtos == null) {
+            System.out.println("Não encontrado");
+            } else {
+                filtrados = produtos;
+                App.telaEstoque();
+            }
+        }
+    }
+
+    private List<Object[]> recuperarDadosDoBanco() {
+        
         List<Object[]> dados = new ArrayList<>();
 
-        for (Produto produto : vo) {
-            Object[] produtoInfo = new Object[6];
-            produtoInfo[0] = produto.getId();
-            produtoInfo[1] = produto.getNome();
-            produtoInfo[2] = produto.getQuantidade();
-            produtoInfo[3] = produto.getValor();
-            produtoInfo[4] = produto.isAdicional();
-            dados.add(produtoInfo);
-        }// Criar um array de objetos para armazenar as informações
+        if(filtrados == null){
+            ProdutoBo produtoBo = new ProdutoBo();
+            List<Produto> vo = produtoBo.listar();
 
+
+            for (Produto produto : vo) {
+                Object[] produtoInfo = new Object[6];
+                produtoInfo[0] = produto.getId();
+                produtoInfo[1] = produto.getNome();
+                produtoInfo[2] = produto.getQuantidade();
+                produtoInfo[3] = produto.getValor();
+                produtoInfo[4] = produto.isAdicional();
+                dados.add(produtoInfo);
+            }// Criar um array de objetos para armazenar as informações
+
+        } else{
+            for (Produto produto : filtrados) {
+                Object[] produtoInfo = new Object[6];
+                produtoInfo[0] = produto.getId();
+                produtoInfo[1] = produto.getNome();
+                produtoInfo[2] = produto.getQuantidade();
+                produtoInfo[3] = produto.getValor();
+                produtoInfo[4] = produto.isAdicional();
+                dados.add(produtoInfo);
+            }// Criar um array de objetos para armazenar as informações
+        }
+        
         return dados;
     }
 
@@ -185,7 +234,7 @@ public class EstoqueController implements Initializable {
             
             CheckBox checkBox = new CheckBox();
             checkBox.setSelected((Boolean) dado[4]);
-            Label booleanLabel = new Label("adicional");
+            Label booleanLabel = new Label("Adicional");
             
             Button button1 = new Button("Editar");
             Button button2 = new Button("Excluir");
