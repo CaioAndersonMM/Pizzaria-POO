@@ -1,10 +1,14 @@
 package Controller;
 
-
+import Model.BO.ClienteBo;
+import Model.BO.ProdutoBo;
+import Model.Entity.Cliente;
+import Model.Entity.Produto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.FileOutputStream;
@@ -20,13 +24,30 @@ import Model.Entity.DetalhesPedido;
 public class RelatorioController{
 
     @FXML
-    private Button adicionar;
+    private TextField NomeCliente;
 
     @FXML
     private Button cancel;
 
     @FXML
-    void adicionar(ActionEvent event) {
+    private TextField dataFinal;
+
+    @FXML
+    private TextField dataInicial;
+
+    @FXML
+    private Button pdf;
+
+    @FXML
+    private TextField saborPizza;
+
+    @FXML
+    private CheckBox status;
+
+    public static List<Cliente> filtrados;
+
+    @FXML
+    void gerarPdf(ActionEvent event) {
         String nomeDoArquivo = "exemplo.pdf";
         Document documento = new Document();
         try {
@@ -59,7 +80,6 @@ public class RelatorioController{
             documento.close();
         }
     }
-
     @FXML
     void cancel(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
