@@ -3,25 +3,26 @@
 CREATE OR REPLACE FUNCTION criar_venda_apos_insercao_produto()
 RETURNS TRIGGER AS $$
 BEGIN
--- Insira uma nova linha na tabela tb_vendas
-  INSERT INTO tb_vendas (id_pedido, id_produto, gasto)
-  VALUES (NULL, NEW.id, NEW.valor);
-  RETURN NEW;
+  -- Insira uma nova linha na tabela tb_vendas com o valor multiplicado pela quantidade
+INSERT INTO tb_vendas (id_pedido, id_produto, gastos)
+VALUES (NULL, NEW.id, NEW.valor * NEW.quantidade);
+RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 -- Crie o gatilho que é acionado após a inserção de um novo produto
 CREATE TRIGGER trigger_criar_venda_apos_insercao_produto
-AFTER INSERT
-ON tb_produtos
-FOR EACH ROW
-EXECUTE FUNCTION criar_venda_apos_insercao_produto();
+    AFTER INSERT
+    ON tb_produtos
+    FOR EACH ROW
+    EXECUTE FUNCTION criar_venda_apos_insercao_produto();
+
 
 --------- Lucro a cada pizza adicionada
 CREATE OR REPLACE FUNCTION criar_venda_apos_insercao_pizza()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO tb_vendas (id_pedido, lucro)
+  INSERT INTO tb_vendas (id_pedido, ganhos)
   VALUES (NEW.id_pedido, NEW.valor);
   RETURN NEW;
 END;
