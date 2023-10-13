@@ -50,9 +50,13 @@ CREATE TABLE tb_pizzas (
 );
 
 CREATE TABLE tb_vendas (
-	id BIGSERIAL PRIMARY KEY,
-	id_pedido BIGINT,
-	FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id)
+  id BIGSERIAL PRIMARY KEY,
+  id_pedido BIGINT,
+  id_produto BIGINT,
+  ganhos FLOAT,
+  gastos FLOAT,
+  FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id),
+  FOREIGN KEY (id_produto) REFERENCES tb_produtos(id)
 );
 
 -- TABELA DE RELAÇÃO ENTRE PEDIDO (tb_pedidos) E PIZZA (tb_pizzas)
