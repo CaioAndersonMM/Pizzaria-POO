@@ -1,3 +1,5 @@
+DROP VIEW vw_detalhes_pedidos;
+
 DROP TABLE tb_pizzas_adicionais;
 DROP TABLE tb_tipos_pizzas_ingredientes;
 DROP TABLE tb_pedidos_pizzas;

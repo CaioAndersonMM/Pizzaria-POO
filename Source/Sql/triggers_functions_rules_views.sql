@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION criar_venda_apos_insercao_produto()
 RETURNS TRIGGER AS $$
 BEGIN
 -- Insira uma nova linha na tabela tb_vendas
-  INSERT INTO tb_vendas (id_pedido, id_produto, gasto)
+  INSERT INTO tb_vendas (id_pedido, id_produto, gastos)
   VALUES (NULL, NEW.id, NEW.valor);
   RETURN NEW;
 END;
@@ -16,6 +16,7 @@ AFTER INSERT
 ON tb_produtos
 FOR EACH ROW
 EXECUTE FUNCTION criar_venda_apos_insercao_produto();
+
 
 --------- Lucro a cada pizza adicionada
 CREATE OR REPLACE FUNCTION criar_venda_apos_insercao_pizza()
