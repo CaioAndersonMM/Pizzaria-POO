@@ -23,6 +23,5 @@
       </Label>
       <TextField fx:id="cpf" layoutX="53.0" layoutY="217.0" prefHeight="35.0" prefWidth="517.0" promptText="CPF" />
       <TextField fx:id="senha" layoutX="53.0" layoutY="273.0" prefHeight="35.0" prefWidth="517.0" promptText="*******" />
-      <TextField fx:id="confirm_senha" layoutX="53.0" layoutY="328.0" prefHeight="35.0" prefWidth="517.0" promptText="*******" />
     </children>
 </Pane>
