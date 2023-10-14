@@ -1,8 +1,7 @@
-
 package Controller;
+
 import java.io.IOException;
 
-import View.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import Controller.Pedido.SelecionarClienteController;
+import View.App;
 
 public class PedidosController {
 
@@ -45,21 +47,20 @@ public class PedidosController {
     private Button sair;
 
     @FXML
-    void adicionar(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/pesquisar_cliente.fxml"));
+    void adicionar(ActionEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("VE/dialogs/pesquisar_cliente.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
 
         // Cria uma nova janela de diálogo
-        Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
-        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
-        dialogStage.setScene(scene);
+        Stage stage = new Stage();
+        SelecionarClienteController controller = loader.getController();
+        controller.setStage(stage);
 
-        // Define um título para a janela de diálogo (opcional)
-        dialogStage.setTitle("Minha Janela de Diálogo");
-
-        // Exibe a janela de diálogo
-        dialogStage.showAndWait();
+        stage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        stage.setScene(scene);
+        stage.setTitle("Minha Janela de Diálogo");
+        stage.show();
     }   
 
     @FXML
