@@ -39,14 +39,29 @@ CREATE TABLE tb_pedidos (
 	FOREIGN KEY (id_funcionario) REFERENCES tb_funcionarios(id)
 );
 
+-- create pedidos ---- PARA BUSCA ANINHADA DO RELATORIO
+
+CREATE TABLE tb_pedidos (
+    id BIGSERIAL PRIMARY KEY,
+    id_cliente BIGINT,
+    id_funcionario BIGINT,
+    id_tipo_pizza BIGINT,
+    valor NUMERIC(6, 2) NOT NULL CHECK (valor >= 0),
+    status BOOLEAN NOT NULL DEFAULT FALSE,
+    data_pedido DATE,
+    FOREIGN KEY (id_cliente) REFERENCES tb_clientes(id),
+    FOREIGN KEY (id_funcionario) REFERENCES tb_funcionarios(id),
+    FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id)
+);
+
 CREATE TABLE tb_pizzas (
 	id BIGSERIAL PRIMARY KEY,
 	id_tipo_pizza BIGINT,
-	id_pedido BIGINT, 
+	-- id_pedido BIGINT,
 	valor NUMERIC(6, 2) NOT NULL CHECK (valor > 0),
 	tamanho CHAR(1) NOT NULL CHECK (tamanho IN ('p', 'm', 'g')), -- VERIFICAR SE O VALOR DE TAMANHO É 'p', 'm' ou 'g'
 	FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id),
-	FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id)
+	-- FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id)
 );
 
 CREATE TABLE tb_vendas (

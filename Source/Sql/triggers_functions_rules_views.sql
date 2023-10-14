@@ -83,3 +83,17 @@ SELECT
 FROM tb_pedidos p
 LEFT JOIN tb_clientes c ON p.id_cliente = c.id
 LEFT JOIN tb_funcionarios f ON p.id_funcionario = f.id;
+
+-------------- VIEW DE RELATORIO ----------------
+
+CREATE OR REPLACE VIEW vw_detalhes_pedidos2 AS
+SELECT
+    p.id AS id_pedido,
+    p.valor,
+    p.status,
+    p.data_pedido AS data,
+    c.nome AS nome_cliente,
+    tp.nome AS sabor
+FROM tb_pedidos p
+         LEFT JOIN tb_clientes c ON p.id_cliente = c.id
+         LEFT JOIN tb_tipos_pizzas tp ON p.id_tipo_pizza = tp.id;
