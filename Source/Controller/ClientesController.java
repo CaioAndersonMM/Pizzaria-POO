@@ -10,8 +10,6 @@ import Dao.ClienteDao;
 import Model.BO.ClienteBo;
 import Model.Entity.Cliente;
 import View.App;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +21,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -239,8 +236,8 @@ public class ClientesController implements Initializable {
     }
 
     @FXML
-    void loggout(ActionEvent event) {
-
+    void loggout(ActionEvent event) throws IOException {
+        App.sair();
     }
    @FXML
     void telaClientes(ActionEvent event) throws Exception {
@@ -249,12 +246,12 @@ public class ClientesController implements Initializable {
 
     @FXML
     void telaEstoque(ActionEvent event) throws Exception {
-         App.telaEstoque();
+        App.telaEstoque();
     }
 
     @FXML
     void telaFuncionarios(ActionEvent event) throws Exception {
-         App.telaFuncionarios();
+        App.telaFuncionarios();
     }
 
     @FXML
@@ -268,8 +265,9 @@ public class ClientesController implements Initializable {
     }
 
     @FXML
-    void telaRelatorios(ActionEvent event) {
-
+    void telaRelatorios(ActionEvent event) throws Exception {
+        App.telaRelatorio();
     }
+
 
 }
