@@ -55,6 +55,22 @@ public class SelecionarClienteController {
     private TableColumn<Cliente, String> telefoneCol;
 
     // METHODS
+    public void initialize() {
+        ClienteDao cliente_dao = new ClienteDao();
+        List<Cliente> clientes = cliente_dao.listar();
+
+        if (clientes == null) {
+            System.out.println("Cliente não cadastrado!");
+        } else {
+            ObservableList<Cliente> data = FXCollections.observableArrayList(clientes);
+
+            nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf")); //Verificar isso aqui
+            telefoneCol.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+            
+            clientTable.setItems(data);
+        }
+    }
 
     public void setCliente(Cliente cliente) {
         this.clienteSelecionado = cliente;
