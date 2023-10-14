@@ -1,33 +1,25 @@
 package Controller;
 
-import Model.BO.ClienteBo;
-import Model.BO.ProdutoBo;
-import Model.Entity.Cliente;
-import Model.Entity.Produto;
+import Dao.DetalhesPedidoDAO;
+import Model.Entity.DetalhesPedido;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.FileOutputStream;
 import java.util.List;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Paragraph;
-
-import Dao.DetalhesPedidoDAO;
-import Model.Entity.DetalhesPedido;
-
-public class RelatorioController{
+public class RelatorioController {
 
     @FXML
     private TextField NomeCliente;
-
-    @FXML
-    private Button cancel;
 
     @FXML
     private TextField dataFinal;
@@ -36,38 +28,66 @@ public class RelatorioController{
     private TextField dataInicial;
 
     @FXML
-    private Button pdf;
-
-    @FXML
     private TextField saborPizza;
 
     @FXML
     private CheckBox status;
 
-    public static List<Cliente> filtrados;
+    @FXML
+    private Button cancel;
+
+    @FXML
+    private Button financeiros;
+
+    @FXML
+    private Button pdf;
+
+    @FXML
+    void gerarDadosFinanceiros(ActionEvent event) {
+
+    }
 
     @FXML
     void gerarPDF(ActionEvent event) {
-        String nomeDoArquivo = "exemplo.pdf";
+        String nomeDoArquivo = "relatorio.pdf";
         Document documento = new Document();
+
         try {
             PdfWriter.getInstance(documento, new FileOutputStream(nomeDoArquivo));
             documento.open();
 
             DetalhesPedidoDAO detalhesPedidoDAO = new DetalhesPedidoDAO();
-            List<DetalhesPedido> detalhesPedidos = detalhesPedidoDAO.obterDetalhesPedidos();
+            List<DetalhesPedido> detalhesPedidos = detalhesPedidoDAO.obterDetalhesPedidos(
+                    getOrNull(NomeCliente.getText()),
+                    getOrNull(saborPizza.getText()),
+                    getOrNull(dataInicial.getText()),
+                    getOrNull(dataFinal.getText()),
+                    status.isSelected()
+            );
 
-            Paragraph titulo = new Paragraph("Detalhe de Todos os Pedidos");
+            Paragraph titulo1 = new Paragraph("Relatorio");
+            titulo1.setAlignment(Paragraph.ALIGN_CENTER);
+
+            Paragraph titulo = new Paragraph("Detalhe de Pedidos com Base nos Critérios Selecionados");
             titulo.setAlignment(Paragraph.ALIGN_CENTER);
             titulo.setSpacingAfter(20f);
+
+            documento.add(titulo1);
             documento.add(titulo);
+            documento.add(new Paragraph("----------------------------------------------------------------------"));
+
             for (DetalhesPedido detalhes : detalhesPedidos) {
                 documento.add(new Paragraph("ID do Pedido: " + detalhes.getIdPedido()));
                 documento.add(new Paragraph("Valor: " + detalhes.getValor()));
-                documento.add(new Paragraph("CPF do Cliente: " + detalhes.getCpfCliente()));
+                documento.add(new Paragraph("Status: " + detalhes.getStatus()));
+                documento.add(new Paragraph("Data: " + detalhes.getDataPedido()));
                 documento.add(new Paragraph("Nome do Cliente: " + detalhes.getNomeCliente()));
-                documento.add(new Paragraph("Nome do Funcionário: " + detalhes.getNomeFuncionario()));
-                documento.add(new Paragraph("-------------------------------------------------"));
+                documento.add(new Paragraph("Sabor: " + detalhes.getSabor()));
+
+              //  documento.add(new Paragraph("CPF do Cliente: " + detalhes.getCpfCliente()));
+              //  documento.add(new Paragraph("Nome do Funcionário: " + detalhes.getNomeFuncionario()));
+
+                documento.add(new Paragraph("----------------------------------------------------------------------"));
             }
 
             documento.close();
@@ -82,6 +102,11 @@ public class RelatorioController{
             documento.close();
         }
     }
+
+    private static String getOrNull(String value) { // VERIFICA SE O ARGUMENTO É VALIDO
+        return value.isBlank() ? null : value;
+    }
+
     @FXML
     void cancel(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
