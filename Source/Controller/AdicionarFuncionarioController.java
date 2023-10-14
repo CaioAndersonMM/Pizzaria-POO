@@ -28,19 +28,18 @@ public class AdicionarFuncionarioController {
 
     @FXML
     void adicionar(ActionEvent event) throws Exception {
-        System.out.println("INDO ADICIONAR FUNCIONARIO");
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNome(nome.getText());
-        funcionario.setCPF(cpf.getText());
-        funcionario.setSenha(senha.getText());
+            Funcionario funcionario = new Funcionario();
+            funcionario.setNome(nome.getText());
+            funcionario.setCPF(cpf.getText());
+            funcionario.setSenha(senha.getText());
 
-        FuncionarioBo bo = new FuncionarioBo();
-        bo.criar(funcionario);
+            FuncionarioBo bo = new FuncionarioBo();
+            bo.criar(funcionario);
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
 
-        App.telaFuncionarios();
+            App.telaFuncionarios();
     }
 
     @FXML

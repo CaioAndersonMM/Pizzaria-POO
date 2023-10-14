@@ -61,15 +61,16 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
     public void alterar(Funcionario entity) {
 
         String sql = "UPDATE tb_funcionarios\n" + //
-                "SET nome = ?, cpf = ?\n" + //
-                "WHERE id = ?;";
+        "SET nome = ?, cpf = ?, senha = ?\n" + //
+        "WHERE id = ?;";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, entity.getNome());
             stmt.setString(2, entity.getCPF());
-            stmt.setLong(3, entity.getId());
+            stmt.setString(3, entity.getSenha());
+            stmt.setLong(4, entity.getId());
 
             stmt.execute();
             stmt.close();

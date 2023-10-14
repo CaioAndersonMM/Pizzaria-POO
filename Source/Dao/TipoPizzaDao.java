@@ -41,7 +41,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
     }
 
     @Override
-    public void deletar(TipoPizza entity) {
+    public void deletar(TipoPizza entity){
         String sql = "DELETE FROM tb_tipos_pizzas as tp WHERE tp.id = ?";
         connection = getConnection();
         try {
@@ -50,6 +50,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
+            System.out.println("Já existe Pizza associada a esse Tipo Pizza");
             e.printStackTrace();
         } finally {
             closeConnection();
@@ -148,5 +149,44 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
         return tiposPizza;
     }
+
+    public List<TipoPizza> buscarPorNome(TipoPizza entity) {
+        String sql = "SELECT * FROM tb_tipos_pizzas WHERE nome LIKE ?";
+        String padrao = "%" + entity.getNomeSabor() + "%";
+
+        connection = getConnection();
+        List<TipoPizza> produtos = new ArrayList<TipoPizza>();
+        
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, padrao);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                TipoPizza produto = new TipoPizza(
+                   
+                );
+                produto.setId((rs.getLong("id")));
+                produto.setNomeSabor(rs.getString("nome"));
+
+                float[] valores = new float[3];
+                
+                valores[0] = rs.getFloat("valor_p");
+                valores[1] = rs.getFloat("valor_m");
+                valores[2] = rs.getFloat("valor_g");
+
+                produto.setValores(valores);
+                produtos.add(produto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return produtos;
+    }
+
+
 
 }

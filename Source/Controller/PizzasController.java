@@ -85,12 +85,12 @@ public class PizzasController implements  Initializable{
             String nome = this.searchField.getText();
 
             pizza.setNomeSabor(nome);
-            //List<TipoPizza> pizzas = dao.buscarPorNome(pizza);
+            List<TipoPizza> pizzas = dao.buscarPorNome(pizza);
 
             if (pizzas == null) {
             System.out.println("Não encontrado");
             } else {
-                //filtrados = pizzas;
+                filtrados = pizzas;
                 App.telaPizzas();
             }
         }
