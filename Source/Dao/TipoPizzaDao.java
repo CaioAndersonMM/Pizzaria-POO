@@ -11,7 +11,7 @@ import Model.Entity.TipoPizza;
 public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
     @Override
     public Long inserir(TipoPizza entity) {
-        String sql = "INSERT INTO tb_tipo_pizzas (nomeSabor, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_tipos_pizzas (nome, valor_p, valor_m, valor_g) VALUES (?, ?, ?, ?)";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -23,7 +23,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.close();
 
             // Buscar tipo de pizza criado e retornar id
-            sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.nomeSabor=?";
+            sql = "SELECT * FROM tb_tipos_pizzas as tp WHERE tp.nome=?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeSabor());
             ResultSet rs = stmt.executeQuery();
@@ -42,7 +42,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public void deletar(TipoPizza entity) {
-        String sql = "DELETE FROM tb_tipo_pizzas as tp WHERE tp.id = ?";
+        String sql = "DELETE FROM tb_tipos_pizzas as tp WHERE tp.id = ?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -58,8 +58,8 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public void alterar(TipoPizza entity) {
-        String sql = "UPDATE tb_tipo_pizzas\n" +
-                "SET nomeSabor =?, valor_p =?, valor_m =?, valor_g =?\n" +
+        String sql = "UPDATE tb_tipos_pizzas\n" +
+                "SET nome = ?, valor_p = ?, valor_m = ?, valor_g = ?\n" +
                 "WHERE id = ?;";
         connection = getConnection();
         try {
@@ -82,7 +82,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public TipoPizza buscar(TipoPizza entity) {
-        String sql = "SELECT * FROM tb_tipo_pizzas as tp WHERE tp.id = ?";
+        String sql = "SELECT * FROM tb_tipos_pizzas as tp WHERE tp.id = ?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
                 valores[2] = rs.getFloat("valor_g");
 
                 tipoPizza.setId(rs.getLong("id"));
-                tipoPizza.setNomeSabor(rs.getString("nomeSabor"));
+                tipoPizza.setNomeSabor(rs.getString("nome"));
                 tipoPizza.setValores(valores);
                                 
                 return tipoPizza;
@@ -116,7 +116,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
 
     @Override
     public List<TipoPizza> listar() {
-        String sql = "SELECT * FROM tb_tipo_pizzas";
+        String sql = "SELECT * FROM tb_tipos_pizzas";
         connection = getConnection();
 
         List<TipoPizza> tiposPizza = new ArrayList<TipoPizza>();
@@ -133,7 +133,7 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
                 valores[2] = rs.getFloat("valor_g");
 
                 tipoPizza.setId(rs.getLong("id"));
-                tipoPizza.setNomeSabor(rs.getString("nomeSabor"));
+                tipoPizza.setNomeSabor(rs.getString("nome"));
                 tipoPizza.setValores(valores);
                 
                 //tipoPizza.setIngredientes(rs.getString("id_produtos"));
