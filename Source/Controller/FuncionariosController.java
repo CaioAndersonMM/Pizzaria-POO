@@ -97,6 +97,11 @@ public class FuncionariosController implements Initializable {
     }
 
      public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if(FuncionarioBo.isAdminLogado != true){
+            adicionar.setVisible(false);
+        } 
+
         List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
 
         for (Object[] dado : dadosDoBanco) {
@@ -143,7 +148,7 @@ public class FuncionariosController implements Initializable {
             hboxContainer.getStyleClass().add("table_row");
             
             tabela.getChildren().add(hboxContainer);
-            }
+        }
     }
 
     private List<Object[]> recuperarDadosDoBanco() {
@@ -160,7 +165,7 @@ public class FuncionariosController implements Initializable {
             funcionarioInfo[2] = funcionario.getCPF();
             funcionarioInfo[3] = funcionario.getSenha();
             dados.add(funcionarioInfo);
-        }
+            }
         } else {
             for (Funcionario funcionario : filtrados) {
             Object[] funcionarioInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
@@ -171,8 +176,6 @@ public class FuncionariosController implements Initializable {
             dados.add(funcionarioInfo);
             }
         }
-
-        
         return dados;
     }
 
@@ -222,8 +225,8 @@ public class FuncionariosController implements Initializable {
     }
 
     @FXML
-    void loggout(ActionEvent event) {
-
+    void loggout(ActionEvent event) throws IOException {
+        App.sair();
     }
 
    @FXML
@@ -233,12 +236,12 @@ public class FuncionariosController implements Initializable {
 
     @FXML
     void telaEstoque(ActionEvent event) throws Exception {
-         App.telaEstoque();
+        App.telaEstoque();
     }
 
     @FXML
     void telaFuncionarios(ActionEvent event) throws Exception {
-         App.telaFuncionarios();
+        App.telaFuncionarios();
     }
 
     @FXML
@@ -255,6 +258,4 @@ public class FuncionariosController implements Initializable {
     void telaRelatorios(ActionEvent event) throws Exception {
         App.telaRelatorio();
     }
-
-
 }

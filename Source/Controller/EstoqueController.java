@@ -69,7 +69,7 @@ public class EstoqueController implements Initializable {
     void buscar(MouseEvent event) throws Exception {
         if(this.searchField.getText().isEmpty()){
             filtrados = null;
-            App.telaClientes();
+            App.telaEstoque();
         } else{
             ProdutoDao dao = new ProdutoDao();
             
@@ -80,7 +80,6 @@ public class EstoqueController implements Initializable {
             List<Produto> produtos = dao.buscarPorNome(produto);
 
             if (produtos == null) {
-            System.out.println("Não encontrado");
             } else {
                 filtrados = produtos;
                 App.telaEstoque();
@@ -172,8 +171,8 @@ public class EstoqueController implements Initializable {
     }
 
     @FXML
-    void loggout(ActionEvent event) {
-
+    void loggout(ActionEvent event) throws IOException {
+        App.sair();
     }
 
     @FXML

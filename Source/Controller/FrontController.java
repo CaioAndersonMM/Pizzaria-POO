@@ -3,7 +3,6 @@ package Controller;
 import Exception.AutenticationEmptyException;
 import Exception.AutenticationException;
 import Model.BO.FuncionarioBo;
-import Model.BO.GerenteBo;
 import Model.Entity.Funcionario;
 import Model.Entity.Gerente;
 import View.App;
@@ -22,12 +21,9 @@ public class FrontController {
         String cpfText = cpf.getText();
         String passwordText = senha.getText();
 
-        if (cpfText.equals("12345678910") && passwordText.equals("admin")) {
-            System.out.println("Bem-Vindo Usuário - seu CPF: "+ cpf.getText() + " e sua senha: "+ senha.getText());
-            App.telaPedidos();
-        }
         if (cpfText.equals("123") && passwordText.equals("123")) {
             System.out.println("Seu Usuário é: "+ cpf.getText() + " e sua senha: "+ senha.getText());
+            FuncionarioBo.isAdminLogado = true; //Dando permissão de ADM
             App.telaPedidos();
         }
 
@@ -44,24 +40,16 @@ public class FrontController {
             // (SetSenha) - Senha maior que 3 caracteres
 
             try {
-                GerenteBo gerbo = new GerenteBo();
-                Gerente autenticado = gerbo.autenticar(vo);
-
+                //Gerente foi excluido do DB
+                FuncionarioBo funBo = new FuncionarioBo();
+                Funcionario autenticado = funBo.autenticar(vo2);
                 if (autenticado != null) {
-                    App.telaFuncionarios();
-                } 
-            } catch (AutenticationException e) { //verificar Funcionário
-                try {
-                    FuncionarioBo funBo = new FuncionarioBo();
-                    Funcionario autenticado2 = funBo.autenticar(vo2);
-                    if (autenticado2 != null) {
-                        App.telaPedidos();
-                    } else throw new AutenticationException();
-                } catch (AutenticationException e2) {
-                    System.out.println("Recomendo utilizar: CPF: 123 SENHA: 123");
-                    erroautenticacao.setText("CPF OU SENHA NÃO ENCONTRADOS!");
-                    erroautenticacao.setVisible(true);
+                    App.telaPedidos();
                 }
+            } catch (AutenticationException e) {
+                System.out.println("Recomendo utilizar: CPF: 123 SENHA: 123");
+                erroautenticacao.setText("CPF OU SENHA NÃO ENCONTRADOS!");
+                erroautenticacao.setVisible(true);
             }
         } else{
             erroautenticacao.setText("É NECESSÁRIO PREENCHER TODOS OS CAMPOS");

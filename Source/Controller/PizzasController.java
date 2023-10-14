@@ -123,7 +123,6 @@ public class PizzasController implements  Initializable{
                 try {
                     edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -131,7 +130,6 @@ public class PizzasController implements  Initializable{
                 try {
                     delete(event, (Long) dado[0]);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -143,7 +141,7 @@ public class PizzasController implements  Initializable{
             hboxContainer.getStyleClass().add("table_row");
             
             tabela.getChildren().add(hboxContainer);
-            }
+        }
     }
 
     private List<Object[]> recuperarDadosDoBanco() {
@@ -164,10 +162,10 @@ public class PizzasController implements  Initializable{
             pizzaInfo[4] = valores[0]; //p
             //pizzaInfo[5] = pizza.getIngredientes();
             dados.add(pizzaInfo);
-        }
+            }
         } else {
             for (TipoPizza pizza : filtrados) {
-            Object[] pizzaInfo = new Object[6]; // Criar um array de objetos para armazenar as informações
+            Object[] pizzaInfo = new Object[6];
             pizzaInfo[0] = pizza.getId();
             pizzaInfo[1] = pizza.getNomeSabor();
             float valores[] = pizza.getValores();
@@ -178,9 +176,6 @@ public class PizzasController implements  Initializable{
             dados.add(pizzaInfo);
             }
         }
-        // Itere sobre os objetos Pizza e obtenha seus tamanhos
-        
-
         return dados;
     }
 
@@ -190,9 +185,8 @@ public class PizzasController implements  Initializable{
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/adicionar_pizza.fxml"));
         Scene scene = new Scene(root);
 
-        // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
     }
@@ -204,9 +198,8 @@ public class PizzasController implements  Initializable{
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
         Scene scene = new Scene(root);
 
-        // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
     }
@@ -222,17 +215,15 @@ public class PizzasController implements  Initializable{
         editarPizzaController.setValoresEdicao(sabor, precop, precom, precog);
         EditarPizzaController.id = id;
 
-    
-        // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
     }
 
     @FXML
-    void loggout(ActionEvent event) {
-
+    void loggout(ActionEvent event) throws IOException {
+        App.sair();
     }
 
    @FXML
@@ -242,12 +233,12 @@ public class PizzasController implements  Initializable{
 
     @FXML
     void telaEstoque(ActionEvent event) throws Exception {
-         App.telaEstoque();
+        App.telaEstoque();
     }
 
     @FXML
     void telaFuncionarios(ActionEvent event) throws Exception {
-         App.telaFuncionarios();
+        App.telaFuncionarios();
     }
 
     @FXML
@@ -264,5 +255,4 @@ public class PizzasController implements  Initializable{
     void telaRelatorios(ActionEvent event) throws Exception {
         App.telaRelatorio();
     }
-
 }

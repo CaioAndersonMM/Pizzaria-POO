@@ -3,6 +3,7 @@ package View;
 import java.io.IOException;
 import java.net.URL;
 
+import Model.BO.FuncionarioBo;
 import javafx.application.Application;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -89,5 +90,8 @@ public class App extends Application {
         dialogStage.showAndWait();
     }
 
-
+    public static void sair() throws IOException{
+        App.telaLogin();
+        FuncionarioBo.isAdminLogado = false;
+    }
 }
