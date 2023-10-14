@@ -140,6 +140,12 @@ public class FuncionariosController implements Initializable {
                     e.printStackTrace();
                 }
             });
+
+            if(FuncionarioBo.isAdminLogado != true){
+                button1.setVisible(false);
+                button2.setVisible(false);
+            } 
+            
             hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, cpfLabel, separator3, button1, button2);
             hboxContainer.setSpacing(20);
             Insets padding = new Insets(10, 10, 10, 10);
