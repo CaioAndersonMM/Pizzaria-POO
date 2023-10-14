@@ -12,13 +12,14 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
 
     @Override
     public Long inserir(Funcionario entity) {
-        String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tb_funcionarios (cpf, nome, senha, id_admin) VALUES (?, ?, ?, ?)";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getCPF());
             stmt.setString(2, entity.getNome());
             stmt.setString(3, entity.getSenha());
+            stmt.setBoolean(4, entity.isAdmin());
 
             stmt.execute();
             stmt.close();
@@ -97,6 +98,7 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setSenha(rs.getString("senha"));
+                funcionario.setAdmin(rs.getBoolean("id_admin"));
                 
                 return funcionario;
 
@@ -145,6 +147,8 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setSenha(rs.getString("senha"));
+                funcionario.setAdmin(rs.getBoolean("id_admin"));
+    
                 
                funcionarios.add(funcionario);
             }
@@ -173,6 +177,8 @@ public class FuncionarioDao extends BaseDaoImp<Funcionario> {
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setSenha(rs.getString("senha"));
+                funcionario.setAdmin(rs.getBoolean("id_admin"));
+
 
                 funcionarios.add(funcionario);
             }

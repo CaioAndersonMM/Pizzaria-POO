@@ -9,8 +9,8 @@ import Exception.AutenticationException;
 import Model.Entity.Funcionario;
 
 public class FuncionarioBo {
- static private FuncionarioDao dao = new FuncionarioDao();
-
+ 	static private FuncionarioDao dao = new FuncionarioDao();
+	static public boolean isAdminLogado;
 	public Funcionario autenticar(Funcionario vo) throws AutenticationException{
 		ResultSet rs = dao.buscarPorCPF(vo);
 		try {
@@ -20,6 +20,7 @@ public class FuncionarioBo {
 					res.setId(rs.getLong("id"));
 					res = dao.buscar(res);
 						if(res != null) {//cumprir o protocolo por desencargo de consciência
+							isAdminLogado = res.isAdmin();
 							return res;
 						}
 						else throw new AutenticationException();
@@ -34,12 +35,11 @@ public class FuncionarioBo {
 	}
 
 	public void criar(Funcionario funcionario){
-		System.out.println("ADICIONAR FUNCIONARIO ID: "+ funcionario.getId() + " e cpf: "+ funcionario.getCPF());
 		dao.inserir(funcionario);
 	}
 
 	public List<Funcionario> listar(){
-    	return dao.listar(); // Recupere e retorne a lista de pizzas
+    	return dao.listar();
   	}
 
   public void editar(Long id, Funcionario funcionarionovo){
