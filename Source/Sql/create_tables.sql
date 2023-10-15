@@ -45,7 +45,6 @@ CREATE TABLE tb_pedidos (
     id BIGSERIAL PRIMARY KEY,
     id_cliente BIGINT,
     id_funcionario BIGINT,
-    id_tipo_pizza BIGINT,
     valor NUMERIC(6, 2) NOT NULL CHECK (valor >= 0),
     status BOOLEAN NOT NULL DEFAULT FALSE,
     data_pedido DATE,
