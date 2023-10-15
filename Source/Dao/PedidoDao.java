@@ -11,25 +11,34 @@ import Model.Entity.Cliente;
 import Model.Entity.Pedido;
 import Model.Entity.Pizza;
 
+import Dao.PizzaDao;
+
 public class PedidoDao extends BaseDaoImp<Pedido> {
+    private PizzaDao pizzaDAO = new PizzaDao();
+
+    private List<Pizza> buscarPizzas() {
+        List<Pizza> pizzas = new ArrayList<Pizza>();
+        return pizzas;
+    }
 
     @Override
     public Long inserir(Pedido entity) {
-        String sql = "INSERT INTO tb_pedidos (cliente, pizzas, valor, data, status)) "
-                + "values (?,?,?,?,?)";
+        String sql = "INSERT INTO tb_pedidos (cliente, valor, data, status) values (?,?,?,?)";
         connection = getConnection();
+        
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // gerará chave inserçao
+            
             ps.setObject(1, entity.getCliente());
-            ps.setObject(2, entity.getPizzas());
-            ps.setFloat(3, entity.getValor());
-            ps.setDate(4, java.sql.Date.valueOf(entity.getData())); // converte o LocalDate para o banco
-            ps.setBoolean(5, false); // pedido começa como false
+            ps.setFloat(2, entity.getValor());
+            ps.setDate(3, java.sql.Date.valueOf(entity.getData())); // converte o LocalDate para o banco
+            ps.setBoolean(4, false); // pedido começa como false
             ps.execute();
             ps.close();
 
             // Obtém o ID gerado pelo banco
-            ResultSet generatedKeys = ps.getGeneratedKeys();
+            ResultSet generatedKeys = ps.getGeneratedKeys();    
+
             if (generatedKeys.next()) {
                 return generatedKeys.getLong(1);
             } else {

@@ -10,6 +10,39 @@ import Model.Entity.Produto;
 
 public class ProdutoDao extends BaseDaoImp<Produto> {
 
+    public List<Produto> buscarPorNome(String nome) {
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        String sql = "SELECT * FROM tb_produtos WHERE nome LIKE ?";
+        String padrao = "%" + nome + "%";
+        connection = getConnection();
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, padrao);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                    rs.getLong("id"),
+                    rs.getString("nome"),
+                    rs.getInt("quantidade"),
+                    rs.getFloat("valor"),
+                    rs.getBoolean("is_adicional")
+                );
+                
+                produtos.add(produto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return produtos;
+    }
+
     @Override
     public void alterar(Produto entity) {
         String sql = "UPDATE tb_produtos SET nome=?, quantidade=?, valor=? , is_adicional=? WHERE id=?";
@@ -58,44 +91,6 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         }
         return null;
     }
-
-     public List<Produto> buscarPorNome(Produto entity) {
-        String sql = "SELECT * FROM tb_produtos WHERE nome LIKE ?";
-        String padrao = "%" + entity.getNome() + "%";
-
-        connection = getConnection();
-        List<Produto> produtos = new ArrayList<Produto>();
-        
-
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, padrao);
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Produto produto = new Produto(
-                    rs.getLong("id"),
-                    rs.getString("nome"),
-                    rs.getInt("quantidade"),
-                    rs.getFloat("valor"),
-                    rs.getBoolean("is_adicional")
-                );
-                
-                produtos.add(produto);
-            }
-
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            closeConnection();
-        }
-        return produtos;
-    }
-
-
 
     @Override
     public void deletar(Produto entity) {
