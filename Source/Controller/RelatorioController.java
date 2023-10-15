@@ -44,13 +44,54 @@ public class RelatorioController {
 
     @FXML
     void gerarDadosFinanceiros(ActionEvent event) {
+        String nomeDoArquivo = "financeiro.pdf";
+        Document documento = new Document();
 
+        try {
+            PdfWriter.getInstance(documento, new FileOutputStream(nomeDoArquivo));
+            documento.open();
+
+            DetalhesPedidoDAO detalhesPedidoDAO = new DetalhesPedidoDAO();
+            List<DetalhesPedido> detalhesPedidos = detalhesPedidoDAO.obterDetalhesFinanceiros();
+
+            Paragraph titulo1 = new Paragraph("Relatório");
+            titulo1.setAlignment(Paragraph.ALIGN_CENTER);
+
+            Paragraph titulo = new Paragraph("Histórico de Gastos, Ganhos & Lucro");
+            titulo.setAlignment(Paragraph.ALIGN_CENTER);
+            titulo.setSpacingAfter(20f);
+
+            documento.add(titulo1);
+            documento.add(titulo);
+            documento.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------------------"));
+
+            for (DetalhesPedido detalhes : detalhesPedidos) {
+                documento.add(new Paragraph("Ganho : " + detalhes.getGanho()));
+                documento.add(new Paragraph("Gasto: " + detalhes.getGasto()));
+                documento.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------------------"));
+            }
+
+            //Utilizando a Função
+            documento.add(new Paragraph("Lucro: " + detalhesPedidoDAO.lucro()));
+
+            documento.close();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+
+            System.out.println("PDF gerado com sucesso!");
+
+        } catch (Exception e) {
+            System.out.println(e);
+            documento.close();
+        }
     }
 
     @FXML
     void gerarPDF(ActionEvent event) {
         String nomeDoArquivo = "relatorio.pdf";
         Document documento = new Document();
+        double total = 0.0;
 
         try {
             PdfWriter.getInstance(documento, new FileOutputStream(nomeDoArquivo));
@@ -74,7 +115,7 @@ public class RelatorioController {
 
             documento.add(titulo1);
             documento.add(titulo);
-            documento.add(new Paragraph("----------------------------------------------------------------------"));
+            documento.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------------------"));
 
             for (DetalhesPedido detalhes : detalhesPedidos) {
                 documento.add(new Paragraph("ID do Pedido: " + detalhes.getIdPedido()));
@@ -84,11 +125,14 @@ public class RelatorioController {
                 documento.add(new Paragraph("Nome do Cliente: " + detalhes.getNomeCliente()));
                 documento.add(new Paragraph("Sabor: " + detalhes.getSabor()));
 
-              //  documento.add(new Paragraph("CPF do Cliente: " + detalhes.getCpfCliente()));
-              //  documento.add(new Paragraph("Nome do Funcionário: " + detalhes.getNomeFuncionario()));
+                //  documento.add(new Paragraph("CPF do Cliente: " + detalhes.getCpfCliente()));
+                //  documento.add(new Paragraph("Nome do Funcionário: " + detalhes.getNomeFuncionario()));
 
-                documento.add(new Paragraph("----------------------------------------------------------------------"));
+                total += detalhes.getValor();
+                documento.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------------------"));
             }
+
+            documento.add(new Paragraph("Total: R$ " + total));
 
             documento.close();
 
