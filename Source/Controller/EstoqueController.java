@@ -72,12 +72,11 @@ public class EstoqueController implements Initializable {
             App.telaEstoque();
         } else{
             ProdutoDao dao = new ProdutoDao();
-            
-            Produto produto = new Produto();
             String nome_produto = this.searchField.getText();
-
-            produto.setNome(nome_produto);
-            List<Produto> produtos = dao.buscarPorNome(produto);
+            
+            // Produto produto = new Produto();
+            // produto.setNome(nome_produto);
+            List<Produto> produtos = dao.buscarPorNome(nome_produto);
 
             if (produtos == null) {
             } else {
