@@ -1,7 +1,7 @@
 CREATE TABLE tb_produtos (
 	id BIGSERIAL PRIMARY KEY,
 	nome VARCHAR(40) NOT NULL,
-	quantidade INTEGER NOT NULL CHECK (quantidade >= 0),
+	quantidade float NOT NULL CHECK (quantidade >= 0),
 	valor NUMERIC(6, 2) NOT NULL CHECK (valor > 0),
 	is_adicional BOOLEAN NOT NULL DEFAULT FALSE
 );

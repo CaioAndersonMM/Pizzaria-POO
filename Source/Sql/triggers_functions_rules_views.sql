@@ -38,6 +38,46 @@ EXECUTE FUNCTION criar_venda_apos_insercao_pizza();
 
 
 
+---------------- DECREMENTE EM PRODUTOS AO SER ADICIONADA UMA PIZZA --------------
+
+CREATE OR REPLACE FUNCTION atualizar_quantidade_produto()
+RETURNS TRIGGER AS $$
+DECLARE
+    ingredientes_cursor CURSOR FOR
+        SELECT tpi.id_ingrediente, tpi.quantidade
+        FROM tb_tipos_pizzas_ingredientes as tpi
+        WHERE tpi.id_tipo_pizza = NEW.id_tipo_pizza;
+    
+    ing_id INT;
+    ing_quantidade NUMERIC;
+BEGIN
+    OPEN ingredientes_cursor;
+    
+    LOOP
+        FETCH ingredientes_cursor INTO ing_id, ing_quantidade;
+        EXIT WHEN ing_id IS NULL;
+        
+        -- Atualize a tabela tb_produtos subtraindo a quantidade de ingredientes da tabela tb_tipos_pizzas_ingredientes
+        UPDATE tb_produtos
+        SET quantidade = quantidade - ing_quantidade
+        WHERE id = ing_id;
+    END LOOP;
+    
+    CLOSE ingredientes_cursor;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Crie o trigger para ser acionado após a inserção de uma nova pizza
+CREATE TRIGGER trigger_atualizar_quantidade_produto
+AFTER INSERT ON tb_pizzas
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_quantidade_produto();
+
+
+
+
 ----------------- FUNCTION --------------------
 ----------------- Função para calcular o lucro
 CREATE OR REPLACE FUNCTION calcular_lucro()
