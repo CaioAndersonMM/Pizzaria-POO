@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,6 @@ import Model.Entity.Produto;
 import Model.Entity.TipoPizza;
 import Utils.ProdutoStringConverter;
 import Utils.TipoPizzaStringConverter;
-import Model.BO.PizzaBo;
 
 import View.App;
 
@@ -42,7 +42,6 @@ public class CriarPedidoController {
     private PedidoDao pedidoDAO = new PedidoDao();
     private List<Pizza> pizzas = new ArrayList<Pizza>();
     private List<Produto> adicionais  = new ArrayList<Produto>();
-    private Pedido pedido = new Pedido();
 
     @FXML
     private Button addAdicionalButton;
@@ -252,16 +251,27 @@ public class CriarPedidoController {
 
         pizza.setTipo(tipoPizza);
         pizza.setAdicionais(adicionais);
+        float valor = 0;
+
+        for (Produto adicional: adicionais) {
+            valor += adicional.getValor();
+        }
+        
         adicionais = new ArrayList<Produto>();
 
         if (tamanhoString.equals("Pequena")) {
             pizza.setTamanho('p');
+            valor += tipoPizza.getValores()[0];
         } else if (tamanhoString.equals("Média")) {
             pizza.setTamanho('m');
+            valor += tipoPizza.getValores()[1];
         } else if (tamanhoString.equals("Grande")) {
             pizza.setTamanho('g');
+            valor += tipoPizza.getValores()[2];
         }
         
+        pizza.setValor(valor);
+
         limparCampos();
         addPizzaToTable(pizza);
         clearAdicionalTable();
@@ -274,6 +284,15 @@ public class CriarPedidoController {
 
     @FXML
     void finalizar(ActionEvent event) {
+        Pedido pedido = new Pedido(
+            clienteSelecionado,
+            pizzas,
+            calcularValorTotal(),
+            LocalDate.now(),
+            false
+        );
+
+        pedidoDAO.inserir(pedido);
         stage.close();
     }
 } 
