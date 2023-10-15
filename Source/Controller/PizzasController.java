@@ -80,15 +80,15 @@ public class PizzasController implements  Initializable{
             App.telaPizzas();
         } else{
             TipoPizzaDao dao = new TipoPizzaDao();
-            
-            TipoPizza pizza = new TipoPizza();
             String nome = this.searchField.getText();
+            
+            // TipoPizza pizza = new TipoPizza();
+            // pizza.setNomeSabor(nome);
+            
+            List<TipoPizza> pizzas = dao.buscarPorNome(nome);
 
-            pizza.setNomeSabor(nome);
-            List<TipoPizza> pizzas = dao.buscarPorNome(pizza);
-
-            if (pizzas == null) {
-            System.out.println("Não encontrado");
+            if (pizzas.size() == 0) {
+                System.out.println("Não encontrado");
             } else {
                 filtrados = pizzas;
                 App.telaPizzas();
