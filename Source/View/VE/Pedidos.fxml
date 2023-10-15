@@ -83,7 +83,7 @@
                     </padding></HBox>
                 <ScrollPane id="main_table" fitToWidth="true" hbarPolicy="NEVER" maxWidth="900.0" prefHeight="200.0" VBox.vgrow="ALWAYS">
                     <content>
-                        <VBox spacing="8.0" />
+                        <VBox fx:id="tabela" spacing="8.0" />
                     </content>
                 </ScrollPane>
             </children>
