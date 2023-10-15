@@ -1,20 +1,30 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import Controller.Pedido.SelecionarClienteController;
+import Dao.PedidoDao;
+import Model.Entity.Pedido;
 import View.App;
 
 public class PedidosController {
+    private PedidoDao pedidoDAO = new PedidoDao();
 
     @FXML
     private Button adicionar;
@@ -45,6 +55,66 @@ public class PedidosController {
 
     @FXML
     private Button sair;
+
+    @FXML
+    private VBox tabela;
+
+    public void initialize() {
+        List<Pedido> pedidos = pedidoDAO.listar();
+
+        for (Pedido pedido : pedidos) {
+            System.out.println(pedido);
+
+            HBox hboxContainer = new HBox();
+            
+            // id, Nome do cliente, valor, status
+            String id = String.valueOf(pedido.getId());
+            String nomeCliente = pedido.getCliente().getNome();
+            String valor = "R$: " + pedido.getValor();
+            String status = pedido.getStatus() ? "Concluído" : "Em andamento";
+            
+            Label idLabel = new Label(id);
+            Label nomeClienteLabel = new Label("Cliente: " + nomeCliente);
+            Label valorLabel = new Label(valor);
+            Label statusLabel = new Label(status);
+            Button button1 = new Button("Editar");
+            Button button2 = new Button("Excluir");
+
+            nomeClienteLabel.setPrefWidth(200);
+            valorLabel.setPrefWidth(100);
+            statusLabel.setPrefWidth(100);
+
+            Separator separator = new Separator();            
+            separator.setVisible(false);
+            HBox.setHgrow(separator, Priority.ALWAYS);
+            
+            button1.setOnAction((ActionEvent event) -> {
+                // try {
+                //     edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
+                // } catch (IOException e) {
+                //     e.printStackTrace();
+                // }
+            });
+            
+            button2.setOnAction((ActionEvent event) -> {
+                // try {
+                //     delete(event, (Long) dado[0]);
+                // } catch (IOException e) {
+                //     e.printStackTrace();
+                // }
+            });
+            
+            hboxContainer.getChildren().addAll(idLabel, nomeClienteLabel, valorLabel, statusLabel, separator, button1, button2);
+            hboxContainer.setSpacing(20);
+            
+            Insets padding = new Insets(10, 10, 10, 10);
+            hboxContainer.setPadding(padding);
+            hboxContainer.prefHeight(80);
+            hboxContainer.getStyleClass().add("table_row");
+            
+            tabela.getChildren().add(hboxContainer);
+        }
+    }
 
     @FXML
     void adicionar(ActionEvent event) throws Exception {
