@@ -95,5 +95,13 @@ SELECT
     c.nome AS nome_cliente,
     tp.nome AS sabor
 FROM tb_pedidos p
-         LEFT JOIN tb_clientes c ON p.id_cliente = c.id
-         LEFT JOIN tb_tipos_pizzas tp ON p.id_tipo_pizza = tp.id;
+LEFT JOIN tb_clientes c ON p.id_cliente = c.id
+LEFT JOIN tb_pizzas pz ON p.id = pz.id_pedido
+LEFT JOIN tb_tipos_pizzas tp ON pz.id_tipo_pizza = tp.id;
+
+
+CREATE OR REPLACE VIEW vw_detalhes_financeiro AS
+SELECT
+    v.ganhos AS ganhos,
+    v.gastos AS gastos
+FROM tb_vendas v;
