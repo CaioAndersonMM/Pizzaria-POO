@@ -4,6 +4,8 @@ public class DetalhesPedido {
     private int idPedido;
     private String sabor;
     private double valor;
+    private double gasto;
+    private double ganho;
 
     // private String cpfCliente;
     private String nomeCliente;
@@ -21,6 +23,22 @@ public class DetalhesPedido {
 
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
+    }
+
+    public double getGasto() {
+        return gasto;
+    }
+
+    public void setGasto(double gasto) {
+        this.gasto = gasto;
+    }
+
+    public void setGanho(double ganho) {
+        this.ganho = ganho;
+    }
+    
+    public double getGanho() {
+        return ganho;
     }
 
     public double getValor() {
