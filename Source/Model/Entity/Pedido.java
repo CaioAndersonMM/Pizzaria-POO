@@ -1,11 +1,12 @@
 package Model.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Pedido {
     private long id;
     private Cliente cliente;
-    private Pizza[] pizzas;
+    private List<Pizza> pizzas;
     private float valor;
     private LocalDate data;
     private boolean status;
@@ -13,9 +14,9 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Cliente cliente, Pizza[] pizza, float valor, LocalDate data, boolean status) {
+    public Pedido(Cliente cliente, List<Pizza> pizzas, float valor, LocalDate data, boolean status) {
         setCliente(cliente);
-        setPizzas(pizza);
+        setPizzas(pizzas);
         setValor(valor);
         setData(data);
         setStatus(status);
@@ -33,14 +34,13 @@ public class Pedido {
         }
     }
 
-    public Pizza[] getPizzas() {
+    public List<Pizza> getPizzas() {
         return this.pizzas;
     }
 
-    public void setPizzas(Pizza[] pizzas) {
+    public void setPizzas(List<Pizza> pizzas) {
         if (pizzas != null) {
-            // this.pizzas = pizzas;
-            // Deve adicionar a nova pizza no array
+            this.pizzas = pizzas;
         } else {
             // throw new IllegalArgumentException("Deve haver pizza!");
         }
@@ -96,8 +96,10 @@ public class Pedido {
         setStatus(novoStatus);
     }
 
-    public void adicionarPizza(Pizza[] novaPizza) {
-        setPizzas(novaPizza);
+    public void adicionarPizza(Pizza novaPizza) {
+        List<Pizza> pizzas = getPizzas();
+        pizzas.add(novaPizza);
+        setPizzas(pizzas);
         System.out.println("Pizza Adicionada no Pedido");
     }
 

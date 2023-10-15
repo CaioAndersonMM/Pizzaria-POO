@@ -1,16 +1,19 @@
 package Model.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pizza {
     private Long id;
     private TipoPizza tipo;
-    private Produto[] adicionais;
+    private List<Produto> adicionais = new ArrayList<>();
     private float valor;
     private char tamanho;
 
     public Pizza() {
     }
 
-    public Pizza(TipoPizza tipo, Produto[] adicionais, float valor, char tamanho) {
+    public Pizza(TipoPizza tipo, List<Produto> adicionais, float valor, char tamanho) {
         setTipo(tipo);
         setAdicionais(adicionais);
         setValor(valor);
@@ -40,11 +43,11 @@ public class Pizza {
         }
     }
 
-    public Produto[] getAdicionais() {
+    public List<Produto> getAdicionais() {
         return adicionais;
     }
 
-    public void setAdicionais(Produto[] adicionais) {
+    public void setAdicionais(List<Produto> adicionais) {
         if (adicionais != null) {
             this.adicionais = adicionais;
         } else {
@@ -70,7 +73,7 @@ public class Pizza {
     }
 
     public void setTamanho(char tamanho) {
-        if (tamanho == 'P' || tamanho == 'M' || tamanho == 'G') {
+        if (tamanho == 'p' || tamanho == 'm' || tamanho == 'g') {
             this.tamanho = tamanho;
         } else {
             // throw new IllegalArgumentException("Tamanho da pizza inválido.");
