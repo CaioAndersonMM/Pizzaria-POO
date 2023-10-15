@@ -23,28 +23,39 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public Long inserir(Pedido entity) {
-        String sql = "INSERT INTO tb_pedidos (cliente, valor, data, status) values (?,?,?,?)";
+        String sql = "INSERT INTO tb_pedidos (id_cliente, valor, data_criacao, status) VALUES (?,?,?,?)";
         connection = getConnection();
-        
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // gerará chave inserçao
-            
-            ps.setObject(1, entity.getCliente());
-            ps.setFloat(2, entity.getValor());
-            ps.setDate(3, java.sql.Date.valueOf(entity.getData())); // converte o LocalDate para o banco
-            ps.setBoolean(4, false); // pedido começa como false
-            ps.execute();
-            ps.close();
 
-            // Obtém o ID gerado pelo banco
-            ResultSet generatedKeys = ps.getGeneratedKeys();    
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, entity.getCliente().getId());
+            ps.setFloat(2, entity.getValor());
+            ps.setDate(3, java.sql.Date.valueOf(entity.getData()));
+            ps.setBoolean(4, false);
+            ps.execute();
+
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            // ps.close();
 
             if (generatedKeys.next()) {
-                return generatedKeys.getLong(1);
+                Long pedidoId = generatedKeys.getLong(1);
+                entity.setId(pedidoId); // Define o ID gerado no objeto Pedido
+
+                // Associar as pizzas ao pedido na tabela de relação tb_pedidos_pizzas
+                for (Pizza pizza: entity.getPizzas()) {
+                    Long pizzaId = pizza.getId();
+                    
+                    if (pizzaId == null) {
+                        pizzaId = pizzaDAO.inserir(pizza);
+                    }
+                    
+                    pizzaDAO.associarPizzaAoPedido(pedidoId, pizzaId);
+                }
+
+                return pedidoId;
             } else {
                 return null;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -112,7 +123,7 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
                 pedido = new Pedido();
                 pedido.setId(rs.getLong("id"));
                 pedido.setCliente(cliente);
-                pedido.setPizzas(pizza);
+                // TODO: Associar as pizzas
                 pedido.setValor(rs.getFloat("valor"));
                 pedido.setData(rs.getDate("data").toLocalDate());
                 pedido.setStatus(rs.getBoolean("status"));
@@ -129,7 +140,7 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
 
     @Override
     public List<Pedido> listar() {
-        String sql = "SELECT * FROM tb_pedidos";
+        String sql = "SELECT * FROM tb_pedidos;";
         connection = getConnection();
         List<Pedido> pedidos = new ArrayList<>();
         ClienteDao clientedao = new ClienteDao();
@@ -138,27 +149,31 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            stmt.close();
+            
+
             while (rs.next()) {
                 Pedido pedido = new Pedido();
 
-                Pizza pizza = new Pizza();
+                // Pizza pizza = new Pizza();
                 Cliente cliente = new Cliente();
-                pizza.setId(rs.getLong("pizza"));
-                pizza = pizzadao.buscar(pizza);
+                // pizza.setId(rs.getLong("pizza"));
+                // pizza = pizzadao.buscar(pizza);
 
-                cliente.setId(rs.getLong("cliente"));
+                cliente.setId(rs.getLong("id_cliente"));
                 cliente = clientedao.buscar(cliente);
 
                 pedido.setId(rs.getLong("id"));
+                pedido.setCliente(cliente);
                 pedido.setValor(rs.getFloat("valor"));
                 pedido.setStatus(rs.getBoolean("status"));
-                pedido.setData(rs.getDate("data").toLocalDate());
+                pedido.setData(rs.getDate("data_criacao").toLocalDate());
                 pedidos.add(pedido);
             }
+            stmt.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+        } finally {            
             closeConnection();
         }
         return pedidos;
