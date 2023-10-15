@@ -46,7 +46,7 @@ public class SelecionarClienteController {
     private TableView<Cliente> clientTable;
 
     @FXML
-    private TableColumn<Cliente, String> cfpCol;
+    private TableColumn<Cliente, String> cpfCol;
 
     @FXML
     private TableColumn<Cliente, String> nomeCol;
@@ -65,7 +65,7 @@ public class SelecionarClienteController {
             ObservableList<Cliente> data = FXCollections.observableArrayList(clientes);
 
             nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf")); //Verificar isso aqui
+            cpfCol.setCellValueFactory(new PropertyValueFactory<>("CPF")); //Verificar isso aqui
             telefoneCol.setCellValueFactory(new PropertyValueFactory<>("endereco"));
             
             clientTable.setItems(data);
@@ -121,7 +121,7 @@ public class SelecionarClienteController {
             System.out.println("Cliente não cadastrado!");
         } else {
             nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf")); //Verificar isso aqui
+            cpfCol.setCellValueFactory(new PropertyValueFactory<>("CPF")); //Verificar isso aqui
             telefoneCol.setCellValueFactory(new PropertyValueFactory<>("endereco"));
             ObservableList<Cliente> data = FXCollections.observableArrayList(clientes);
             clientTable.setItems(data);
