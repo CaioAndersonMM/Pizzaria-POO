@@ -35,31 +35,17 @@ CREATE TABLE tb_pedidos (
 	id_funcionario BIGINT,
 	valor NUMERIC(6, 2) NOT NULL CHECK (valor >= 0),
 	status BOOLEAN NOT NULL DEFAULT FALSE,
+	data_criacao DATE DEFAULT current_date,
 	FOREIGN KEY (id_cliente) REFERENCES tb_clientes(id),
 	FOREIGN KEY (id_funcionario) REFERENCES tb_funcionarios(id)
-);
-
--- create pedidos ---- PARA BUSCA ANINHADA DO RELATORIO
-
-CREATE TABLE tb_pedidos (
-    id BIGSERIAL PRIMARY KEY,
-    id_cliente BIGINT,
-    id_funcionario BIGINT,
-    valor NUMERIC(6, 2) NOT NULL CHECK (valor >= 0),
-    status BOOLEAN NOT NULL DEFAULT FALSE,
-    data_pedido DATE,
-    FOREIGN KEY (id_cliente) REFERENCES tb_clientes(id),
-    FOREIGN KEY (id_funcionario) REFERENCES tb_funcionarios(id),
-    FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id)
 );
 
 CREATE TABLE tb_pizzas (
 	id BIGSERIAL PRIMARY KEY,
 	id_tipo_pizza BIGINT,
-	-- id_pedido BIGINT,
 	valor NUMERIC(6, 2) NOT NULL CHECK (valor > 0),
 	tamanho CHAR(1) NOT NULL CHECK (tamanho IN ('p', 'm', 'g')), -- VERIFICAR SE O VALOR DE TAMANHO É 'p', 'm' ou 'g'
-	FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id),
+	FOREIGN KEY (id_tipo_pizza) REFERENCES tb_tipos_pizzas(id)
 	-- FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id)
 );
 
@@ -71,14 +57,6 @@ CREATE TABLE tb_vendas (
   gastos FLOAT,
   FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id),
   FOREIGN KEY (id_produto) REFERENCES tb_produtos(id)
-);
-
--- TABELA DE RELAÇÃO ENTRE PEDIDO (tb_pedidos) E PIZZA (tb_pizzas)
-CREATE TABLE tb_pedidos_pizzas (
-	id_pedido BIGINT,
-	id_pizza BIGINT,
-	FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id),
-	FOREIGN KEY (id_pizza) REFERENCES tb_pizzas(id)
 );
 
 -- TABELA DE RELAÇÃO ENTRE TIPO_PIZZA (tb_tipos_pizzas) E INGREDIENTES (tb_produtos)
@@ -97,4 +75,12 @@ CREATE TABLE tb_pizzas_adicionais (
 	quantidade float CHECK (quantidade > 0),
 	FOREIGN KEY (id_pizza) REFERENCES tb_pizzas(id),
 	FOREIGN KEY (id_ingrediente) REFERENCES tb_produtos(id)
-)
+);
+
+-- TABELA DE RELAÇÂO ENTRE PIZZA (tb_pizzas) E PEDIDO (tb_pedidos)
+CREATE TABLE tb_pedidos_pizzas (
+    id_pedido BIGINT,
+    id_pizza BIGINT UNIQUE,
+    FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id),
+    FOREIGN KEY (id_pizza) REFERENCES tb_pizzas(id)
+);

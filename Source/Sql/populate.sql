@@ -146,91 +146,171 @@ VALUES
 -- Certifique-se de ajustar os valores conforme necessário.
 
 -- Pedido 1
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (1, 1, 25.00, 'm'),
-  (2, 1, 28.00, 'p'),
-  (3, 1, 32.00, 'g'),
-  (4, 1, 30.00, 'm'),
-  (5, 1, 31.00, 'g');
+  (1, 25.00, 'm'),
+  (2, 28.00, 'p'),
+  (3, 32.00, 'g'),
+  (4, 30.00, 'm'),
+  (5, 31.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (1, 1),
+  (1, 2),
+  (1, 3),
+  (1, 4),
+  (1, 5);
 
 -- Pedido 2
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (2, 2, 28.00, 'p'),
-  (3, 2, 30.00, 'm'),
-  (4, 2, 31.00, 'g'),
-  (5, 2, 25.00, 'm'),
-  (6, 2, 28.00, 'g');
+  (2, 28.00, 'p'),
+  (3, 30.00, 'm'),
+  (4, 31.00, 'g'),
+  (5, 25.00, 'm'),
+  (6, 28.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (2, 6),
+  (2, 7),
+  (2, 8),
+  (2, 9),
+  (2, 10);
 
 -- Pedido 3
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (1, 3, 25.00, 'm'),
-  (2, 3, 28.00, 'p'),
-  (2, 3, 32.00, 'g'),
-  (4, 3, 30.00, 'm'),
-  (5, 3, 31.00, 'g');
+  (1, 25.00, 'm'),
+  (2, 28.00, 'p'),
+  (3, 32.00, 'g'),
+  (4, 30.00, 'm'),
+  (5, 31.00, 'g');
+  
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (3, 11),
+  (3, 12),
+  (3, 13),
+  (3, 14),
+  (3, 15);
 
 -- Pedido 4
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (1, 4, 25.00, 'm'),
-  (2, 4, 28.00, 'p'),
-  (3, 4, 32.00, 'g'),
-  (4, 4, 30.00, 'm'),
-  (5, 4, 31.00, 'g');
+  (1, 25.00, 'm'),
+  (2, 28.00, 'p'),
+  (3, 32.00, 'g'),
+  (4, 30.00, 'm'),
+  (5, 31.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (4, 16),
+  (4, 17),
+  (4, 18),
+  (4, 19),
+  (4, 20);
 
 -- Pedido 5
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (2, 5, 28.00, 'p'),
-  (3, 5, 30.00, 'm'),
-  (4, 5, 31.00, 'g'),
-  (5, 5, 25.00, 'm'),
-  (6, 5, 28.00, 'g');
+  (1, 25.00, 'm'),
+  (2, 28.00, 'p'),
+  (3, 32.00, 'g'),
+  (4, 30.00, 'm'),
+  (5, 31.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (5, 21),
+  (5, 22),
+  (5, 23),
+  (5, 24),
+  (5, 25);
 
 -- Pedido 6
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (3, 6, 30.00, 'm'),
-  (4, 6, 31.00, 'g'),
-  (5, 6, 25.00, 'm'),
-  (6, 6, 28.00, 'g'),
-  (7, 6, 32.00, 'm');
+  (2, 28.00, 'p'),
+  (3, 30.00, 'm'),
+  (4, 31.00, 'g'),
+  (5, 25.00, 'm'),
+  (6, 28.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (6, 26),
+  (6, 27),
+  (6, 28),
+  (6, 29),
+  (6, 30);
 
 -- Pedido 7
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (4, 7, 25.00, 'm'),
-  (5, 7, 28.00, 'p'),
-  (6, 7, 32.00, 'g'),
-  (1, 7, 30.00, 'm'),
-  (2, 7, 31.00, 'g');
+  (3, 30.00, 'm'),
+  (4, 31.00, 'g'),
+  (5, 25.00, 'm'),
+  (6, 28.00, 'g'),
+  (7, 32.00, 'm');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (7, 31),
+  (7, 32),
+  (7, 33),
+  (7, 34),
+  (7, 35);
 
 -- Pedido 8
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (5, 8, 28.00, 'p'),
-  (6, 8, 30.00, 'm'),
-  (7, 8, 32.00, 'g'),
-  (1, 8, 25.00, 'm'),
-  (2, 8, 28.00, 'g');
+  (4, 25.00, 'm'),
+  (5, 28.00, 'p'),
+  (6, 32.00, 'g'),
+  (1, 30.00, 'm'),
+  (2, 31.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (8, 36),
+  (8, 37),
+  (8, 38),
+  (8, 39),
+  (8, 40);
 
 -- Pedido 9
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (6, 9, 30.00, 'm'),
-  (7, 9, 31.00, 'g'),
-  (1, 9, 25.00, 'm'),
-  (2, 9, 28.00, 'g'),
-  (3, 9, 32.00, 'm');
+  (5, 28.00, 'p'),
+  (6, 30.00, 'm'),
+  (7, 32.00, 'g'),
+  (1, 25.00, 'm'),
+  (2, 28.00, 'g');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (9, 41),
+  (9, 42),
+  (9, 43),
+  (9, 44),
+  (9, 45);
 
 -- Pedido 10
-INSERT INTO tb_pizzas (id_tipo_pizza, id_pedido, valor, tamanho)
+INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho)
 VALUES
-  (3, 10, 30.00, 'm'),
-  (4, 10, 31.00, 'g'),
-  (5, 10, 25.00, 'm'),
-  (6, 10, 28.00, 'g'),
-  (7, 10, 32.00, 'm');
+  (6, 30.00, 'm'),
+  (7, 31.00, 'g'),
+  (1, 25.00, 'm'),
+  (2, 28.00, 'g'),
+  (3, 32.00, 'm');
+
+INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza)
+VALUES
+  (10, 46),
+  (10, 47),
+  (10, 48),
+  (10, 49),
+  (10, 50);
