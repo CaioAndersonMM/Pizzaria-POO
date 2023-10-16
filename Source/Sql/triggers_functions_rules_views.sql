@@ -19,23 +19,24 @@ CREATE TRIGGER trigger_criar_venda_apos_insercao_produto
 
 
 
---------- Lucro a cada pizza adicionada
-CREATE OR REPLACE FUNCTION criar_venda_apos_insercao_pizza()
+--------- Lucro a cada pedido adicionado
+CREATE OR REPLACE FUNCTION atualizar_vendas_apos_insercao_pedido()
 RETURNS TRIGGER AS $$
 BEGIN
+
   INSERT INTO tb_vendas (id_pedido, ganhos)
-  VALUES (NEW.id_pedido, NEW.valor);
+  VALUES (NEW.id, NEW.valor);
+
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- Crie o trigger que é acionado após a inserção de uma nova pizza
-CREATE TRIGGER trigger_criar_venda_apos_insercao_pizza
+-- Crie o gatilho que é acionado após a inserção de um novo pedido
+CREATE TRIGGER trigger_atualizar_vendas_apos_insercao_pedido
 AFTER INSERT
-ON tb_pizzas
+ON tb_pedidos
 FOR EACH ROW
-EXECUTE FUNCTION criar_venda_apos_insercao_pizza();
-
+EXECUTE FUNCTION atualizar_vendas_apos_insercao_pedido();
 
 
 ---------------- DECREMENTE EM PRODUTOS AO SER ADICIONADA UMA PIZZA --------------
@@ -131,12 +132,13 @@ SELECT
     p.id AS id_pedido,
     p.valor,
     p.status,
-    p.data_pedido AS data,
+    p.data_criacao AS data,
     c.nome AS nome_cliente,
     tp.nome AS sabor
 FROM tb_pedidos p
 LEFT JOIN tb_clientes c ON p.id_cliente = c.id
-LEFT JOIN tb_pizzas pz ON p.id = pz.id_pedido
+LEFT JOIN tb_pedidos_pizzas pp ON p.id = pp.id_pedido
+LEFT JOIN tb_pizzas pz ON pp.id_pizza = pz.id
 LEFT JOIN tb_tipos_pizzas tp ON pz.id_tipo_pizza = tp.id;
 
 
