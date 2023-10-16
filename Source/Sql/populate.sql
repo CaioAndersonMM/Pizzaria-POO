@@ -12,25 +12,25 @@ VALUES
 -- Inserir 9 ingredientes fictícios
 INSERT INTO tb_produtos (nome, quantidade, valor)
 VALUES
-  ('Molho de Tomate', 0.2, 2.50),
-  ('Queijo Mussarela', 0.3, 3.00),
-  ('Pepperoni', 0.1, 4.00),
-  ('Cogumelos', 0.15, 2.00),
-  ('Pimentão', 0.1, 1.50),
-  ('Cebola', 0.1, 1.50),
-  ('Azeitonas', 0.05, 2.00),
-  ('Tomate', 0.1, 1.50),
-  ('Manjericão', 0.05, 1.00),
-  ('Frango Desfiado', 0.15, 4.00),
-  ('Catupiry', 0.15, 5.00),
-  ('Calabresa', 0.2, 3.50),
-  ('Muçarela', 0.2, 3.00),
-  ('Gorgonzola', 0.1, 4.50),
-  ('Parmesão', 0.1, 4.00),
-  ('Presunto', 0.15, 3.00),
-  ('Ovos', 0.1, 2.50),
-  ('Azeitonas Verdes', 0.1, 2.50),
-  ('Ervilhas', 0.1, 2.00);
+  ('Molho de Tomate', 100, 2.50),
+  ('Queijo Mussarela', 50, 3.00),
+  ('Pepperoni', 100, 4.00),
+  ('Cogumelos', 50, 2.00),
+  ('Pimentão', 20, 1.50),
+  ('Cebola', 60, 1.50),
+  ('Azeitonas', 70, 2.00),
+  ('Tomate', 80, 1.50),
+  ('Manjericão', 90, 1.00),
+  ('Frango Desfiado', 70, 4.00),
+  ('Catupiry',200, 5.00),
+  ('Calabresa', 100, 3.50),
+  ('Muçarela', 90, 3.00),
+  ('Gorgonzola', 20, 4.50),
+  ('Parmesão', 10, 4.00),
+  ('Presunto', 40, 3.00),
+  ('Ovos', 20, 2.50),
+  ('Azeitonas Verdes', 30, 2.50),
+  ('Ervilhas', 10, 2.00);
 
 -- Frango com Catupiry
 INSERT INTO tb_tipos_pizzas_ingredientes (id_tipo_pizza, id_ingrediente, quantidade)
@@ -128,16 +128,16 @@ VALUES
 -- Certifique-se de que o id_cliente e id_funcionario existam na tabela tb_pedidos.
 INSERT INTO tb_pedidos (id_cliente, id_funcionario, valor, status)
 VALUES
-  (1, 1, 0, true),
-  (2, 2, 0, true),
-  (3, 3, 0, true),
-  (4, 4, 0, true),
-  (5, 5, 0, true),
-  (6, 6, 0, true),
-  (7, 7, 0, true),
-  (8, 8, 0, true),
-  (9, 1, 0, true),
-  (10, 2, 0, true);
+  (1, 1, 250, true),
+  (2, 2, 130, true),
+  (3, 3, 240, true),
+  (4, 4, 120, true),
+  (5, 5, 115, true),
+  (6, 6, 290, true),
+  (7, 7, 185, true),
+  (8, 8, 230, true),
+  (9, 1, 120, true),
+  (10, 2, 110, true);
 
 -- Inserir 50 pizzas fictícias para os pedidos
 -- Certifique-se de que os IDs de pizzas correspondam corretamente.
