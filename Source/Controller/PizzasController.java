@@ -118,7 +118,7 @@ public class PizzasController implements  Initializable{
             separator3.setVisible(false);
             HBox.setHgrow(separator3, Priority.ALWAYS);
             Button button1 = new Button("Editar");
-            Button button2 = new Button("Excluir");
+            //Button button2 = new Button("Excluir");
             button1.setOnAction((ActionEvent event) -> {
                 try {
                     edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]), String.valueOf(dado[4]));
@@ -126,14 +126,14 @@ public class PizzasController implements  Initializable{
                     e.printStackTrace();
                 }
             });
-            button2.setOnAction((ActionEvent event) -> {
-                try {
-                    delete(event, (Long) dado[0]);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-            hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1, button2);
+            //button2.setOnAction((ActionEvent event) -> {
+            //    try {
+            //        delete(event, (Long) dado[0]);
+            //    } catch (IOException e) {
+            //         e.printStackTrace();
+            //    }
+            // });
+            hboxContainer.getChildren().addAll(idLabel, separator, tipoLabel, separator2, valorpLabel, valormLabel, valorgLabel, separator3, button1);
             hboxContainer.setSpacing(20);
             Insets padding = new Insets(10, 10, 10, 10);
             hboxContainer.setPadding(padding);
