@@ -8,41 +8,41 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="895.0" prefWidth="698.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Pedido.CriarPedidoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="698.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Pedido.CriarPedidoController">
    <children>
-      <Label layoutX="254.0" layoutY="14.0" text="Fazer pedido">
+      <Label layoutX="270.0" layoutY="27.0" text="Fazer pedido">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="248.0" layoutY="56.0" text="Informações do pedido">
+      <Label layoutX="264.0" layoutY="69.0" text="Informações do pedido">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="110.0" text="Adicionar pizzas:">
+      <Label layoutX="21.0" layoutY="81.0" text="Adicionar pizzas:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="pizzaField" editable="true" layoutX="20.0" layoutY="149.0" prefHeight="51.0" prefWidth="533.0" promptText="Pizza" visibleRowCount="3" />
-      <ComboBox fx:id="pizzaTamField" editable="true" layoutX="572.0" layoutY="149.0" prefHeight="51.0" prefWidth="104.0" promptText="Tamanho" visibleRowCount="3" />
-      <Label layoutX="19.0" layoutY="222.0" text="Adicionais:">
+      <ComboBox fx:id="pizzaField" editable="true" layoutX="22.0" layoutY="120.0" prefHeight="51.0" prefWidth="533.0" promptText="Pizza" visibleRowCount="3" />
+      <ComboBox fx:id="pizzaTamField" editable="true" layoutX="574.0" layoutY="120.0" prefHeight="51.0" prefWidth="104.0" promptText="Tamanho" visibleRowCount="3" />
+      <Label layoutX="21.0" layoutY="183.0" text="Adicionais:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="adicionalField" editable="true" layoutX="20.0" layoutY="250.0" prefHeight="51.0" prefWidth="476.0" promptText="Adicional" visibleRowCount="3" />
-      <Button fx:id="addAdicionalButton" layoutX="514.0" layoutY="250.0" mnemonicParsing="false" onAction="#addAdicional" prefHeight="51.0" prefWidth="164.0" styleClass="confirmation_button" text="+ Adicionar" />
-      <TableView fx:id="adicionalTable" layoutX="21.0" layoutY="319.0" prefHeight="142.0" prefWidth="660.0">
+      <ComboBox fx:id="adicionalField" editable="true" layoutX="22.0" layoutY="211.0" prefHeight="51.0" prefWidth="476.0" promptText="Adicional" visibleRowCount="3" />
+      <Button fx:id="addAdicionalButton" layoutX="516.0" layoutY="211.0" mnemonicParsing="false" onAction="#addAdicional" prefHeight="51.0" prefWidth="164.0" styleClass="confirmation_button" text="+ Adicionar" />
+      <TableView fx:id="adicionalTable" layoutX="21.0" layoutY="285.0" prefHeight="142.0" prefWidth="660.0">
          <columns>
             <TableColumn fx:id="tableAdicionalNomeCol" prefWidth="480.0" text="Nome" />
             <TableColumn fx:id="tableAdicionalValorCol" minWidth="5.0" prefWidth="84.0" text="Valor" />
             <TableColumn fx:id="tableAdicionalRemoverCol" prefWidth="95.0" text="Remover" />
          </columns>
       </TableView>
-      <Button fx:id="addPizzaButton" layoutX="436.0" layoutY="480.0" mnemonicParsing="false" onAction="#addPizza" prefHeight="51.0" prefWidth="242.0" styleClass="confirmation_button" text="+ Adicionar pizza" />
-      <TableView fx:id="tablePizzas" layoutX="21.0" layoutY="575.0" prefHeight="191.0" prefWidth="660.0">
+      <Button fx:id="addPizzaButton" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" onAction="#addPizza" prefHeight="51.0" prefWidth="242.0" styleClass="confirmation_button" text="+ Adicionar pizza" />
+      <TableView fx:id="tablePizzas" layoutX="21.0" layoutY="497.0" prefHeight="191.0" prefWidth="660.0">
         <columns>
           <TableColumn fx:id="tablePizzasPizzaCol" prefWidth="112.0" text="Pizza" />
           <TableColumn fx:id="tablePizzasTamCol" prefWidth="66.0" text="Tam." />
@@ -51,17 +51,17 @@
             <TableColumn fx:id="tablePizzasRemoverCol" minWidth="0.0" prefWidth="122.0" text="Remover" />
         </columns>
       </TableView>
-      <Label layoutX="532.0" layoutY="783.0" text="Total: R$ 0,00">
+      <Label layoutX="555.0" layoutY="695.0" text="Total: R$ 0,00">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="546.0" prefHeight="20.0" prefWidth="152.0" text="Items do pedido:">
+      <Label layoutX="21.0" layoutY="468.0" prefHeight="20.0" prefWidth="152.0" text="Items do pedido:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="finalizarPedidoButton" layoutX="549.0" layoutY="829.0" mnemonicParsing="false" onAction="#finalizar" prefHeight="51.0" prefWidth="130.0" styleClass="confirmation_button" text="Finalizar" />
-      <Button fx:id="cancelarPedidoButton" layoutX="20.0" layoutY="835.0" mnemonicParsing="false" onAction="#cancel" styleClass="cancellation_button" text="Cancelar" />
+      <Button fx:id="finalizarPedidoButton" layoutX="548.0" layoutY="722.0" mnemonicParsing="false" onAction="#finalizar" prefHeight="51.0" prefWidth="130.0" styleClass="confirmation_button" text="Finalizar" />
+      <Button fx:id="cancelarPedidoButton" layoutX="23.0" layoutY="709.0" mnemonicParsing="false" onAction="#cancel" styleClass="cancellation_button" text="Cancelar" />
    </children>
 </Pane>
