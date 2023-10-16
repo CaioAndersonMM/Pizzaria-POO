@@ -77,8 +77,8 @@ public class PedidosController {
             Label nomeClienteLabel = new Label("Cliente: " + nomeCliente);
             Label valorLabel = new Label(valor);
             Label statusLabel = new Label(status);
-            Button button1 = new Button("Editar");
-            Button button2 = new Button("Excluir");
+            Button button1 = new Button("Finalizar");
+            //Button button2 = new Button("Excluir");
 
             nomeClienteLabel.setPrefWidth(200);
             valorLabel.setPrefWidth(100);
@@ -94,17 +94,24 @@ public class PedidosController {
                 // } catch (IOException e) {
                 //     e.printStackTrace();
                 // }
+
+                try {
+                    edit(event, pedido.getId());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             });
             
-            button2.setOnAction((ActionEvent event) -> {
-                // try {
-                //     delete(event, (Long) dado[0]);
-                // } catch (IOException e) {
-                //     e.printStackTrace();
-                // }
-            });
+            //button2.setOnAction((ActionEvent event) -> {
+            //     try {
+            //          delete(event, (Long) pedido.getId());
+            //     } catch (IOException e) {
+            //         e.printStackTrace();
+            //     }
+            //});
             
-            hboxContainer.getChildren().addAll(idLabel, nomeClienteLabel, valorLabel, statusLabel, separator, button1, button2);
+            hboxContainer.getChildren().addAll(idLabel, nomeClienteLabel, valorLabel, statusLabel, separator, button1);
             hboxContainer.setSpacing(20);
             
             Insets padding = new Insets(10, 10, 10, 10);
@@ -134,13 +141,24 @@ public class PedidosController {
     }   
 
     @FXML
-    void delete(ActionEvent event) {
+    void delete(ActionEvent event, Long id) throws IOException {
+        ExcluirCadastroController.pedido_id = id;
+        Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
+        Scene scene = new Scene(root);
 
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
     }
 
     @FXML
-    void edit(ActionEvent event) {
-
+    void edit(ActionEvent event, Long id) throws IOException {
+        PedidoDao finalizar = new PedidoDao();
+        Pedido pedido = new Pedido();
+        pedido.setId(id);
+        finalizar.finalizarPedido(pedido);
+        App.telaPedidos();
     }
 
     @FXML

@@ -178,4 +178,31 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
         }
         return pedidos;
     }
+
+    public void finalizarPedido(Pedido entity) {
+        String sql = "UPDATE tb_pedidos SET status=? WHERE id=?";
+        connection = getConnection();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setBoolean(1, true);
+            stmt.setLong(2, entity.getId());
+
+            stmt.execute();
+            stmt.close();
+
+            System.out.println("AQUI");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
+
+
+
+
+
+
 }
