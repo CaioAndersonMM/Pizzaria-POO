@@ -96,12 +96,46 @@ public class TipoPizzaDao extends BaseDaoImp<TipoPizza> {
             stmt.execute();
             stmt.close();
 
+
             // Buscar tipo de pizza criado e retornar id
             sql = "SELECT * FROM tb_tipos_pizzas as tp WHERE tp.nome=?";
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, entity.getNomeSabor());
             ResultSet rs = stmt.executeQuery();
+        
             if (rs.next()) {
+                sql = "INSERT INTO tb_tipos_pizzas_ingredientes (id_tipo_pizza, id_ingrediente, quantidade) VALUES (?, ?, ?)";
+                
+                PreparedStatement stmt2 = connection.prepareStatement(sql);
+
+                stmt2 = connection.prepareStatement(sql);
+                stmt2.setLong(1, rs.getLong("id"));
+
+                List<Produto> produtos = entity.getIngredientes();
+                List<Long> idsDosProdutos = new ArrayList<>();
+
+                for (Produto produto : produtos) {
+                    idsDosProdutos.add(produto.getId());
+                }
+
+                stmt2.setLong(2, idsDosProdutos.get(0));
+                stmt2.setLong(3, 10);
+                stmt2.execute();
+                stmt2.close();
+
+                
+                sql = "INSERT INTO tb_tipos_pizzas_ingredientes (id_tipo_pizza, id_ingrediente, quantidade) VALUES (?, ?, ?)";
+
+                PreparedStatement stmt3 = connection.prepareStatement(sql);
+
+                stmt3 = connection.prepareStatement(sql);
+                stmt3.setLong(1, rs.getLong("id"));
+
+                stmt3.setLong(2, idsDosProdutos.get(1));
+                stmt3.setLong(3, 10);
+                stmt3.execute();
+                stmt3.close();
+
                 return rs.getLong("id");
             }
 
