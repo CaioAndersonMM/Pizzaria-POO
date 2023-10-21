@@ -160,10 +160,15 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
                 // pizza = pizzadao.buscar(pizza);
 
                 cliente.setId(rs.getLong("id_cliente"));
-                cliente = clientedao.buscar(cliente);
+                
+                if (cliente.getId() != null) {
+                    cliente = clientedao.buscar(cliente);
+                    pedido.setCliente(cliente);
+                } else{
+                    //Cliente foi apagado
+                }
 
                 pedido.setId(rs.getLong("id"));
-                pedido.setCliente(cliente);
                 pedido.setValor(rs.getFloat("valor"));
                 pedido.setStatus(rs.getBoolean("status"));
                 pedido.setData(rs.getDate("data_criacao").toLocalDate());
