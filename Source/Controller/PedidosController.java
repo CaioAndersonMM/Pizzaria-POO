@@ -69,7 +69,13 @@ public class PedidosController {
             
             // id, Nome do cliente, valor, status
             String id = String.valueOf(pedido.getId());
-            String nomeCliente = pedido.getCliente().getNome();
+            String nomeCliente;
+            if (pedido.getCliente() != null) {
+                nomeCliente = pedido.getCliente().getNome();
+            } else{
+                nomeCliente = "Cliente Deletado";
+            }
+         
             String valor = "R$: " + pedido.getValor();
             String status = pedido.getStatus() ? "Concluído" : "Em andamento";
             
@@ -162,8 +168,8 @@ public class PedidosController {
     }
 
     @FXML
-    void loggout(ActionEvent event) {
-
+    void loggout(ActionEvent event) throws IOException {
+        App.sair();
     }
 
     @FXML
