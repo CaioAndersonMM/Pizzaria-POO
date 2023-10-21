@@ -11,8 +11,6 @@ import Model.Entity.Cliente;
 import Model.Entity.Pedido;
 import Model.Entity.Pizza;
 
-import Dao.PizzaDao;
-
 public class PedidoDao extends BaseDaoImp<Pedido> {
     private PizzaDao pizzaDAO = new PizzaDao();
 
@@ -118,12 +116,9 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
             if (rs.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setNome(rs.getString("cliente"));
-                Pizza[] pizza = new Pizza[10];
-                // pizza.setNome(rs.getString("pizza"));
                 pedido = new Pedido();
                 pedido.setId(rs.getLong("id"));
                 pedido.setCliente(cliente);
-                // TODO: Associar as pizzas
                 pedido.setValor(rs.getFloat("valor"));
                 pedido.setData(rs.getDate("data").toLocalDate());
                 pedido.setStatus(rs.getBoolean("status"));
@@ -144,20 +139,13 @@ public class PedidoDao extends BaseDaoImp<Pedido> {
         connection = getConnection();
         List<Pedido> pedidos = new ArrayList<>();
         ClienteDao clientedao = new ClienteDao();
-        PizzaDao pizzadao = new PizzaDao();
-
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             
-
             while (rs.next()) {
                 Pedido pedido = new Pedido();
-
-                // Pizza pizza = new Pizza();
                 Cliente cliente = new Cliente();
-                // pizza.setId(rs.getLong("pizza"));
-                // pizza = pizzadao.buscar(pizza);
 
                 cliente.setId(rs.getLong("id_cliente"));
                 
