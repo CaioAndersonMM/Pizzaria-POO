@@ -15,8 +15,8 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="nome" layoutX="20.0" layoutY="112.0" prefHeight="51.0" prefWidth="558.0" text="Nome" />
-      <TextField fx:id="cpf" layoutX="21.0" layoutY="175.0" prefHeight="51.0" prefWidth="558.0" text="CPF" />
-      <TextField fx:id="endereco" layoutX="20.0" layoutY="240.0" prefHeight="51.0" prefWidth="558.0" text="Endereço" />
+      <TextField fx:id="nome" layoutX="20.0" layoutY="112.0" prefHeight="51.0" prefWidth="558.0" promptText="Nome" />
+      <TextField fx:id="cpf" layoutX="21.0" layoutY="175.0" prefHeight="51.0" prefWidth="558.0" promptText="CPF" />
+      <TextField fx:id="endereco" layoutX="20.0" layoutY="240.0" prefHeight="51.0" prefWidth="558.0" promptText="Endereço" />
    </children>
 </Pane>

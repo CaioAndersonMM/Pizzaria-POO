@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,14 +15,6 @@
    <center> 
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="bot" fitHeight="796.0" fitWidth="1061.0" layoutX="-3.0" layoutY="-2.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/background.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="-0.6" />
-               </effect>
-            </ImageView>
             <ImageView fitHeight="410.0" fitWidth="474.0" layoutX="292.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Modal.png" />
@@ -49,11 +40,6 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextField>
-            <Label layoutX="385.0" layoutY="557.0" prefHeight="40.0" prefWidth="316.0" text="Não possui uma conta? Cadastrar" textAlignment="CENTER" textFill="#ff8f3e">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
             <Label layoutX="483.0" layoutY="268.0" prefHeight="55.0" prefWidth="94.0" text="Login" textFill="#ff8f3e">
                <font>
                   <Font name="System Bold" size="35.0" />
@@ -64,9 +50,9 @@
                   <Image url="@../images/dedo.png" />
                </image>
             </ImageView>
-            <Label fx:id="erroautenticacao" contentDisplay="CENTER" layoutX="283.0" layoutY="523.0" prefHeight="40.0" prefWidth="392.0" text="Label" textAlignment="CENTER" textFill="RED" underline="true" visible="false">
+            <Label fx:id="erroautenticacao" alignment="CENTER" contentDisplay="CENTER" layoutX="332.0" layoutY="558.0" prefHeight="40.0" prefWidth="392.0" text="Label" textAlignment="CENTER" textFill="RED" underline="true" visible="false">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Label>
             <ImageView fitHeight="44.0" fitWidth="52.0" layoutX="333.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
                <image>

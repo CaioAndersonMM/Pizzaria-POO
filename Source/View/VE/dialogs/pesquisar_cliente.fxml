@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Pedido.SelecionarClienteController">
+   <children>
+      <TextField fx:id="searchClientField" layoutX="18.0" layoutY="65.0" prefHeight="45.0" prefWidth="366.0" promptText="Pesquisar cliente">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="searchClientButton" layoutX="588.0" layoutY="65.0" mnemonicParsing="false" onAction="#pesquisarCliente" prefHeight="45.0" prefWidth="160.0" styleClass="confirmation_button" text="Pesquisar" />
+      <TableView fx:id="clientTable" layoutX="19.0" layoutY="125.0" prefHeight="300.0" prefWidth="732.0">
+        <columns>
+          <TableColumn fx:id="nomeCol" prefWidth="194.0" text="Nome" />
+          <TableColumn fx:id="cpfCol" minWidth="0.0" prefWidth="185.0" text="CPF" />
+            <TableColumn fx:id="telefoneCol" minWidth="0.0" prefWidth="187.0" text="Telefone" />
+        </columns>
+      </TableView>
+      <Button layoutX="585.0" layoutY="441.0" mnemonicParsing="false" onAction="#selecionarCliente" prefHeight="45.0" prefWidth="160.0" styleClass="confirmation_button" text="Selecionar" />
+      <Button layoutX="19.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="45.0" prefWidth="137.0" styleClass="cancellation_button" text="Cancelar" />
+      <ComboBox layoutX="397.0" layoutY="65.0" prefHeight="45.0" prefWidth="176.0" promptText="Tipo de busca" />
+      <Label layoutX="264.0" layoutY="14.0" text="Selecionar cliente">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../../styles/dialog.css" />
+      <URL value="@../../styles/base.css" />
+   </stylesheets>
+</Pane>

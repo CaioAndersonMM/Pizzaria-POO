@@ -1,6 +1,7 @@
 package Model.Entity;
 
 public class Funcionario extends Usuario {
+    private boolean isAdmin;
 
     public Funcionario() {
     }
@@ -25,6 +26,22 @@ public class Funcionario extends Usuario {
 
     public void buscar(String nomeusuario) {
         // Chamara método de Usuário
+    }
+
+    public void setIsAdmin(boolean isAdminNovo){
+        if (isAdmin) {
+            this.isAdmin = true;
+        } else {
+            this.isAdmin = false;
+        }
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
 }

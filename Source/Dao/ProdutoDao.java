@@ -10,16 +10,50 @@ import Model.Entity.Produto;
 
 public class ProdutoDao extends BaseDaoImp<Produto> {
 
+    public List<Produto> buscarPorNome(String nome) {
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        String sql = "SELECT * FROM tb_produtos WHERE nome LIKE ?";
+        String padrao = "%" + nome + "%";
+        connection = getConnection();
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, padrao);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                    rs.getLong("id"),
+                    rs.getString("nome"),
+                    rs.getInt("quantidade"),
+                    rs.getFloat("valor"),
+                    rs.getBoolean("is_adicional")
+                );
+                
+                produtos.add(produto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return produtos;
+    }
+
     @Override
     public void alterar(Produto entity) {
-        String sql = "UPDATE tb_produtos SET nome=?, quantidade=?, valor=? WHERE id=?";
+        String sql = "UPDATE tb_produtos SET nome=?, quantidade=?, valor=? , is_adicional=? WHERE id=?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, entity.getNomeProduto());
-            stmt.setInt(2, entity.getQuatidadeProduto());
+            stmt.setString(1, entity.getNome());
+            stmt.setInt(2, entity.getQuantidade());
             stmt.setFloat(3, entity.getValor());
-            stmt.setLong(4, entity.getId());
+            stmt.setBoolean(4, entity.isAdicional());
+            stmt.setLong(5, entity.getId());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -31,19 +65,23 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public Produto buscar(Produto entity) {
-        String sql = "SELECT * FROM tb_produtos as e WHERE e.nome = ? ";
+        String sql = "SELECT * FROM tb_produtos as e WHERE e.id = ? ";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, entity.getNomeProduto());
+            stmt.setLong(1, entity.getId());
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 // Crie um objeto Produto a partir dos dados do ResultSet e retorne-o
-                Produto produto = new Produto(rs.getString("nome"), rs.getInt("quantidade"), rs.getFloat("valor"));
+                Produto produto = new Produto(
+                    rs.getLong("id"),
+                    rs.getString("nome"),
+                    rs.getInt("quantidade"),
+                    rs.getFloat("valor"),
+                    rs.getBoolean("is_adicional")
+                );
                 return produto;
-            } else {
-                return null;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -51,12 +89,13 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
         } finally {
             closeConnection();
         }
+        return null;
     }
 
     @Override
     public void deletar(Produto entity) {
 
-        String sql = "DELETE FROM tb_produtos WHERE id=?";
+        String sql = "DELETE FROM tb_produtos as e WHERE e.id=?";
         connection = getConnection();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -73,20 +112,20 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
 
     @Override
     public Long inserir(Produto entity) {
-        String sql = "INSERT INTO tb_produtos (nome, quatidade, valor) "
-                + "values (?,?,?)";
+        String sql = "INSERT INTO tb_produtos (nome, quantidade, valor, is_adicional) VALUES (?,?,?,?)";
         connection = getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, entity.getNomeProduto());
-            ps.setInt(2, entity.getQuatidadeProduto());
+            ps.setString(1, entity.getNome());
+            ps.setInt(2, entity.getQuantidade());
             ps.setFloat(3, entity.getValor());
+            ps.setBoolean(4,entity.isAdicional());
             ps.execute();
             ps.close();
 
-            sql = "SELECT * FROM tb_produtos as e WHERE e.nomeProduto=?";
+            sql = "SELECT * FROM tb_produtos as e WHERE e.nome=?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, entity.getNomeProduto());
+            ps.setString(1, entity.getNome());
             ResultSet rs = ps.executeQuery();
             if (rs.next())
                 return rs.getLong("id");
@@ -105,23 +144,27 @@ public class ProdutoDao extends BaseDaoImp<Produto> {
     public List<Produto> listar() {
         String sql = "SELECT * FROM tb_produtos";
         connection = getConnection();
-
-        List<Produto> listProd = new ArrayList<>();
+        List<Produto> produtos = new ArrayList<Produto>();
+        
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
-                Produto produto = new Produto(resultado.getString("nome"), resultado.getInt("quantidade"),
-                        resultado.getFloat("valor"));
-
-                listProd.add(produto);
+                Produto produto = new Produto(
+                    resultado.getLong("id"),
+                    resultado.getString("nome"),
+                    resultado.getInt("quantidade"),
+                    resultado.getFloat("valor"), 
+                    resultado.getBoolean("is_adicional")
+                );
+                produtos.add(produto);
             }
-            return listProd;
         } catch (SQLException ex) {
             ex.printStackTrace(); // Considere um tratamento de exceção mais adequado
-            return null;
         } finally {
             closeConnection();
         }
+
+        return produtos;
     }
 }

@@ -10,12 +10,28 @@ import Model.Entity.Pizza;
 import Model.Entity.TipoPizza;
 
 public class PizzaDao extends BaseDaoImp<Pizza> {
+    public void associarPizzaAoPedido(long pedidoId, long pizzaId) {
+        String sql = "INSERT INTO tb_pedidos_pizzas (id_pedido, id_pizza) VALUES (?, ?)";
+        connection = getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1, pedidoId);
+            ps.setLong(2, pizzaId);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+    
     @Override
     public Long inserir(Pizza entity) {
-        String sql = "INSERT INTO tb_pizzas (tipo, valor, tamanho) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tb_pizzas (id_tipo_pizza, valor, tamanho) VALUES (?, ?, ?)";
         connection = getConnection();
         try {
-
             // Inserir ao banco
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, entity.getTipo().getId());
@@ -25,8 +41,8 @@ public class PizzaDao extends BaseDaoImp<Pizza> {
             stmt.close();
 
             // Buscar pizza criada e retornar id
-            sql = "SELECT * FROM tb_pizzas as p WHERE p.tipo=?";
-            stmt = connection.prepareStatement(sql);
+            sql = "SELECT * FROM tb_pizzas as p WHERE p.id_tipo_pizza=?";
+            stmt = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmt.setLong(1, entity.getTipo().getId());
             ResultSet rs = stmt.executeQuery();
 

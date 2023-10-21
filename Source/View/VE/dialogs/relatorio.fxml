@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="620.0" style="-fx-background-radius: 50; -fx-background-color: white;" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RelatorioController">
+    <children>
+        <Button fx:id="pdf" layoutX="449.0" layoutY="440.0" mnemonicParsing="false" onAction="#gerarPDF" prefHeight="51.0" prefWidth="145.0" styleClass="confirmation_button" text="Baixar PDF" />
+        <Button fx:id="cancel" layoutX="28.0" layoutY="440.0" mnemonicParsing="false" onAction="#cancel" prefHeight="51.0" prefWidth="145.0" styleClass="cancellation_button" text="Cancelar" />
+        <ImageView fitHeight="108.0" fitWidth="85.0" layoutX="346.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/Graph.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="189.0" layoutY="44.0" text="Relatório">
+            <font>
+                <Font name="System Bold" size="34.0" />
+            </font>
+        </Label>
+        <Label layoutX="26.0" layoutY="100.0" text="Gerar relatório por: ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="24.0" layoutY="147.0" text="Periodo: ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="dataInicial" layoutX="107.0" layoutY="136.0" prefHeight="50.0" prefWidth="190.0" promptText="Data inicial XX/XX/XXXX">
+            <font>
+                <Font size="11.0" />
+            </font></TextField>
+        <TextField fx:id="dataFinal" layoutX="336.0" layoutY="136.0" prefHeight="50.0" prefWidth="242.0" promptText="Data final XX/XX/XXXX" />
+        <Label layoutX="303.0" layoutY="147.0" text="até">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="28.0" layoutY="211.0" text="Estado: ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="30.0" layoutY="275.0" text="Sabor : ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="saborPizza" layoutX="109.0" layoutY="263.0" prefHeight="50.0" prefWidth="470.0" promptText="Sabor da pizza" />
+        <Label layoutX="28.0" layoutY="339.0" text="Cliente: ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="NomeCliente" layoutX="109.0" layoutY="328.0" prefHeight="50.0" prefWidth="470.0" promptText="Nome do Cliente..." />
+        <CheckBox fx:id="status" layoutX="115.0" layoutY="216.0" mnemonicParsing="false" selected="true" text="Finalizados" />
+      <Button fx:id="financeiros" layoutX="185.0" layoutY="440.0" mnemonicParsing="false" onAction="#gerarDadosFinanceiros" text="Baixar Dados Financeiros" />
+    </children>
+</Pane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="620.0" stylesheets="@../../styles/dialog.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditarPizzaController">
+    <children>
+        <Button fx:id="cancel" layoutX="53.0" layoutY="418.0" mnemonicParsing="false" onAction="#cancel" prefHeight="51.0" prefWidth="145.0" styleClass="cancellation_button" text="Cancelar" />
+        <Button fx:id="editar" layoutX="426.0" layoutY="424.0" mnemonicParsing="false" onAction="#editar" prefHeight="51.0" prefWidth="145.0" styleClass="confirmation_button" text="Salvar" />
+        <Label layoutX="213.0" layoutY="41.0" text="EDITAR PIZZA">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+        </Label>
+        <TextField fx:id="sabor" layoutX="52.0" layoutY="127.0" prefHeight="35.0" prefWidth="517.0" promptText="Sabor" />
+      <TextField fx:id="precop" layoutX="51.0" layoutY="233.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( G )" />
+      <TextField fx:id="precom" layoutX="52.0" layoutY="287.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( M )" />
+      <TextField layoutX="53.0" layoutY="180.0" prefHeight="35.0" prefWidth="517.0" promptText="Ingredientes" />
+      <TextField fx:id="precog" layoutX="53.0" layoutY="337.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( P )" />
+    </children>
+</Pane>
