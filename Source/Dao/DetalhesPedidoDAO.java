@@ -15,7 +15,7 @@ public class DetalhesPedidoDAO {
         List<DetalhesPedido> detalhesPedidos = new ArrayList<>();
         try {
             BaseDaoImp.connection = BaseDaoImp.getConnection();
-            String consultaSQL = "SELECT * FROM vw_detalhes_pedidos5";
+            String consultaSQL = "SELECT * FROM vw_detalhes_pedidos";
             try (PreparedStatement stmt = connection.prepareStatement(consultaSQL);
                  ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
