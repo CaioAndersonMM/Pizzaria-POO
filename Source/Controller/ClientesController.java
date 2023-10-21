@@ -106,7 +106,6 @@ public class ClientesController implements Initializable {
                     try {
                         edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 });
@@ -114,7 +113,6 @@ public class ClientesController implements Initializable {
                     try {
                         delete(event, (Long) dado[0]);
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 });
@@ -196,7 +194,7 @@ public class ClientesController implements Initializable {
         
         EditarClienteController editarCliente = loader.getController();
 
-        editarCliente.id = id;
+        EditarClienteController.id = id;
         editarCliente.setValoresEdicao(nome, cpf, endereco);
 
     

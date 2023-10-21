@@ -159,7 +159,7 @@ public class EstoqueController implements Initializable {
         Scene scene = new Scene(root);
 
         EditarProdutoController editarProduto = loader.getController();
-        editarProduto.id = id;
+        EditarProdutoController.id = id;
         editarProduto.setValoresEdicao(nome, quantidade, valor, isAdicional);
 
         // Cria uma nova janela de diálogo
