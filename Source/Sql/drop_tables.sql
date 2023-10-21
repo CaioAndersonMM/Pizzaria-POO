@@ -18,3 +18,4 @@ DROP FUNCTION calcular_lucro;
 DROP FUNCTION atualizar_vendas_apos_insercao_pedido;
 DROP FUNCTION criar_venda_apos_insercao_pizza_pedido;
 DROP FUNCTION criar_venda_apos_insercao_produto;
+DROP FUNCTION atualizar_quantidade_produto;
