@@ -283,7 +283,7 @@ public class CriarPedidoController {
     }
 
     @FXML
-    void finalizar(ActionEvent event) {
+    void finalizar(ActionEvent event) throws IOException {
         Pedido pedido = new Pedido(
             clienteSelecionado,
             pizzas,
@@ -294,5 +294,6 @@ public class CriarPedidoController {
 
         pedidoDAO.inserir(pedido);
         stage.close();
+        App.telaPedidos();
     }
 } 
