@@ -148,7 +148,6 @@ public class PedidosController {
 
     @FXML
     void delete(ActionEvent event, Long id) throws IOException {
-        ExcluirCadastroController.pedido_id = id;
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
         Scene scene = new Scene(root);
 

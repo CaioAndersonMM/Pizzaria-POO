@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.List;
 
 import Dao.ClienteDao;
-import Dao.PizzaDao;
 
 import Model.Entity.Cliente;
 import Model.Entity.Pizza;
@@ -147,7 +146,7 @@ public class AdicionarPedidoController {
             System.out.println("Cliente não cadastrado!");
         } else {
             nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf")); //Verificar isso aqui
+            cfpCol.setCellValueFactory(new PropertyValueFactory<>("cpf"));
             telefoneCol.setCellValueFactory(new PropertyValueFactory<>("endereco"));
             ObservableList<Cliente> data = FXCollections.observableArrayList(clientes);
             clientTable.setItems(data);

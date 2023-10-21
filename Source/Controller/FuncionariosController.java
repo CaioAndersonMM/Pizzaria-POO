@@ -128,7 +128,6 @@ public class FuncionariosController implements Initializable {
                 try {
                     edit(event, (Long) dado[0], String.valueOf(dado[1]), String.valueOf(dado[2]), String.valueOf(dado[3]));
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -136,7 +135,6 @@ public class FuncionariosController implements Initializable {
                 try {
                     delete(event, (Long) dado[0]);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
@@ -190,13 +188,10 @@ public class FuncionariosController implements Initializable {
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/adicionar_funcionario.fxml"));
         Scene scene = new Scene(root);
 
-        // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
-        //dialogStage.initOwner().getScene().getWindow()); // Define a janela pai
+        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de 
         dialogStage.setScene(scene);
 
-        // Exibe a janela de diálogo
         dialogStage.showAndWait();
     }
 
@@ -206,9 +201,8 @@ public class FuncionariosController implements Initializable {
         Parent root = FXMLLoader.load(App.class.getResource("VE/dialogs/excluir_cadastro.fxml"));
         Scene scene = new Scene(root);
 
-        // Cria uma nova janela de diálogo
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
     }
@@ -223,9 +217,9 @@ public class FuncionariosController implements Initializable {
 
         editarFuncionario.setValoresEdicao(id, nome, cpf, senha);
 
-        // Cria uma nova janela de diálogo
+
         Stage dialogStage = new Stage();
-        dialogStage.initModality(Modality.APPLICATION_MODAL); // Configura como uma janela de diálogo modal
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.setScene(scene);
         dialogStage.showAndWait();
     }
