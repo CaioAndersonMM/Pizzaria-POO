@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Dao.TipoPizzaDao;
+import Model.BO.FuncionarioBo;
 import Model.BO.TipoPizzaBo;
 import Model.Entity.TipoPizza;
 import View.App;
@@ -98,6 +99,10 @@ public class PizzasController implements  Initializable{
     
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Object[]> dadosDoBanco = recuperarDadosDoBanco();
+
+        if(FuncionarioBo.isAdminLogado != true){
+            adicionar.setVisible(false);
+        }
 
         for (Object[] dado : dadosDoBanco) {
             HBox hboxContainer = new HBox();
