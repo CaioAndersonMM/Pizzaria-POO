@@ -16,9 +16,9 @@
             </font>
         </Label>
         <TextField fx:id="sabor" layoutX="52.0" layoutY="127.0" prefHeight="35.0" prefWidth="517.0" promptText="Sabor" />
-      <TextField fx:id="precop" layoutX="51.0" layoutY="233.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( P )" />
+      <TextField fx:id="precop" layoutX="51.0" layoutY="233.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( G )" />
       <TextField fx:id="precom" layoutX="52.0" layoutY="287.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( M )" />
       <TextField layoutX="53.0" layoutY="180.0" prefHeight="35.0" prefWidth="517.0" promptText="Ingredientes" />
-      <TextField fx:id="precog" layoutX="53.0" layoutY="337.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( G )" />
+      <TextField fx:id="precog" layoutX="53.0" layoutY="337.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( P )" />
     </children>
 </Pane>

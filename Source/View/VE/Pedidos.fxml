@@ -70,7 +70,7 @@
                 <HBox id="header" alignment="CENTER_LEFT" maxWidth="900.0" prefWidth="200.0">
                     <children>
                         <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
-                        <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Nome do Cliente, Sabor..." />
+                        <TextField maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Nome do Cliente" />
                         <Separator visible="false" HBox.hgrow="ALWAYS" />
                         <Button fx:id="adicionar" mnemonicParsing="false" onAction="#adicionar" prefHeight="50.0" text="+ Adicionar Pedido">
                             <HBox.margin>

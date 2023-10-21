@@ -72,7 +72,7 @@
             <HBox id="header" alignment="CENTER_LEFT" maxWidth="900.0" prefWidth="200.0">
                <children>
                   <Label id="search-bar-label" minWidth="80.0" text="Buscar: " />
-                  <TextField fx:id="searchField" maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por nome, telefone, endereço" />
+                  <TextField fx:id="searchField" maxWidth="600.0" prefHeight="50.0" prefWidth="400.0" promptText="Pesquisar por Nome" />
                   <ImageView fx:id="buscar" fitHeight="43.0" fitWidth="30.0" onMouseClicked="#buscar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Search.png" />

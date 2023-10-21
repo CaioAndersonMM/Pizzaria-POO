@@ -17,9 +17,9 @@
             </font>
         </Label>
         <TextField fx:id="sabor" layoutX="52.0" layoutY="127.0" prefHeight="35.0" prefWidth="517.0" promptText="Sabor" />
-      <TextField fx:id="precop" layoutX="51.0" layoutY="233.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( P )" />
+      <TextField fx:id="precop" layoutX="51.0" layoutY="233.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( G )" />
       <TextField fx:id="precom" layoutX="52.0" layoutY="287.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( M )" />
-      <TextField fx:id="precog" layoutX="53.0" layoutY="337.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( G )" />
+      <TextField fx:id="precog" layoutX="53.0" layoutY="337.0" prefHeight="35.0" prefWidth="517.0" promptText="Preço ( P )" />
       <ComboBox fx:id="ingredientesField" layoutX="51.0" layoutY="180.0" prefHeight="36.0" prefWidth="250.0" />
       <ComboBox fx:id="ingredientesField2" layoutX="311.0" layoutY="180.0" prefHeight="36.0" prefWidth="257.0" />
     </children>
